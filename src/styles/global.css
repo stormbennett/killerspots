@@ -198,6 +198,25 @@
   display: inline-block;
 }
 
+/* Trust badge (logo art used alongside or in place of trust pills) */
+.trust-badge {
+  height: 64px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+.trust-badge:hover {
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .trust-badge {
+    height: 80px;
+    max-width: 240px;
+  }
+}
+
 /* ============================================================
    CINEMATIC MOTION SYSTEM
    ============================================================
