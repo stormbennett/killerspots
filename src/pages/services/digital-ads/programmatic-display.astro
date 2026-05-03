@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Programmatic Display Advertising | Banner + Native + Video | Killerspots',
+  description: 'Programmatic display advertising across millions of premium publishers. Banner, native, and video creative. Audience targeting, retargeting, and brand-safety controls.',
+  ogTitle: 'Programmatic Display That Doesn\'t Waste Impressions | Killerspots',
+  ogDescription: 'Premium programmatic display + native + video across millions of sites. Audience targeting, brand-safety controls, real attribution.',
+};
+
+const trustPills = ['Premium Inventory', 'Brand-Safety Filters', 'Real Attribution'];
+
+const what = [
+  { title: 'Display Banners', body: 'Static and animated banner ads in standard IAB formats (300x250, 728x90, 320x50, etc.). Run across premium publisher networks.' },
+  { title: 'Native Ads', body: 'In-feed native ads that match the publisher\'s editorial style. Higher engagement than display, brand-safe for content marketing.' },
+  { title: 'Programmatic Video', body: 'Pre-roll and out-stream video ads on premium publishers. Different from CTV (long-form streaming) and YouTube — this is web-context video.' },
+  { title: 'Audience Targeting', body: 'Demographics, interests, in-market segments, custom intent, and CRM lookalikes. Layer multiple signals for precision.' },
+  { title: 'Retargeting', body: 'Re-engage website visitors, cart abandoners, and email subscribers across the open web. Frequency capping built in.' },
+  { title: 'Brand-Safety Filters', body: 'Block inventory on news, controversial content, and low-quality publishers. Whitelist-only options available for sensitive industries.' },
+];
+
+const faqs = [
+  { q: 'Is programmatic display still effective?', a: 'Yes — when run with brand-safety filters and real attribution. Cheap programmatic without those controls = wasted spend. We do the version that works.' },
+  { q: 'How do you ensure brand safety?', a: 'Whitelist-only publisher targeting available. Category exclusions (news, politics, controversial content) standard. Brand-safety vendor integrations (DoubleVerify, IAS) for larger campaigns.' },
+  { q: 'What\'s the typical CPM?', a: 'Banner: $2–$8 CPM. Native: $5–$15 CPM. Programmatic video: $8–$25 CPM. Premium-only inventory runs higher.' },
+  { q: 'How does this compare to social ads?', a: 'Programmatic reaches users in editorial content contexts (reading articles, watching videos). Social reaches them in feed contexts. Different intent, different attention. Both have value in a full-funnel strategy.' },
+  { q: 'Do you do creative production?', a: 'Yes — banners, native creative, and video produced in-house. Multiple variants per campaign for testing.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/digital-ads/programmatic-display#webpage', url: 'https://killerspots.com/services/digital-ads/programmatic-display', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Digital Ads', item: 'https://killerspots.com/services/digital-ads' }, { '@type': 'ListItem', position: 3, name: 'Programmatic Display', item: 'https://killerspots.com/services/digital-ads/programmatic-display' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/digital-ads" class="hover:text-white">Digital Ads</a><span class="mx-2">/</span><span class="text-ink">Programmatic Display</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Programmatic Display</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Reach across the web — <span class="text-brand-500">without wasting impressions.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Programmatic display, native, and video ads across premium publisher networks. Audience targeting, retargeting, and brand-safety controls baked in.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Programmatic Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Cheap programmatic = wasted spend. We run brand-safety filters, premium publisher whitelists, and frequency caps so every impression earns its keep.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Six programmatic ad formats and controls.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Programmatic display questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Run on the Open Web</span><h2 class="section-headline mt-5">Tell us your audience. We'll build the buy.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your audience, your goals, and your brand-safety needs — then come back with a programmatic plan.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

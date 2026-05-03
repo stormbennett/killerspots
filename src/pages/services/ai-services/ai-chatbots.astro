@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'AI Chatbots for Lead Capture & Customer Support | Killerspots',
+  description: 'AI chatbots that answer FAQs, qualify leads, and book appointments 24/7. Trained on your business. Deployed on your site, in SMS, and via chat. Integrated with LeadConnector.',
+  ogTitle: 'AI Chatbots That Book Appointments at 3 AM | Killerspots',
+  ogDescription: 'AI bots trained on your business. FAQs, lead qualification, appointment booking — 24/7. Built on LeadConnector. Human escalation always available.',
+};
+
+const trustPills = ['LeadConnector Powered', 'Trained On Your Business', 'Human Escalation'];
+
+const what = [
+  { title: 'Website Chat', body: 'Embedded chat widget on your site. Greets visitors, answers FAQs, qualifies intent, and books appointments — without your team logged in.' },
+  { title: 'SMS Bot', body: 'Two-way SMS conversations. Auto-replies to inbound texts, qualifies, and routes to human reps when needed. Powered by LeadConnector\'s number.' },
+  { title: 'Missed-Call Text-Back', body: 'Phone rings, no one answers, AI texts the prospect within 30 seconds. Lead never goes cold. Highest-ROI feature in the entire platform.' },
+  { title: 'Custom Training', body: 'Bot trained on your FAQs, services, hours, policies, and brand voice. Not generic OpenAI prompts — your specific knowledge base.' },
+  { title: 'Lead Qualification', body: 'Bot scores incoming inquiries by intent. High-intent leads fast-tracked to human follow-up. Low-intent goes into nurture sequences.' },
+  { title: 'Human Handoff', body: 'Every conversation has a clear escalation path. Bot can\'t answer? Routes to a human via SMS, email, or call alert. Never lose a lead to AI confusion.' },
+];
+
+const faqs = [
+  { q: 'Will customers know they\'re talking to a bot?', a: 'We disclose AI when asked, and we design conversations that feel natural without pretending to be human. The goal is fast, helpful answers — not deception.' },
+  { q: 'How fast can you deploy a bot?', a: 'Typical timeline: 1–2 weeks from kickoff to live. We need access to your FAQ docs, service descriptions, and a brand voice sample. Tuning continues for 2–3 weeks based on real conversations.' },
+  { q: 'What happens if the bot can\'t answer?', a: 'Routes to a human via your preferred channel (SMS alert to a rep, email to your team, or transfer to a live agent). Nothing falls through the cracks.' },
+  { q: 'Can you integrate with our existing CRM?', a: 'Best results come from running on LeadConnector. We can integrate with HubSpot, Salesforce, and similar via webhooks, but the experience is more polished on our managed CRM.' },
+  { q: 'How is this priced?', a: 'Setup fee + monthly retainer that includes hosting, training updates, and conversation tuning. Sized to volume — small businesses with low traffic vs. enterprise with high message volume have different pricing.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/ai-services/ai-chatbots#webpage', url: 'https://killerspots.com/services/ai-services/ai-chatbots', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'AI Services', item: 'https://killerspots.com/services/ai-services' }, { '@type': 'ListItem', position: 3, name: 'AI Chatbots', item: 'https://killerspots.com/services/ai-services/ai-chatbots' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/ai-services" class="hover:text-white">AI Services</a><span class="mx-2">/</span><span class="text-ink">AI Chatbots</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">AI Chatbots</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Book appointments <span class="text-brand-500">at 3 AM. Without staff.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">AI chatbots trained on your business — FAQs, lead qualification, appointment booking, missed-call text-back. 24/7 on your website, in SMS, and via chat. Integrated with LeadConnector.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an AI Bot Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Missed-call text-back alone has 4–10× ROI for service businesses. AI chat at scale captures leads that would otherwise bounce.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Build</span><h2 class="section-headline mt-5">Six conversation channels, one trained AI.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">AI chatbot questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Stop Losing After-Hours Leads</span><h2 class="section-headline mt-5">Tell us your top FAQs. We'll train the bot.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll map your most common inquiries, your business hours, and your follow-up workflow — then deploy a bot in 1–2 weeks.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="/leadconnector" class="btn btn-ghost">Learn About LeadConnector</a></div></div></div></section>
+</BaseLayout>

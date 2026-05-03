@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'TV Commercial Production | :15, :30, :60 Spots | Killerspots',
+  description: 'Broadcast-quality TV commercial production. :15, :30, and :60 spots — concept, scripting, casting, shooting, editing, and broadcast-spec delivery. Cincinnati green-screen studio.',
+  ogTitle: 'TV Commercials That Actually Sell | Killerspots',
+  ogDescription: 'TV commercials produced in our Cincinnati green-screen studio. :15, :30, :60. Concept-to-broadcast in 3–5 weeks. 6× Telly Award winner.',
+};
+
+const trustPills = ['6× Telly Award Winner', 'Green-Screen Studio', 'Broadcast-Spec Delivery'];
+
+const formats = [
+  { length: ':15', title: 'Single-Message Spots', body: 'High-frequency reinforcement spots. Hook + offer + CTA. Perfect for multi-week buys where repetition does the work.' },
+  { length: ':30', title: 'The Standard', body: 'Most-bought TV format. Hook, problem, solution, CTA. Room for story without dragging. The workhorse.' },
+  { length: ':60', title: 'Story + Sell', body: 'Time to dramatize, build emotional investment, and layer multiple offers. Best for high-ticket products and brand-building.' },
+];
+
+const what = [
+  { title: 'Concept + Scripting', body: 'Original creative concepts and scripts written by producers who actually buy media. Built to be heard, not read.' },
+  { title: 'Casting + Talent', body: 'On-camera talent cast from regional and national rosters. Voice over from VoiceTalent.Agency (anti-AI pledged).' },
+  { title: 'Studio + Location', body: 'Our Cincinnati green-screen cyclorama for controlled shoots. Location production for customer sites, storefronts, and on-the-truck shoots.' },
+  { title: 'Post-Production', body: 'Editorial, color grading, sound design, music, and broadcast-spec mastering. All done in-house — no vendor handoffs.' },
+  { title: 'Multiple Cuts + Variants', body: ':30 main + :15 cutdown + social cutdowns + tag-only versions for different markets. All from the same shoot day.' },
+  { title: 'Traffic-Ready Delivery', body: 'Files delivered to your traffic system in the exact format expected (Comcast, NBC, ABC, FOX, etc.). Drop in, ready to air.' },
+];
+
+const faqs = [
+  { q: 'How long does a TV commercial take?', a: 'Concept-to-broadcast: 3–5 weeks for full production. Rush turnarounds available for time-sensitive buys. Existing footage or B-roll can shorten significantly.' },
+  { q: 'What\'s a realistic budget?', a: 'Wildly variable based on talent, location, and complexity. Single-location, scripted-talent :30 spots start in the low five figures. Multi-location, premium-talent productions go up from there.' },
+  { q: 'Do you handle media buying for the TV spots?', a: 'Yes — broadcast TV, CTV, OTT, and digital placement all handled in-house. Production + media under one roof = better creative-to-placement attribution.' },
+  { q: 'Can you produce in our location?', a: 'Yes. Location production is common for customer-site shoots, storefronts, and on-the-truck commercials. We travel for the right project.' },
+  { q: 'Do you do animated or motion-graphics commercials?', a: 'Yes. Full motion graphics and 2D animation produced in-house. See our Graphics & Animations page for details.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/video-tv/tv-commercials#webpage', url: 'https://killerspots.com/services/video-tv/tv-commercials', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Video & TV', item: 'https://killerspots.com/services/video-tv' }, { '@type': 'ListItem', position: 3, name: 'TV Commercials', item: 'https://killerspots.com/services/video-tv/tv-commercials' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/video-tv" class="hover:text-white">Video &amp; TV</a><span class="mx-2">/</span><span class="text-ink">TV Commercials</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">TV Commercial Production</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Broadcast-quality TV spots, <span class="text-brand-500">concept to delivery.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">:15, :30, and :60 commercials produced in our Cincinnati green-screen studio. Concept, casting, production, and broadcast-spec delivery — all in-house. 6× Telly Award winner.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a TV Spot Quote</a><a href="/portfolio" class="btn btn-ghost">See Our Work</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years producing TV commercials. Six Telly Awards. We've shot for local advertisers, regional brands, and national campaigns.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Spot Lengths</span><h2 class="section-headline mt-5">Three formats. Each one earns its keep.</h2></div><ul class="grid md:grid-cols-3 gap-5 md:gap-6">{formats.map((f) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><div class="text-3xl md:text-4xl font-bold text-brand-500 tracking-tight">{f.length}</div><h3 class="mt-3 text-xl font-semibold text-white">{f.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{f.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What's Included</span><h2 class="section-headline mt-5">Full production. Nothing you have to source.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">TV commercial production questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Make a TV Spot</span><h2 class="section-headline mt-5">Tell us your concept. We'll size the production.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute creative call. We\'ll review your brief, your timeline, and your media buy — then come back with a production plan and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

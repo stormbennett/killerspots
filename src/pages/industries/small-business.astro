@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../data/navigation';
+
+const meta = {
+  title: 'Small Business Marketing | SEO, PPC, Social & Jingles | Killerspots',
+  description:
+    'Affordable, integrated marketing for small businesses. SEO, PPC, social media, and jingles from a full-service agency that gets you found, called, and remembered.',
+  ogTitle: 'Small Business Marketing That Actually Works | Killerspots',
+  ogDescription:
+    'One agency, every channel. SEO, PPC, social, jingles, and AI-powered follow-up — packaged for small business budgets and built to drive real revenue.',
+};
+
+const trustPills = ['Since 1999', '25+ Years', '6× Telly Award Winner'];
+
+const painPoints = [
+  {
+    title: 'Too Many Vendors',
+    body:
+      'You have one person for SEO, another for ads, a freelancer for social, and a cousin who built your website. Nothing connects. Nobody owns the result.',
+  },
+  {
+    title: 'Marketing That Looks Cheap',
+    body:
+      'Stock photos. Templated websites. Robotic ad copy. Your competitors look like brands — you look like a side hustle.',
+  },
+  {
+    title: 'No Time, No Internal Team',
+    body:
+      'You\'re running the business. You can\'t also be the marketing director, the copywriter, the SEO analyst, and the media buyer.',
+  },
+  {
+    title: 'Spending Without Knowing What Works',
+    body:
+      'Money goes out. Leads sometimes come in. Nobody can tell you which dollar drove which deal. So every renewal feels like a guess.',
+  },
+];
+
+const services = [
+  {
+    title: 'Local SEO',
+    href: '/services/seo-aio/seo',
+    body:
+      'Rank in your city, your suburb, and the maps pack. Google Business Profile optimization, local citations, review generation, and content built for the searches your customers actually type.',
+  },
+  {
+    title: 'Google & Meta Ads',
+    href: '/services/ppc',
+    body:
+      'Google Ads, Local Services Ads (LSA), and Facebook/Instagram campaigns sized for small business budgets. Tight geo-targeting, conversion tracking, and weekly optimization.',
+  },
+  {
+    title: 'Social Media',
+    href: '/services/social-media',
+    body:
+      'Organic content, short-form video, and paid social. We handle the calendar, the captions, the creative, and the community management — you stay focused on running the business.',
+  },
+  {
+    title: 'Custom Jingles',
+    href: '/services/audio-production/custom-jingles',
+    body:
+      'A jingle is the cheapest brand asset you\'ll ever own. Memorable, professionally produced audio you can use on radio, social, on-hold, and your website — for the lifetime of your business.',
+  },
+  {
+    title: 'Websites That Convert',
+    href: '/services/websites',
+    body:
+      'Fast, mobile-first business sites built to capture leads. Calls, forms, chat, and tracking baked in from day one — no DIY templates, no guesswork.',
+  },
+  {
+    title: 'AI Follow-Up & CRM',
+    href: '/leadconnector',
+    body:
+      'LeadConnector captures every form, call, and chat, then auto-responds with text and email so leads don\'t go cold while you\'re working a job site or with a customer.',
+  },
+];
+
+const reasons = [
+  {
+    title: 'One Partner, Every Channel',
+    body:
+      'Your jingle, your ads, your SEO, your social, and your CRM all coordinated by one team. No finger-pointing. One monthly invoice. One growth plan.',
+  },
+  {
+    title: 'Built For Small Business Economics',
+    body:
+      'We package services for small business cash flow — not enterprise budgets. Get a quote tailored to your market, your goals, and what you can actually afford.',
+  },
+  {
+    title: 'Real Reporting, Plain English',
+    body:
+      'Monthly reports that show what worked, what didn\'t, and what we\'re changing. No agency jargon. No vanity metrics. Just leads, calls, and revenue.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What size businesses do you work with?',
+    a: 'Most of our small business clients are doing somewhere between $250K and $10M in annual revenue. If you have a real business, real customers, and a real budget for growth — we can build a plan that fits.',
+  },
+  {
+    q: 'Do I have to commit to all your services?',
+    a: 'No. Plenty of clients start with one channel — usually SEO or paid ads — and add more as they see results. We don\'t do all-or-nothing contracts.',
+  },
+  {
+    q: 'Can you work with my existing website?',
+    a: 'Yes. We\'ll audit what you have, fix what\'s broken, and only recommend a rebuild if it\'s genuinely holding you back. We\'re not in the business of selling you a website you don\'t need.',
+  },
+  {
+    q: 'How fast will I see results?',
+    a: 'Paid ads can drive leads in days. SEO usually takes 90–180 days to compound meaningfully. Jingles and social build brand equity over months. We\'ll set realistic expectations up front and report against them every month.',
+  },
+  {
+    q: 'Do you show pricing on the website?',
+    a: 'No — every small business is different, and packaging the right plan for your market matters more than a list price. Get a quote and we\'ll build something that fits.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/industries/small-business#webpage',
+  url: 'https://killerspots.com/industries/small-business',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Small Business',
+      item: 'https://killerspots.com/industries/small-business',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Small Business</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Marketing for small businesses that
+          <span class="text-brand-500">don't have time to babysit five vendors.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          One agency. Every channel. SEO, paid ads, social, jingles, websites, and
+          AI-powered follow-up — coordinated, reported on, and built to drive real revenue.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href="/services/seo-aio/killerseox-audit" class="btn btn-ghost">
+            Run a Free Audit
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          We've been helping small businesses get found, called, and remembered since 1999.
+          The channels have changed. The fundamentals haven't.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">The Real Problem</span>
+        <h2 class="section-headline mt-5">
+          You don't have a marketing problem. You have a fragmentation problem.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {
+          painPoints.map((p) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What's Included</span>
+        <h2 class="section-headline mt-5">
+          Every channel a small business needs — under one roof.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Pick the channels that matter most. Add more when you're ready. We'll keep them
+          working together so every dollar compounds.
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          services.map((card) => (
+            <li data-reveal>
+              <a href={card.href} class="card-tile group">
+                <h3 class="text-lg md:text-xl font-semibold text-white">{card.title}</h3>
+                <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">
+                  {card.body}
+                </p>
+                <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                  Explore
+                  <svg
+                    class="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY KILLERSPOTS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Why Killerspots</span>
+        <h2 class="section-headline mt-5">
+          We've spent 25 years figuring out what small businesses actually need.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-3 gap-5 md:gap-6">
+        {
+          reasons.map((r) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{r.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{r.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Common questions from small business owners.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Let's Talk</span>
+        <h2 class="section-headline mt-5">
+          Tell us about your business — we'll build a plan that fits.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Free 30-minute strategy call. No pressure. We'll look at your market, your
+          competitors, and your goals, then come back with a recommendation you can use
+          either way.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

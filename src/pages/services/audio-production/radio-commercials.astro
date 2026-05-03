@@ -1,0 +1,419 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Radio Commercial Production | 15s, 30s, 60s Spots | Killerspots',
+  description:
+    'High-impact radio commercial production. 15, 30, and 60-second spots — fully produced with scripting, voice talent, sound design, and broadcast-ready mixing in 2–3 days.',
+  ogTitle: 'Radio Commercials That Actually Move Listeners | Killerspots',
+  ogDescription:
+    '25+ years producing radio spots that stop the dial. Full production: scripting, voice talent, sound design, and broadcast-ready delivery in 2–3 business days.',
+};
+
+const trustPills = ['2–3 Day Turnaround', '6× Telly Award Winner', 'Broadcast-Ready Files'];
+
+const formats = [
+  {
+    length: ':15',
+    title: 'Quick-Hit Spots',
+    body:
+      'High-frequency, single-message spots. Perfect for time-sensitive offers, sale events, and reinforcing recognition between longer reads.',
+  },
+  {
+    length: ':30',
+    title: 'Standard Workhorse',
+    body:
+      'The most-bought spot length in radio. Hook, value prop, call to action — the classic structure for every category from local services to national brands.',
+  },
+  {
+    length: ':60',
+    title: 'Story + Spot',
+    body:
+      'Room to tell a story, dramatize the problem, or layer in multiple offers. Best for premium products, complex services, and emotional brand reads.',
+  },
+];
+
+const included = [
+  {
+    title: 'Concept + Copywriting',
+    body:
+      'Scripts written in-house by producers who actually buy radio for clients. Built to be heard, not read — with hooks that survive a noisy car and a distracted listener.',
+  },
+  {
+    title: 'Voice Talent Casting',
+    body:
+      'Cast from the VoiceTalent.Agency roster — every artist signs an anti-AI pledge. Pick the voice that fits your brand, audition before recording, locked into your spot.',
+  },
+  {
+    title: 'Original Sound Design',
+    body:
+      'Music beds, SFX, transitions, and ambient layers. Custom-built, not stock loops. Feels like a national agency made it — because, effectively, one did.',
+  },
+  {
+    title: 'Broadcast-Spec Mixing',
+    body:
+      'Mixed and mastered to broadcast loudness standards. Files delivered ready to upload to your traffic system or radio station group.',
+  },
+  {
+    title: 'Multiple Cuts + Variants',
+    body:
+      'Need a :30 and :15 cutdown? Tag-only versions for different markets? Multiple offers in rotation? All standard on volume retainers.',
+  },
+  {
+    title: 'Same-Day Delivery Available',
+    body:
+      'Standard turnaround is 2–3 business days. Rush and same-day delivery available for urgent buys.',
+  },
+];
+
+const fits = [
+  'Home services contractors',
+  'Law firms (PI, family, general practice)',
+  'Healthcare and dental practices',
+  'Auto dealers and franchises',
+  'Local retail and restaurants',
+  'Radio station group volume partners',
+];
+
+const faqs = [
+  {
+    q: 'How fast is standard turnaround?',
+    a: '2–3 business days from script approval through final mix. Rush and same-day delivery available for urgent buys — most radio stations need spots delivered the day before flighting starts.',
+  },
+  {
+    q: 'Do you write the script or do I bring my own?',
+    a: 'Both work. Copywriting is included in our standard production package — our writers produce radio for a living and know what works. Bring your own script and we\'ll save the writing time.',
+  },
+  {
+    q: 'How does voice talent casting work?',
+    a: 'We cast from VoiceTalent.Agency, the marketplace we built and operate. Every artist signs an anti-AI pledge — no synthetic voices, ever. You audition demos before booking and approve the voice before recording.',
+  },
+  {
+    q: 'Can you do Spanish-language or bilingual spots?',
+    a: 'Yes. Full Spanish-language production is common, including bilingual hybrid spots and accent-specific reads (Mexican, Caribbean, Central American, etc.).',
+  },
+  {
+    q: 'Do you offer volume retainers for stations or agencies?',
+    a: 'Yes — volume retainers cover defined monthly spot counts at a flat rate. Common for radio station groups doing white-label production for their advertisers, and for ad agencies running national radio.',
+  },
+  {
+    q: 'What format do you deliver in?',
+    a: 'Whatever your traffic system needs — broadcast-spec WAV, MP3, or AIFF. We integrate with most major traffic platforms; if yours is exotic, just tell us.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/services/audio-production/radio-commercials#webpage',
+  url: 'https://killerspots.com/services/audio-production/radio-commercials',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Audio Production',
+      item: 'https://killerspots.com/services/audio-production',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Radio Commercials',
+      item: 'https://killerspots.com/services/audio-production/radio-commercials',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Radio Commercial Production',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'US',
+  description: meta.description,
+  url: 'https://killerspots.com/services/audio-production/radio-commercials',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const RADIO_PLAYLIST =
+  'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A152639874&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true';
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]">
+        <a href="/services/audio-production" class="hover:text-white">Audio Production</a>
+        <span class="mx-2">/</span>
+        <span class="text-ink">Radio Commercials</span>
+      </nav>
+
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Radio Commercials</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Radio spots that
+          <span class="text-brand-500">stop the dial.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          High-impact 15, 30, and 60-second radio commercials. Scripting, real-human voice
+          talent, original sound design, and broadcast-ready mixing — delivered in 2–3
+          business days.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Spot Quote</a>
+          <a href="#listen" class="btn btn-ghost">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M5 3.5v9l7-4.5z" />
+            </svg>
+            Listen to Samples
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          We've produced thousands of radio spots — for local advertisers, regional
+          brands, national campaigns, and white-label station partners across the U.S.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Spot Lengths</span>
+        <h2 class="section-headline mt-5">Three lengths. Each one earns its keep.</h2>
+      </div>
+
+      <ul class="grid md:grid-cols-3 gap-5 md:gap-6">
+        {
+          formats.map((f) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-3xl md:text-4xl font-bold text-brand-500 tracking-tight">
+                {f.length}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{f.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{f.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- TRUTH ABOUT RADIO ADS — featured video -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">The Truth About Radio Ads</span>
+        <h2 class="section-headline mt-5">Most radio ads fail. Here's why ours don't.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          A short breakdown of what actually works in radio — and the most common mistakes
+          we see advertisers make on every buy.
+        </p>
+      </div>
+
+      <div
+        data-reveal
+        class="relative overflow-hidden rounded-3xl border border-white/10 bg-canvas shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <!-- TODO: replace src with the direct Vimeo player URL once available.
+               For now this points to the curated showcase containing this video. -->
+          <iframe
+            src="https://vimeo.com/showcase/11786935/embed"
+            title="The Truth About Radio Ads — Killerspots"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What's Included</span>
+        <h2 class="section-headline mt-5">Full production. Nothing you have to source.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          included.map((i) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-canvas/60 p-7"
+            >
+              <h3 class="text-lg font-semibold text-white">{i.title}</h3>
+              <p class="mt-3 text-sm text-muted leading-relaxed">{i.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- LISTEN -->
+  <section id="listen" class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 max-w-3xl" data-reveal>
+        <span class="eyebrow">Listen</span>
+        <h2 class="section-headline mt-5">A sample of recent radio spots.</h2>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden border border-white/10">
+        <iframe
+          width="100%"
+          height="450"
+          allow="autoplay"
+          src={RADIO_PLAYLIST}
+          title="Killerspots Radio Commercials — SoundCloud playlist"
+          loading="lazy"
+          style="display:block;border:0;background:#0a0e12;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT FITS -->
+  <section class="bg-canvas">
+    <div class="container-page py-20 md:py-28">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">Who It Fits</span>
+        <h2 class="section-headline mt-5">Built for advertisers and the stations who serve them.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" data-reveal>
+        {
+          fits.map((f) => (
+            <li class="rounded-xl border border-white/10 bg-surface px-5 py-4 text-sm md:text-base text-ink">
+              {f}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Radio commercial questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Get On Air</span>
+        <h2 class="section-headline mt-5">
+          Tell us your buy. We'll cut the spots.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Send the script (or describe what you need). Tell us the run dates. We'll come
+          back with a quote and a turnaround date that fits your buy.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

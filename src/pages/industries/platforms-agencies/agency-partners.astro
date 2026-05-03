@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Agency Partner Program | Strategic Partnerships | Killerspots',
+  description: 'Strategic partnerships for agencies that need overflow capacity, specialty services, or capability gaps filled. Co-branded engagements + white-label execution. Built for growing agencies.',
+  ogTitle: 'Agency Partner Program — Capacity, Specialty, Coverage | Killerspots',
+  ogDescription: 'Partner with Killerspots when you need overflow capacity, specialty services we already do, or to fill capability gaps. Flexible engagement models.',
+};
+
+const trustPills = ['Strategic Partner', 'Overflow Capacity', 'Specialty Services'];
+
+const partnershipTypes = [
+  { title: 'Overflow Capacity', body: 'You won a big client and your team is at capacity. We pick up the spillover under a project-by-project agreement so you don\'t have to refuse work.' },
+  { title: 'Specialty Services', body: 'Audio production, broadcast video, jingle composition — services that aren\'t worth building in-house. We handle them under your brand or as a co-branded engagement.' },
+  { title: 'Capability Gaps', body: 'You don\'t do PPC. Or SEO. Or CTV. We fill the missing service line so you can offer the full menu without owning it.' },
+  { title: 'Joint Pursuits', body: 'Big enterprise pitches where complementary capabilities tip the win. Co-branded proposals, joint capability decks, shared scope.' },
+];
+
+const benefits = [
+  { title: 'Flexible Engagement Models', body: 'White-label resale, co-branded engagement, joint pursuit, or specialty referral — pick what fits the deal. Every partnership is a different shape.' },
+  { title: 'No Client Solicitation', body: 'Standard non-solicit on every engagement. We don\'t pitch your clients for our other services. Your relationship is yours.' },
+  { title: 'Senior Account Support', body: 'Every agency partnership has a named senior account lead at Killerspots. Strategic conversations, not just delivery management.' },
+  { title: 'Transparent Margins', body: 'You see our rate card. You know your margin. We share commercial info openly because partnership is supposed to work that way.' },
+];
+
+const faqs = [
+  { q: 'How is this different from straight white-label?', a: 'White-label is invisible production — we never surface, you resell at margin. Agency partnership is more flexible: it can include co-branded engagements, joint pursuits, specialty referrals, or pure white-label depending on the deal.' },
+  { q: 'Will you ever pitch our clients for other services?', a: 'No. Standard non-solicit on every partnership. Your relationship is yours. We don\'t poach.' },
+  { q: 'Do you have referral fees?', a: 'Yes — for inbound referrals where you\'re not delivering anything yourself. Standard 10–20% of first-year revenue depending on the deal size.' },
+  { q: 'Can we do co-branded proposals?', a: 'Yes — for joint pursuits where complementary capabilities tip the win. We\'ll co-brand decks, share scope, and present together when the deal warrants.' },
+  { q: 'What\'s the simplest way to start?', a: 'A single project or referral. We deliver, you see how we work. Most partner relationships start with one engagement and grow from there.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/platforms-agencies/agency-partners#webpage', url: 'https://killerspots.com/industries/platforms-agencies/agency-partners', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Platforms & Agencies', item: 'https://killerspots.com/industries/platforms-agencies' }, { '@type': 'ListItem', position: 3, name: 'Agency Partners', item: 'https://killerspots.com/industries/platforms-agencies/agency-partners' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/platforms-agencies" class="hover:text-white">Platforms & Agencies</a><span class="mx-2">/</span><span class="text-ink">Agency Partners</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Agency Partners</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Capacity, specialty, <span class="text-brand-500">and capability — when you need it.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Strategic partnerships for agencies that need overflow capacity, specialty services we already do, or to fill capability gaps. Flexible models. Standard non-solicit.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Become an Agency Partner</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years working with agencies. We know how to be a good partner — confidential, accountable, no surprises.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Partnership Models</span><h2 class="section-headline mt-5">Four ways agencies work with us.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{partnershipTypes.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why It Works</span><h2 class="section-headline mt-5">Built around how agencies actually buy.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{benefits.map((b) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{b.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{b.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Agency partnership questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Start a Partnership</span><h2 class="section-headline mt-5">Tell us where you need help. We'll find the right model.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute partnership call. NDA up front. We'll review your service mix, identify the right model, and set up a first project.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Become a Partner</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

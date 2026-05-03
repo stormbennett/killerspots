@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Meta Ads Management | Facebook + Instagram Campaigns | Killerspots',
+  description: 'Meta Ads (Facebook + Instagram) management for service businesses, B2C, and local brands. Campaign builds, creative production, audience targeting, weekly optimization.',
+  ogTitle: 'Meta Ads That Actually Drive Leads | Killerspots',
+  ogDescription: 'Facebook + Instagram campaigns sized for local-business and growth-stage budgets. Creative, targeting, retargeting, and weekly optimization for CPL/CPA.',
+};
+
+const trustPills = ['Meta Ads Specialists', 'Creative Included', 'CPA-Driven'];
+
+const what = [
+  { title: 'Campaign Strategy', body: 'Awareness, traffic, lead-gen, conversion, retargeting — the right campaign objective for your funnel stage. No "boost post" guesswork.' },
+  { title: 'Audience Targeting', body: 'Custom audiences from CRM data, lookalikes, interest-based, and detailed behavioral targeting. Built for the specific buyer you want.' },
+  { title: 'Creative Production', body: 'Static ads, video ads, carousel ads, and Reels-format creative produced in-house. Multiple variants for testing.' },
+  { title: 'Retargeting Funnels', body: 'Multi-stage retargeting based on website behavior, video view depth, and engagement signals. The leads that bounced come back.' },
+  { title: 'Lead Form Ads', body: 'In-platform lead forms that convert without leaving Facebook/Instagram. Pre-filled with profile data. Synced to LeadConnector for instant follow-up.' },
+  { title: 'Weekly Optimization', body: 'Audience refreshes, creative rotations, bid adjustments, and budget reallocation. Active management, not set-and-forget.' },
+];
+
+const faqs = [
+  { q: 'What\'s a realistic CPL on Meta?', a: 'Service businesses: $20–$80 per qualified lead. B2C/ecommerce: highly variable by category. We benchmark against your industry and report monthly.' },
+  { q: 'Do you handle creative production?', a: 'Yes — static, video, carousel, and Reels-format creative produced in-house alongside campaign management. Multiple variants for testing.' },
+  { q: 'How fast will I see leads?', a: 'Lead form ads can drive leads in week 1. Standard campaigns typically need 2–4 weeks for the algorithm to optimize. iOS privacy changes have lengthened the optimization period.' },
+  { q: 'How does iOS 14+ privacy affect Meta Ads?', a: 'Significantly — attribution is fuzzier, optimization slower, and CPM has risen. We build campaigns with conversions API, server-side tracking, and aggregated event measurement to recover as much signal as possible.' },
+  { q: 'What\'s the minimum spend?', a: 'Typically $1.5K+/mo in ad spend for management to make economic sense for both sides. Below that, the manual time to optimize burns the math.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/ppc/meta-ads#webpage', url: 'https://killerspots.com/services/ppc/meta-ads', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'PPC', item: 'https://killerspots.com/services/ppc' }, { '@type': 'ListItem', position: 3, name: 'Meta Ads', item: 'https://killerspots.com/services/ppc/meta-ads' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/ppc" class="hover:text-white">PPC</a><span class="mx-2">/</span><span class="text-ink">Meta Ads</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Meta Ads</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Facebook + Instagram ads <span class="text-brand-500">that actually drive leads.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Campaign strategy, creative production, audience targeting, retargeting funnels, and weekly optimization. Lead form ads synced to LeadConnector for instant follow-up.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Meta Ads Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Meta is harder than it was pre-iOS-14. We run conversions API, server-side tracking, and constant creative rotation to recover signal.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Six layers of Meta campaign management.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Meta Ads questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Get Meta Working</span><h2 class="section-headline mt-5">Tell us your audience. We'll build the funnel.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your funnel, your creative, and your CPA targets — then come back with a Meta strategy and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

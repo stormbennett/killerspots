@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Voice Over Services | Real Voice Talent, Never AI | Killerspots',
+  description:
+    'Voice over services for commercials, video, e-learning, narration, IVR, and more. Powered by VoiceTalent.Agency — the marketplace Killerspots built. Real voice talent. Never AI.',
+  ogTitle: 'Voice Over Services — Powered by VoiceTalent.Agency | Killerspots',
+  ogDescription:
+    'Hire professional voice over talent for commercials, video, e-learning, IVR, and more. Real human voices — every artist signs an anti-AI pledge. Built and operated by Killerspots Agency.',
+};
+
+const VOICE_TALENT_BASE = 'https://voicetalent.agency';
+const VOICE_TALENT_SEARCH = `${VOICE_TALENT_BASE}/search`;
+const VOICE_TALENT_VIP = `${VOICE_TALENT_BASE}/vip`;
+
+const trustPills = ['Real Humans Only', 'Anti-AI Pledge', '25+ Years Casting Voices'];
+
+const useCases = [
+  {
+    title: 'TV & Radio Commercials',
+    body:
+      'Broadcast-ready voice overs for spots that need to land — energy, warmth, authority, or comedy. Cast and produced for traditional and digital media buys.',
+  },
+  {
+    title: 'Explainer & Corporate Video',
+    body:
+      'Conversational, brand-aligned voices for product videos, internal training, recruiting, and case studies.',
+  },
+  {
+    title: 'E-Learning & Training',
+    body:
+      'Patient, clear, instructional reads for course content, certifications, and L&D modules. Long-form pricing available.',
+  },
+  {
+    title: 'IVR & On-Hold',
+    body:
+      'Auto-attendant menus, on-hold messaging, and IVR prompts. Friendly voices that make a call feel like a brand instead of a hold queue.',
+  },
+  {
+    title: 'Narration & Audiobook',
+    body:
+      'Documentary, audiobook, and long-form narration. Storytellers who can carry a chapter — or a season.',
+  },
+  {
+    title: 'Imaging & Promos',
+    body:
+      'Station IDs, sweepers, podcast intros, and promo reads. The same voices that brand top-rated stations.',
+  },
+];
+
+const whyPlatform = [
+  {
+    title: 'Real Voice Talent — Never AI',
+    body:
+      'Every artist on VoiceTalent.Agency signs an anti-AI pledge. No synthetic voices. No cloned reads. Just real humans, performing your script.',
+  },
+  {
+    title: 'Cast in Minutes, Not Days',
+    body:
+      'Search by language, accent, age, gender, and read style. Audition demos play instantly. Cast the right voice the same hour you brief the project.',
+  },
+  {
+    title: 'VIP Tier Managed by Killerspots',
+    body:
+      'The top-tier roster is hand-managed by our agency. Premium voices, dedicated account support, and concierge casting for projects that demand the best.',
+  },
+  {
+    title: 'Built By Producers, For Producers',
+    body:
+      'Killerspots has been casting voices for 25+ years. We built VoiceTalent.Agency to fix what every other marketplace gets wrong.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Where do I actually hire the voice talent?',
+    a: 'On VoiceTalent.Agency — the marketplace we built and operate. You can browse the full roster, audition demos, and book directly. This page is a brief intro; all hiring happens at voicetalent.agency.',
+  },
+  {
+    q: 'Do you use AI voices?',
+    a: 'No. Every artist on the platform signs an anti-AI pledge. Synthetic and cloned voices are not allowed on VoiceTalent.Agency, ever. If you specifically want an AI voice solution, look at our AI Voice Agents service instead — that\'s a different product.',
+  },
+  {
+    q: 'How fast can I get a finished voice over?',
+    a: 'Most projects turn around in 24–48 hours from booking. Rush turnarounds and same-day delivery are available on the Premium and VIP tiers.',
+  },
+  {
+    q: 'What if I need the voice over edited into a finished spot?',
+    a: 'That\'s where Killerspots comes in. We can take the voice over from VoiceTalent.Agency and produce a finished radio commercial, jingle, video voice track, or on-hold message — all under one roof.',
+  },
+  {
+    q: 'Is this the same as the Voice Talent page?',
+    a: 'They\'re cousins. /voice-talent is a broader landing page about the marketplace itself. This page is service-focused — for buyers who know they need a voice over for a specific project. Both lead to VoiceTalent.Agency.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/services/audio-production/voice-overs#webpage',
+  url: 'https://killerspots.com/services/audio-production/voice-overs',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Audio Production',
+      item: 'https://killerspots.com/services/audio-production',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Voice Overs',
+      item: 'https://killerspots.com/services/audio-production/voice-overs',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Voice Over Services',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'US',
+  description: meta.description,
+  url: 'https://killerspots.com/services/audio-production/voice-overs',
+  offers: {
+    '@type': 'AggregateOffer',
+    url: VOICE_TALENT_BASE,
+    priceCurrency: 'USD',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]">
+        <a href="/services/audio-production" class="hover:text-white">Audio Production</a>
+        <span class="mx-2">/</span>
+        <span class="text-ink">Voice Overs</span>
+      </nav>
+
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Voice Overs</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Real voice talent for every project.
+          <span class="text-brand-500">Never AI.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          Cast professional voice over artists for commercials, video, e-learning,
+          narration, IVR, and more — through VoiceTalent.Agency, the marketplace Killerspots
+          built and operates. Every artist signs an anti-AI pledge. Real humans only.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a
+            href={VOICE_TALENT_SEARCH}
+            rel="noopener"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            Find a Voice on VoiceTalent.Agency
+          </a>
+          <a href="#use-cases" class="btn btn-ghost">See What We Cover</a>
+        </div>
+
+        <p class="mt-6 text-sm text-muted">
+          Voice over hiring happens on
+          <a
+            href={VOICE_TALENT_BASE}
+            rel="noopener"
+            target="_blank"
+            class="text-brand-500 hover:text-brand-300"
+            >voicetalent.agency</a
+          > — the platform Killerspots built and operates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          We've been casting voice talent for radio, TV, and digital projects since 1999.
+          VoiceTalent.Agency is the platform we built so producers, agencies, and brands
+          could cast the right voice in minutes — without compromising on real human talent.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section id="use-cases" class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What We Cover</span>
+        <h2 class="section-headline mt-5">Voice over for every kind of project.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Whether it's a 30-second spot, a 200-page audiobook, or a corporate L&D library,
+          the right voice exists on VoiceTalent.Agency.
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          useCases.map((u) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 md:p-8"
+            >
+              <h3 class="text-lg font-semibold text-white">{u.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{u.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- PLATFORM SPOTLIGHT -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-40 top-10 h-[560px] w-[560px] rounded-full bg-brand-500/12 blur-[140px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div class="lg:col-span-7" data-reveal>
+          <span class="eyebrow">VoiceTalent.Agency</span>
+          <h2 class="section-headline mt-5">
+            The voice talent marketplace built by Killerspots.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            Voice over hiring used to mean talent agencies, slow turnarounds, and bloated
+            project costs. We built VoiceTalent.Agency to fix that — a modern marketplace
+            with curated voice artists, instant demos, and a strict anti-AI policy.
+          </p>
+          <p class="mt-6 text-base md:text-lg text-ink leading-relaxed max-w-2xl">
+            Search the roster. Listen to demos. Book the voice. The whole experience is
+            designed for producers who need to cast quickly and brands who want a real
+            human voice — not a synthesized one.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a
+              href={VOICE_TALENT_SEARCH}
+              rel="noopener"
+              target="_blank"
+              class="btn btn-primary"
+            >
+              Browse Voice Talent
+            </a>
+            <a
+              href={VOICE_TALENT_VIP}
+              rel="noopener"
+              target="_blank"
+              class="btn btn-ghost"
+            >
+              See the VIP Tier (Managed by Killerspots)
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" data-reveal>
+          <ul class="grid gap-4">
+            {
+              whyPlatform.map((w) => (
+                <li class="rounded-2xl border border-white/10 bg-surface p-7">
+                  <h3 class="text-base md:text-lg font-semibold text-white">{w.title}</h3>
+                  <p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Voice over questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Cast Your Project</span>
+        <h2 class="section-headline mt-5">
+          Find the right voice — in minutes, not days.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Hiring happens on VoiceTalent.Agency. Need help integrating the finished voice
+          over into a commercial, jingle, or video? Killerspots produces the rest.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href={VOICE_TALENT_SEARCH}
+            rel="noopener"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            Find a Voice
+          </a>
+          <a href="/contact" class="btn btn-ghost">Talk to a Producer</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

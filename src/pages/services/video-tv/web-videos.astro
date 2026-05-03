@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Web Video Production | Explainer, Product, Hero Video | Killerspots',
+  description: 'Web video production — explainer videos, product videos, web hero footage, and ad creative cutdowns. Built for embedded use, social, and digital advertising.',
+  ogTitle: 'Web Video Production That Converts | Killerspots',
+  ogDescription: 'Explainer videos, product demos, web hero footage, and digital ad creative. Produced in our Cincinnati green-screen studio.',
+};
+
+const trustPills = ['Web-Native Production', 'Multi-Format Delivery', 'Conversion-Focused'];
+
+const what = [
+  { title: 'Explainer Videos', body: 'Animated or live-action explainer videos for products, services, and processes. 60–90 seconds. Built to clarify and convert.' },
+  { title: 'Product Videos', body: 'Hero product showcases, demo walkthroughs, and feature videos. Studio-shot or on-location for service businesses.' },
+  { title: 'Web Hero Footage', body: 'Looping or autoplay video for website heroes. Brand-feel cinematography that adds depth without distraction.' },
+  { title: 'Testimonial + Case Study Video', body: 'Customer interviews, on-camera testimonials, and case study videos. Real customers, real stories.' },
+  { title: 'Social Cutdowns', body: 'Take any web video and cut it for Reels, TikToks, Shorts, and ad creative. Maximize ROI per shoot day with multi-platform deliverables.' },
+  { title: 'Editorial + Color', body: 'Professional editing, color grading, sound design, and music. The polish that elevates web video from "phone-shot" to "agency-shot."' },
+];
+
+const faqs = [
+  { q: 'How is web video different from TV commercials?', a: 'Web video has more time to explain (60–90s vs :30), runs on muted-by-default platforms (so subtitles matter), and gets repurposed for social. We shoot for the platform it\'ll live on.' },
+  { q: 'How fast does a web video take?', a: 'Standard timeline: 3–6 weeks from concept to final delivery. Existing assets or on-location shoots can shorten significantly.' },
+  { q: 'Do you do animated explainer videos?', a: 'Yes — see our Graphics & Animations page for motion graphics, kinetic typography, and 2D/3D animation. We blend live action and animation when the project calls for it.' },
+  { q: 'Can I get a hero video for my website?', a: 'Yes. Loop-friendly, mute-friendly hero footage that adds visual depth without distracting. Common deliverable for service businesses and SaaS.' },
+  { q: 'Will the video work as ad creative too?', a: 'Yes — we produce with multi-platform delivery in mind. Same shoot, social cutdowns, ad creative variants, and longer-form web placement.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/video-tv/web-videos#webpage', url: 'https://killerspots.com/services/video-tv/web-videos', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Video & TV', item: 'https://killerspots.com/services/video-tv' }, { '@type': 'ListItem', position: 3, name: 'Web Videos', item: 'https://killerspots.com/services/video-tv/web-videos' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/video-tv" class="hover:text-white">Video &amp; TV</a><span class="mx-2">/</span><span class="text-ink">Web Videos</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Web Video Production</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Web video that <span class="text-brand-500">explains, demos, and converts.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Explainer videos, product demos, web hero footage, testimonials, and social cutdowns — produced in our Cincinnati studio. Multi-platform delivery from a single shoot day.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Web Video Quote</a><a href="/portfolio" class="btn btn-ghost">See Our Work</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years producing video. We shoot for the platform it\'ll live on — different cuts for web, social, and ads from the same shoot day.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Make</span><h2 class="section-headline mt-5">Six web video formats.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Web video questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Make Web Video</span><h2 class="section-headline mt-5">Tell us your project. We'll size the production.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute creative call. We\'ll review your needs, your platforms, and your timeline — then come back with a production plan and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

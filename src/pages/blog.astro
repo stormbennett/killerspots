@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../data/navigation';
+
+const meta = {
+  title: 'Blog | Marketing, Creative + AI Insights | Killerspots',
+  description: 'Honest takes on marketing, creative, AI, and how the search landscape is changing. From a 25-year creative + digital agency.',
+  ogTitle: 'Killerspots Blog — Marketing, Creative + AI',
+  ogDescription: 'Honest takes on marketing, creative, AI, and search. From a 25-year agency.',
+};
+
+// =====================================================================
+// BLOG POSTS
+// ---------------------------------------------------------------------
+// To add a post: drop a file in src/pages/blog/ (Astro), then add an
+// entry below with title, slug, summary, category, and date.
+// For now, posts are listed manually; later we can swap to Astro
+// content collections for proper post management.
+// =====================================================================
+
+type Post = {
+  title: string;
+  slug: string;
+  summary: string;
+  category: string;
+  date: string;
+};
+
+const posts: Post[] = [
+  // Placeholder: real posts get added here as they're written.
+];
+
+const categories = ['Marketing', 'Creative', 'AI', 'SEO + AIO', 'LeadConnector'];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'Blog', '@id': 'https://killerspots.com/blog#webpage', url: 'https://killerspots.com/blog', name: meta.title, description: meta.description, publisher: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://killerspots.com/blog' }] };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs]}>
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div>
+    </div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Blog</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Honest takes on <span class="text-brand-500">marketing, creative + AI.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">From a 25-year agency that actually runs the work. SEO, AI search, paid media, jingles, video — what we\'ve learned and what\'s changing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="flex flex-wrap gap-2">
+        {categories.map((c) => (
+          <span class="trust-pill">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      {posts.length === 0 ? (
+        <div class="max-w-3xl" data-reveal>
+          <div class="rounded-2xl border border-white/10 bg-surface p-10 md:p-14 text-center">
+            <span class="eyebrow">Coming Soon</span>
+            <h2 class="section-headline mt-5">First posts shipping soon.</h2>
+            <p class="mt-6 text-base md:text-lg text-muted leading-relaxed max-w-xl mx-auto">
+              We\'re building out a content library covering SEO + AIO strategy, the AI search shift, paid media playbooks, jingle production, and what 25 years of agency operations has taught us. Subscribe and we\'ll send the first posts as they land.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <a href="/contact" class="btn btn-primary magnetic">Get on the List</a>
+              <a href="/services/seo-aio/killerseox-audit" class="btn btn-ghost">Run a Free SEO Audit</a>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {posts.map((p) => (
+            <li data-reveal>
+              <a href={`/blog/${p.slug}`} class="card-tile group">
+                <div class="text-xs uppercase tracking-[0.18em] text-brand-500 font-semibold">{p.category}</div>
+                <h3 class="mt-3 text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+                <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.summary}</p>
+                <div class="mt-5 text-xs text-muted">{p.date}</div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div>
+    </div>
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Need Marketing Help Now?</span>
+        <h2 class="section-headline mt-5">Skip the article. Get a quote.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">If you\'re ready to act on what you\'d read here, just talk to us. 30-minute call, real recommendation.</p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

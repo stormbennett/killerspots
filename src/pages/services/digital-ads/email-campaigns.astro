@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Email Marketing Campaigns | Drip, Nurture, Broadcast | Killerspots',
+  description: 'Email marketing campaigns — drip sequences, nurture flows, broadcast newsletters, and reactivation. Creative, deliverability, segmentation, and reporting. Integrated with LeadConnector.',
+  ogTitle: 'Email Campaigns That Don\'t End Up in Spam | Killerspots',
+  ogDescription: 'Drip, nurture, broadcast, and reactivation email campaigns. Authentication setup, deliverability monitoring, and LeadConnector integration.',
+};
+
+const trustPills = ['Email Specialists', 'Deliverability First', 'LeadConnector Integrated'];
+
+const what = [
+  { title: 'Drip Sequences', body: 'Multi-step email sequences triggered by user actions — form fills, downloads, purchases, or pipeline stages. Standard nurture flow + sales-cycle sequences.' },
+  { title: 'Newsletters', body: 'Branded weekly or monthly broadcast emails to your full list. Content-driven, value-focused, with clear engagement and conversion paths.' },
+  { title: 'Reactivation Campaigns', body: 'Re-engagement sequences for cold list segments. Win back lapsed customers, revive lost leads, clear out unengaged contacts.' },
+  { title: 'Behavioral Triggers', body: 'Browse abandonment, cart abandonment, post-purchase, replenishment, and re-engagement triggers based on website + CRM behavior.' },
+  { title: 'Deliverability Setup', body: 'SPF, DKIM, DMARC authentication. Domain warmup. Sender reputation monitoring. The work most agencies skip that determines if emails land in inbox vs spam.' },
+  { title: 'Reporting + Attribution', body: 'Open rate, CTR, conversion rate, revenue attribution. Reported per campaign, per sequence, per segment. Real metrics, not vanity opens.' },
+];
+
+const faqs = [
+  { q: 'Do you handle email deliverability?', a: 'Yes — that\'s the unsexy work most agencies skip. Domain authentication (SPF/DKIM/DMARC), sender reputation monitoring, list hygiene, and warmup. Without these, beautiful emails land in spam.' },
+  { q: 'Which email platforms do you work with?', a: 'LeadConnector (best for our integrated clients), plus Klaviyo, ActiveCampaign, Mailchimp, HubSpot, and SendGrid. We work in your platform of choice.' },
+  { q: 'Do you write the email copy?', a: 'Yes. Email copy, subject lines, and pre-headers written in-house. Multiple variants for A/B testing.' },
+  { q: 'How many emails per month should we send?', a: 'Depends on your audience and content cadence. B2C ecommerce: 8–16/month. B2B service businesses: 4–8/month. Newsletter-only brands: 2–4/month. We\'ll recommend on the discovery call.' },
+  { q: 'Can you build the automations in our CRM?', a: 'Yes. Drip sequences, behavioral triggers, and broadcast schedules built directly in your platform. Standard part of the engagement.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/digital-ads/email-campaigns#webpage', url: 'https://killerspots.com/services/digital-ads/email-campaigns', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Digital Ads', item: 'https://killerspots.com/services/digital-ads' }, { '@type': 'ListItem', position: 3, name: 'Email Campaigns', item: 'https://killerspots.com/services/digital-ads/email-campaigns' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/digital-ads" class="hover:text-white">Digital Ads</a><span class="mx-2">/</span><span class="text-ink">Email Campaigns</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Email Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Email that <span class="text-brand-500">lands in inbox — not spam.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Drip sequences, nurture flows, newsletters, and reactivation campaigns. Authentication setup, deliverability monitoring, and LeadConnector integration baked in.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an Email Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">A pretty email in spam is worth nothing. We do the unsexy authentication and deliverability work that determines whether your emails actually get seen.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Six layers of email program management.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Email marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Build the Email Engine</span><h2 class="section-headline mt-5">Tell us your list. We'll set the program up right.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your list health, your platform, and your goals — then come back with a deliverability + content plan.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

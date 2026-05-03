@@ -1,0 +1,395 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Radio Stations & Groups | White-Label Production & Digital | Killerspots',
+  description:
+    'Killerspots is the invisible production department and digital revenue partner for radio stations and broadcasting groups. White-label commercials, jingles, imaging, and digital services your sales team can sell.',
+  ogTitle: 'White-Label Production + Digital Revenue for Radio Stations | Killerspots',
+  ogDescription:
+    '25+ years serving radio stations nationally. Become more profitable without hiring. White-label commercial production, jingles, imaging, and digital services your sales team can resell.',
+};
+
+const trustPills = ['Since 1999', '25+ Years', 'Stations Nationwide', '6× Telly Award Winner'];
+
+const painPoints = [
+  {
+    title: 'Shrinking Ad Revenue',
+    body:
+      'CPM rates keep dropping. National spend moved digital. Local advertisers have more options than ever. Traditional radio revenue models are under strain.',
+  },
+  {
+    title: "Can't Compete With Digital Agencies",
+    body:
+      'Your advertisers want SEO, PPC, social, and websites. You can\'t deliver those — so they hire another agency and spend less with you.',
+  },
+  {
+    title: 'Production Is a Bottleneck',
+    body:
+      'Sales sells the spot. Production takes weeks. Deals slip. Faster shops or competing stations win the renewal.',
+  },
+  {
+    title: 'Sales Reps Aren\'t Digital Marketers',
+    body:
+      'Your team can sell spots and sponsorships. Asking them to also sell SEO and paid media leaves money on the table.',
+  },
+];
+
+const services = [
+  {
+    title: 'White-Label Commercial Production',
+    href: '/industries/radio-stations-groups/white-label-production',
+    body:
+      '2–3 day turnaround on radio and TV spots, fully branded as your station\'s production team. Professional voice acting, sound design, and editing — at the volume your sales team needs to sell.',
+  },
+  {
+    title: 'Digital Solutions for Stations',
+    href: '/industries/radio-stations-groups/digital-solutions',
+    body:
+      'SEO, PPC, websites, social, and CTV packaged for your sales team to resell. Your reps own the relationship. We deliver behind the scenes. New revenue, no new hires.',
+  },
+  {
+    title: 'Jingles & Station Imaging',
+    href: '/services/audio-production/radio-imaging',
+    body:
+      'Custom jingles, station IDs, sweepers, and full imaging packages for your format. Award-winning audio branding from a studio that\'s done it for 25+ years.',
+  },
+];
+
+const examples = [
+  { name: 'Ozark Dynacom', url: 'https://ozark.killerspots.com' },
+  { name: 'Horizon Broadcasting Group', url: 'https://horizon.killerspots.com' },
+];
+
+const reasons = [
+  {
+    title: 'You Keep Every Relationship',
+    body:
+      'Your station owns the advertiser. Your reps own the conversation. We never sell directly to your clients. Ever.',
+  },
+  {
+    title: 'Fully White-Labeled',
+    body:
+      'Reports, portals, deliverables — all branded as your station or broadcasting group. We\'re the invisible team behind the work.',
+  },
+  {
+    title: 'Built For Broadcasters',
+    body:
+      'We\'ve produced for stations, networks, and groups since 1999. We know your traffic systems, your sales cycles, and your formats.',
+  },
+  {
+    title: 'New Revenue, No Overhead',
+    body:
+      'No new producers to hire. No digital team to staff. Add high-margin services to your rate card and keep the spread.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do you sell directly to my advertisers?',
+    a: 'Never. Your sales team owns the relationship. We only deliver work behind the scenes. Everything we produce is branded as your station or group.',
+  },
+  {
+    q: 'What\'s your turnaround on commercial production?',
+    a: '2–3 business days for standard radio spots, including voice talent, sound design, and final mix. Rush turnarounds available. Volume partners get a guaranteed SLA.',
+  },
+  {
+    q: 'How does white-label digital work?',
+    a: 'Your sales team sells SEO, PPC, websites, social, or CTV using your branded rate card and proposals. We deliver the work. Reporting and client portals are branded as your station. You set the markup.',
+  },
+  {
+    q: 'Can my reps sell digital if they don\'t know digital?',
+    a: 'Yes. We provide sales training, talk tracks, prospecting playbooks, and deal support. Reps don\'t need to be digital experts — they just need to know the customer.',
+  },
+  {
+    q: 'Do you work with single stations or only groups?',
+    a: 'Both. Single-market stations, regional groups, and national broadcasters. Engagement scales to fit.',
+  },
+  {
+    q: 'How is pricing structured?',
+    a: 'Monthly retainer based on volume and service mix — no per-project fees on production tiers. Get a quote and we\'ll size it to your station or group.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/industries/radio-stations-groups#webpage',
+  url: 'https://killerspots.com/industries/radio-stations-groups',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Radio Stations & Groups',
+      item: 'https://killerspots.com/industries/radio-stations-groups',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Radio Stations & Groups</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Your station. Your brand.
+          <span class="text-brand-500">Our production department.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          25+ years serving radio stations nationally. We're your invisible production team
+          and digital revenue partner — white-label commercial production, jingles and
+          imaging, and digital services your sales reps can sell.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Become a Station Partner</a>
+          <a href="#services" class="btn btn-ghost">See What We Provide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Trusted by station groups like Ozark Dynacom and Horizon Broadcasting Group. Your
+          peers are already growing with us.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">The Radio Station Challenge</span>
+        <h2 class="section-headline mt-5">
+          Traditional radio is under pressure. We've built the playbook to fight back.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Streaming, podcasts, and digital advertising fragmented your audience and your
+          revenue. Here's what GMs and sales managers tell us every week:
+        </p>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {
+          painPoints.map((p) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What We Provide</span>
+        <h2 class="section-headline mt-5">
+          A production department and a digital agency — fully white-labeled.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-3 gap-5 md:gap-6">
+        {
+          services.map((card) => (
+            <li data-reveal>
+              <a href={card.href} class="card-tile group">
+                <h3 class="text-xl font-semibold text-white">{card.title}</h3>
+                <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">
+                  {card.body}
+                </p>
+                <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                  Learn More
+                  <svg
+                    class="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div class="lg:col-span-5" data-reveal>
+          <span class="eyebrow">Why Killerspots</span>
+          <h2 class="section-headline mt-5">
+            We've been the engine behind broadcasters since 1999.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            Examples of station groups already running on Killerspots production and
+            digital infrastructure:
+          </p>
+          <ul class="mt-6 space-y-3">
+            {
+              examples.map((ex) => (
+                <li class="rounded-xl border border-white/10 bg-surface px-5 py-4">
+                  <div class="text-base font-semibold text-white">{ex.name}</div>
+                  <a
+                    href={ex.url}
+                    rel="noopener"
+                    target="_blank"
+                    class="text-sm text-brand-500 hover:text-brand-300"
+                  >
+                    {ex.url.replace(/^https?:\/\//, '')} →
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="lg:col-span-7" data-reveal>
+          <ul class="grid sm:grid-cols-2 gap-5 md:gap-6">
+            {
+              reasons.map((r) => (
+                <li class="rounded-2xl border border-white/5 bg-deep/60 p-7">
+                  <h3 class="text-lg font-semibold text-white">{r.title}</h3>
+                  <p class="mt-3 text-sm text-muted leading-relaxed">{r.body}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Common questions from station partners.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Station Partnership</span>
+        <h2 class="section-headline mt-5">
+          Let's talk about what your station needs to grow.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          30-minute partnership call. We'll walk through volume, formats, and where digital
+          revenue could plug in — then send a proposal sized for your market.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Become a Station Partner</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

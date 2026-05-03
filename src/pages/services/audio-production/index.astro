@@ -1,0 +1,389 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Audio Production | Jingles, Commercials & Voice Over | Killerspots',
+  description:
+    'Killerspots is one of America\'s premier audio production companies. 25+ years of jingles, radio commercials, voice overs, on-hold messaging, IVR, and radio imaging. 6× Telly Award winner.',
+  ogTitle: 'America\'s Premier Audio Production Company | Killerspots',
+  ogDescription:
+    'Custom jingles, radio commercials, voice overs, on-hold messaging, auto-attendant, and radio imaging. 25+ years, 6× Telly Award winner. 2–3 day turnaround.',
+};
+
+const trustPills = ['Since 1999', '6× Telly Award Winner', '2–3 Day Turnaround'];
+
+const services = [
+  {
+    title: 'Custom Jingles',
+    href: '/services/audio-production/custom-jingles',
+    body:
+      'Memorable, brand-focused jingles that make your business unforgettable. Original compositions, professional recording, world-class vocals.',
+  },
+  {
+    title: 'Radio Commercials',
+    href: '/services/audio-production/radio-commercials',
+    body:
+      'High-impact 15, 30, and 60-second radio ads. Full production: scripting, voice talent, sound design, and broadcast-ready mixing.',
+  },
+  {
+    title: 'Voice Overs',
+    href: '/services/audio-production/voice-overs',
+    body:
+      'Voice over services for commercials, video, e-learning, IVR, and narration — powered by VoiceTalent.Agency. Real humans only. Never AI.',
+  },
+  {
+    title: 'On-Hold Messaging',
+    href: '/services/audio-production/on-hold-messaging',
+    body:
+      'Professional phone hold messages that keep callers engaged. Custom audio branding for your business line.',
+  },
+  {
+    title: 'Auto-Attendant & IVR',
+    href: '/services/audio-production/auto-attendant',
+    body:
+      'IVR prompts, voicemail greetings, and directory announcements. Done right, branded for your business.',
+  },
+  {
+    title: 'Radio Imaging',
+    href: '/services/audio-production/radio-imaging',
+    body:
+      'Station IDs, sweepers, jingles, and full imaging packages for broadcasters. Award-winning audio branding for your station or group.',
+  },
+];
+
+const reasons = [
+  {
+    title: 'Award-Winning Studio',
+    body:
+      'Six Telly Awards. Two-plus decades. Cincinnati-based, full-service recording facility delivering broadcast-quality results every project.',
+  },
+  {
+    title: 'Real Humans, Never AI',
+    body:
+      'Every voice over comes from a real artist who signed an anti-AI pledge — through VoiceTalent.Agency, the marketplace we built and operate.',
+  },
+  {
+    title: 'Lightning Turnaround',
+    body:
+      'Most projects in 2–3 business days, including voice talent, sound design, and final mix. Rush turnarounds available.',
+  },
+  {
+    title: 'Built For Volume',
+    body:
+      'Single project or 200 spots a year. Volume retainers for radio stations, agencies, and high-output brands. Predictable monthly cost.',
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Discovery',
+    body:
+      'We listen first. Goals, audience, brand voice, and any reference tracks you love. The brief locks the direction.',
+  },
+  {
+    step: '02',
+    title: 'Concept & Scripting',
+    body:
+      'Original copy or composition based on your brief. Voice talent cast. Music direction set. You approve before we hit record.',
+  },
+  {
+    step: '03',
+    title: 'Studio Production',
+    body:
+      'Full studio recording, sound design, and broadcast-spec mixing in our Cincinnati facility. Engineers + producers in the room.',
+  },
+  {
+    step: '04',
+    title: 'Delivery',
+    body:
+      'Files in your inbox in every format you need. Most projects: 2–3 days from kickoff to delivery. Revisions included.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does an audio project take?',
+    a: 'Standard radio commercial or voice over: 2–3 business days. Custom jingles: typically 5–7 business days for full production. Rush turnarounds and same-day are available on most services.',
+  },
+  {
+    q: 'Do you write the script too?',
+    a: 'Yes. Copywriting is included in commercial production and most jingle projects. We can also produce against scripts you provide.',
+  },
+  {
+    q: 'Can I hear samples before I commit?',
+    a: 'Absolutely. Each service detail page has audio demos. Want a custom audition for voice talent or musical direction? We do that on the discovery call.',
+  },
+  {
+    q: 'What about voice over hiring directly?',
+    a: 'Voice over casting and hiring happens on VoiceTalent.Agency — our standalone marketplace. Every artist signs an anti-AI pledge. We can also produce a finished spot around the voice over once you\'ve cast it.',
+  },
+  {
+    q: 'Do you offer studio rental for in-person sessions?',
+    a: 'Yes. Our Cincinnati green-screen and audio recording studio is available by the hour or day. See the Studio Rental page for details.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/services/audio-production#webpage',
+  url: 'https://killerspots.com/services/audio-production',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Audio Production',
+      item: 'https://killerspots.com/services/audio-production',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Audio Production',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'US',
+  description: meta.description,
+  url: 'https://killerspots.com/services/audio-production',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Audio Production</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          America's premier audio production company.
+          <span class="text-brand-500">25+ years. 6× Telly winner.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          Custom jingles, radio commercials, voice overs, on-hold messaging, IVR, and
+          radio imaging — produced in our Cincinnati studio. Most projects ship in 2–3
+          days.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href="#services" class="btn btn-ghost">See What We Produce</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Cincinnati-based studio. National roster. Production volume that scales from
+          one-off spots to year-round broadcaster retainers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What We Produce</span>
+        <h2 class="section-headline mt-5">Every kind of commercial audio. Under one roof.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          services.map((s) => (
+            <li data-reveal>
+              <a href={s.href} class="card-tile group">
+                <h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3>
+                <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+                <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                  Explore
+                  <svg
+                    class="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Why Killerspots</span>
+        <h2 class="section-headline mt-5">
+          Built for studios that need broadcast quality at production speed.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {
+          reasons.map((r) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{r.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{r.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Our Process</span>
+        <h2 class="section-headline mt-5">From brief to broadcast in 2–3 days.</h2>
+      </div>
+
+      <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          process.map((s) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                Step {s.step}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Audio production questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Let's Talk Audio</span>
+        <h2 class="section-headline mt-5">
+          Ready to make audio that works?
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Tell us about your project — script, brand, deadline. We'll come back with a
+          quote and a turnaround date.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

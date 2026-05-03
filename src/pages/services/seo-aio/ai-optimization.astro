@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'AI Optimization (AIO) | Get Cited by ChatGPT, Perplexity, Gemini | Killerspots',
+  description: 'AI Optimization (AIO) gets your brand cited in ChatGPT, Perplexity, Google AI Overviews, and Gemini. Entity-rich content, structured data, and citation strategy.',
+  ogTitle: 'AI Optimization — The New SEO for AI Search | Killerspots',
+  ogDescription: 'AIO is how you rank in AI search engines. Entity-rich content, schema, and citation strategy designed for ChatGPT, Perplexity, Gemini, and Google AI Overviews.',
+};
+
+const trustPills = ['AIO Specialists', 'Citation Tracking', 'Entity-First Content'];
+
+const what = [
+  { title: 'Entity-Rich Content', body: 'Content structured around the entities (people, places, products, concepts) AI engines recognize and cite. Authoritative answers, not keyword stuffing.' },
+  { title: 'Structured Data + Schema', body: 'Schema markup that explicitly tells AI engines what your content is about — Service, Product, Organization, FAQ, HowTo. The metadata layer AI uses to source.' },
+  { title: 'AI-Friendly Page Architecture', body: 'Page structure designed for citation extraction — clear headings, concise summaries, FAQ depth, and structured answers AI can pull verbatim.' },
+  { title: 'Citation Tracking', body: 'Monitor where your brand shows up in AI engine responses. Track competitor citations. Identify content gaps in real time.' },
+  { title: 'Brand Mention Optimization', body: 'Get your brand name into the contexts AI engines recognize — Wikipedia entities, knowledge graphs, authoritative directories, industry databases.' },
+  { title: 'Prompt Coverage Strategy', body: 'Map the prompts your prospects ask AI engines and ensure your content covers them. Content built backwards from real AI queries.' },
+];
+
+const faqs = [
+  { q: 'What\'s the difference between SEO and AIO?', a: 'SEO optimizes for traditional search engines (Google blue links). AIO optimizes for how AI search engines (ChatGPT, Perplexity, Google AI Overviews, Gemini) source and cite content. Different ranking signals, different content patterns. Most engagements bundle both.' },
+  { q: 'How fast does AIO produce results?', a: 'Faster than classical SEO. AI engines index content quickly — citations can appear within weeks once content is structured correctly. SEO typically takes 90–180 days for similar movement.' },
+  { q: 'Can you measure AIO results?', a: 'Yes. We track brand mention frequency in AI responses, citation counts, prompt coverage rates, and competitor benchmarks. KillerSEOx audit shows your AI visibility baseline.' },
+  { q: 'Will AI optimization hurt my regular SEO?', a: 'No — they reinforce each other. Entity-rich, structured content ranks well in both Google and AI engines. The work is largely overlapping.' },
+  { q: 'What\'s the most important thing to do first?', a: 'Run KillerSEOx to see your current AI visibility baseline. Then we typically prioritize: (1) schema markup completeness, (2) FAQ depth on key pages, (3) entity coverage in core content, (4) external citations from authoritative sources.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/seo-aio/ai-optimization#webpage', url: 'https://killerspots.com/services/seo-aio/ai-optimization', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'SEO & AIO', item: 'https://killerspots.com/services/seo-aio' }, { '@type': 'ListItem', position: 3, name: 'AI Optimization', item: 'https://killerspots.com/services/seo-aio/ai-optimization' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/seo-aio" class="hover:text-white">SEO &amp; AIO</a><span class="mx-2">/</span><span class="text-ink">AI Optimization</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">AI Optimization (AIO)</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Get cited in <span class="text-brand-500">ChatGPT, Perplexity, and Gemini.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">AI Optimization is the new SEO. Entity-rich content, structured data, and citation strategy built for the way AI search engines source answers. Track how often you\'re cited — and improve it.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/services/seo-aio/killerseox-audit" class="btn btn-primary magnetic">Run a Free AI Audit</a><a href="/contact" class="btn btn-ghost">Get a Quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">30%+ of search queries that used to send Google traffic now end at an AI overview. The brands that win the AI citation race win the new search.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Do</span><h2 class="section-headline mt-5">Six layers of AI search visibility.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">AI Optimization questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">See Your AI Baseline</span><h2 class="section-headline mt-5">Run a free audit. See where you show up.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">KillerSEOx audit takes 60 seconds. See your current AI visibility, citation count, and content gaps. Free, no credit card.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/services/seo-aio/killerseox-audit" class="btn btn-primary magnetic">Run a Free Audit</a><a href="/contact" class="btn btn-ghost">Get a Quote</a></div></div></div></section>
+</BaseLayout>

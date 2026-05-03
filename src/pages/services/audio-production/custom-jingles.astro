@@ -1,0 +1,510 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../../../data/navigation';
+
+const meta = {
+  title: 'Custom Jingles | Original Compositions, Studio-Recorded | Killerspots',
+  description:
+    'America\'s top jingle producer since 1999. Original custom jingles for radio, TV, social, on-hold, and broadcast. Full Boat and Stinger packages. 6× Telly Award winner.',
+  ogTitle: 'Custom Jingles That Stick — Killerspots Agency',
+  ogDescription:
+    'Original jingles, studio-recorded with professional vocals and instrumentalists. 25+ years, 6× Telly Award winner. The best brand asset you\'ll ever own.',
+};
+
+const trustPills = ['America\'s Top Jingle Producer', '6× Telly Award Winner', 'Since 1999'];
+
+const packages = [
+  {
+    name: 'Full Boat',
+    logo: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/65d60c46bfbce937a67e8b06.png',
+    body:
+      'Full original composition — multiple verses, hooks, and instrumental beds. Built to scale across radio, TV, social, on-hold, and beyond. The complete sonic identity package.',
+    fits: 'Brands building long-term audio identity',
+  },
+  {
+    name: 'Stinger',
+    logo: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/65d60c4120be6d72caf7b587.png',
+    body:
+      'Compact, punchy jingle — the audio logo. Short hook plus optional tag, perfect as a brand sign-off or recurring sting on radio spots, podcasts, and social.',
+    fits: 'Brands wanting a memorable audio mark',
+  },
+];
+
+const useCases = [
+  'Radio commercials',
+  'TV commercials',
+  'Social media + short-form video',
+  'On-hold messaging + IVR',
+  'Podcast intros + outros',
+  'Trade-show and event opens',
+  'Phone system audio',
+  'Web video and explainers',
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Brief & Direction',
+    body:
+      'Discovery call: brand voice, target audience, references you love and hate. We capture the direction and choose between Full Boat or Stinger based on your goals.',
+  },
+  {
+    step: '02',
+    title: 'Composition',
+    body:
+      'Our composers build an original score — melody, hook, lyrics, and instrumentation. You hear a demo and approve direction before we book studio time.',
+  },
+  {
+    step: '03',
+    title: 'Studio Production',
+    body:
+      'Vocals tracked with professional singers. Live and programmed instrumentation. Full mix and master to broadcast spec in our Cincinnati studio.',
+  },
+  {
+    step: '04',
+    title: 'Delivery + Variants',
+    body:
+      'Final delivery in every format you need: 60s, 30s, 15s, instrumental, vocal-only, sting tags. Files in your inbox, ready to air.',
+  },
+];
+
+type Testimonial = {
+  name: string;
+  company: string;
+  src: string;
+};
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'Jason Kidd',
+    company: 'VirtualJock.com',
+    src: 'https://player.vimeo.com/video/942099143?h=a3a76163d8&badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+  {
+    name: 'Jason Carnes',
+    company: 'J Carnes Roofing',
+    src: 'https://player.vimeo.com/video/730465110?badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does a jingle take to produce?',
+    a: '5–7 business days for full production from brief approval through final mix. Rush turnarounds are available — we\'ve delivered finished jingles in 48 hours when the deadline demanded it.',
+  },
+  {
+    q: 'Do you write the lyrics?',
+    a: 'Yes. Lyric writing is included on every Full Boat package and most Stinger packages. We can also produce against lyrics you\'ve written.',
+  },
+  {
+    q: 'Who sings the jingle?',
+    a: 'Professional studio vocalists from our roster. We pick the voice that matches your brand — male, female, ensemble, demographic, range, you name it. You hear vocal samples before recording.',
+  },
+  {
+    q: 'Do I own the jingle?',
+    a: 'You receive a perpetual license for the markets and uses agreed in your brief — typically full broadcast and digital across all your owned channels. We retain the underlying composition rights so we can produce against it for new variants down the road.',
+  },
+  {
+    q: 'Can you produce variants in other languages?',
+    a: 'Yes. Spanish-language vocals are common; we\'ve produced jingles in many languages for national and regional brands.',
+  },
+  {
+    q: 'How is this different from a stock music license?',
+    a: 'A stock track is rented — anyone else can buy the same music. A custom jingle is yours: your melody, your lyrics, your brand. It\'s the cheapest brand asset you\'ll ever own and the only one that lives in your customers\' heads for decades.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/services/audio-production/custom-jingles#webpage',
+  url: 'https://killerspots.com/services/audio-production/custom-jingles',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Audio Production',
+      item: 'https://killerspots.com/services/audio-production',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Custom Jingles',
+      item: 'https://killerspots.com/services/audio-production/custom-jingles',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Custom Jingle Production',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'US',
+  description: meta.description,
+  url: 'https://killerspots.com/services/audio-production/custom-jingles',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const JINGLES_PLAYLIST =
+  'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1568669452&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true';
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]">
+        <a href="/services/audio-production" class="hover:text-white">Audio Production</a>
+        <span class="mx-2">/</span>
+        <span class="text-ink">Custom Jingles</span>
+      </nav>
+
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Custom Jingles</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          The cheapest brand asset
+          <span class="text-brand-500">you'll ever own.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          Original custom jingles, studio-recorded with professional vocalists and
+          instrumentalists. Built to live in your customers' heads for decades — across
+          radio, TV, social, on-hold, and every channel you'll ever run.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Jingle Quote</a>
+          <a href="#listen" class="btn btn-ghost">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M5 3.5v9l7-4.5z" />
+            </svg>
+            Listen to Samples
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Killerspots launched in 1999 as a jingle house. Twenty-five years later, custom
+          jingles are still our craft — and our calling card.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY VIDEO -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Why Jingles Still Work</span>
+        <h2 class="section-headline mt-5">3 reasons jingles are so powerful.</h2>
+      </div>
+
+      <div
+        data-reveal
+        class="relative overflow-hidden rounded-3xl border border-white/10 bg-deep shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <iframe
+            src="https://player.vimeo.com/video/691513344?badge=0&autopause=0&player_id=0&app_id=58479"
+            title="3 Reasons Why Jingles Are So Powerful"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Packages</span>
+        <h2 class="section-headline mt-5">
+          Two ways in. Both built for the long haul.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-8">
+        {
+          packages.map((p) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-8 md:p-10"
+            >
+              <img
+                src={p.logo}
+                alt={`${p.name} package`}
+                width="240"
+                height="80"
+                class="h-14 md:h-16 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="mt-6 text-2xl font-semibold text-white">{p.name}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+              <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-canvas px-3.5 py-1.5 text-xs text-ink">
+                Best for: <span class="text-white font-semibold">{p.fits}</span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="bg-canvas">
+    <div class="container-page py-20 md:py-28">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">Where It Lives</span>
+        <h2 class="section-headline mt-5">One jingle. Every channel.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          A custom jingle is the rare brand asset that compounds in value the more you use
+          it. Drop it in everywhere:
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3" data-reveal>
+        {
+          useCases.map((u) => (
+            <li class="rounded-xl border border-white/10 bg-deep/60 px-5 py-4 text-sm md:text-base text-ink">
+              {u}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- LISTEN -->
+  <section id="listen" class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 max-w-3xl" data-reveal>
+        <span class="eyebrow">Listen</span>
+        <h2 class="section-headline mt-5">A sample of work from our jingle catalog.</h2>
+      </div>
+
+      <div data-reveal class="rounded-2xl overflow-hidden border border-white/10">
+        <iframe
+          width="100%"
+          height="450"
+          allow="autoplay"
+          src={JINGLES_PLAYLIST}
+          title="Killerspots Custom Jingles — SoundCloud playlist"
+          loading="lazy"
+          style="display:block;border:0;background:#0a0e12;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEHIND THE SCENES — Senior Producer Pete -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">Behind the Scenes</span>
+        <h2 class="section-headline mt-5">What makes a catchy jingle?</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Pete, our Senior Jingle Producer, breaks down what separates a forgettable jingle
+          from one that lives in your customers' heads for years.
+        </p>
+      </div>
+
+      <div
+        data-reveal
+        class="relative overflow-hidden rounded-3xl border border-white/10 bg-deep shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <!-- TODO: replace src with the direct Vimeo player URL once available.
+               For now this points to the curated showcase containing this video. -->
+          <iframe
+            src="https://vimeo.com/showcase/11786935/embed"
+            title="What Makes a Catchy Jingle — Pete, Senior Jingle Producer"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">Hear From Clients</span>
+        <h2 class="section-headline mt-5">In their words.</h2>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {
+          testimonials.map((t) => (
+            <li
+              data-reveal
+              class="rounded-2xl overflow-hidden border border-white/10 bg-deep"
+            >
+              <div style="padding:56.25% 0 0 0;position:relative;">
+                <iframe
+                  src={t.src}
+                  title={`${t.name}, ${t.company} — Killerspots Jingle Testimonial`}
+                  loading="lazy"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                />
+              </div>
+              <div class="p-5">
+                <div class="text-sm md:text-base font-semibold text-white">{t.name}</div>
+                <div class="text-xs md:text-sm text-muted mt-0.5">{t.company}</div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">How We Work</span>
+        <h2 class="section-headline mt-5">From brief to broadcast in under a week.</h2>
+      </div>
+
+      <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          process.map((s) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                Step {s.step}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Custom jingle questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Build Your Brand's Sound</span>
+        <h2 class="section-headline mt-5">
+          Get the jingle that lives in your customers' heads.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Free creative call. Tell us about your brand, your market, and what you want a
+          jingle to do. We'll come back with a proposal and rough creative direction.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

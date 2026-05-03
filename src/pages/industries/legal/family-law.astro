@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Family Law Marketing | Divorce, Custody, Support | Killerspots',
+  description: 'Family law marketing — divorce, custody, support, prenup. SEO, Google LSA, paid social, and AI-powered empathetic intake. Built for emotionally charged inquiries.',
+  ogTitle: 'Family Law Marketing — Empathy + Speed + Compliance | Killerspots',
+  ogDescription: 'Marketing for divorce, custody, and family law firms. SEO, LSA, paid social, and 24/7 AI intake with empathetic scripting. Bar-compliant.',
+};
+
+const trustPills = ['Family Law Specialists', 'Empathetic Intake', 'Compliant Campaigns'];
+
+const painPoints = [
+  { title: 'Inquiries Are Emotionally Charged', body: 'Someone Googling "divorce lawyer at 11 PM Sunday" is in crisis. Marketing has to be empathetic, not transactional. Your AI bot scripts and landing pages need to reflect that.' },
+  { title: 'Privacy Is a First-Class Concern', body: 'Prospects worry their search history will surface. We build privacy-aware landing pages and intake flows that respect that anxiety.' },
+  { title: 'Pricing Anxiety Stops Inquiries', body: 'Family law fees scare prospects off the page. Smart messaging around consultation pricing, payment plans, and "what does this cost" reduces friction without showing line-item rates.' },
+  { title: 'Custody Cases Are High-Stakes Repeat Work', body: 'Custody modifications come back. Estate planning follows divorce. We build long-term nurture for the lifecycle, not just the initial case.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "divorce lawyer [city]," "custody attorney near me," "family law firm" — empathetic content that ranks.' },
+  { title: 'LSA for Lawyers + Google Ads', body: 'LSA for Lawyers (where eligible) plus paid search managed for case-CPA, not lead-CPA.' },
+  { title: 'Empathetic Content', body: 'Long-form guides on divorce processes, custody timelines, child support calculators — answer prospect questions and signal expertise.' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot with empathetic scripting. Books consults. Spanish-language available. Compliant with bar rules.' },
+  { title: 'Privacy-Aware Landing Pages', body: 'Landing pages designed for prospects worried about search history. Quick-exit options, discreet calls-to-action.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews from settled clients within bar guidelines. Anonymous testimonial frameworks where appropriate.' },
+];
+
+const faqs = [
+  { q: 'How do you handle emotionally charged inquiries?', a: 'AI bot scripts written with empathetic tone, not transactional. Landing pages frame the firm as understanding, not aggressive. Speed to first response under 30 seconds, but the response itself is human in tone.' },
+  { q: 'What about high-net-worth divorce cases?', a: 'Different campaigns. HNW divorce uses LinkedIn + targeted display + content marketing alongside search. Longer sales cycles, higher case value, dedicated landing pages.' },
+  { q: 'Can you handle multi-state family law?', a: 'Yes. State-specific landing pages, state-specific GBPs, intake routing by state. State family law differs significantly — we account for that.' },
+  { q: 'Do you do estate planning marketing too?', a: 'Yes — estate planning is a natural cross-sell from family law. We build campaigns for both and handle attribution between them.' },
+  { q: 'What\'s a realistic case CPA?', a: 'Family law: $300–$1,200 per signed case in mid-size markets. HNW divorce: $2,000–$5,000+. We benchmark and report monthly by case type.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/legal/family-law#webpage', url: 'https://killerspots.com/industries/legal/family-law', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Legal', item: 'https://killerspots.com/industries/legal' }, { '@type': 'ListItem', position: 3, name: 'Family Law', item: 'https://killerspots.com/industries/legal/family-law' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/legal" class="hover:text-white">Legal</a><span class="mx-2">/</span><span class="text-ink">Family Law</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Family Law Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Empathetic intake. <span class="text-brand-500">Compliant campaigns. Real cases signed.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">SEO, LSA for Lawyers, paid social, and 24/7 AI intake for divorce, custody, and family law firms. Privacy-aware landing pages. Bar-compliant scripting.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Family Law Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for regulated industries. We know how to handle emotionally charged buyer intent without losing trust.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Marketing built for the way family law actually runs.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A family law channel mix tuned to empathy and case value.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Family law marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Sign the Right Cases</span><h2 class="section-headline mt-5">Tell us your practice. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your case-CPA targets, your jurisdiction's rules, and your intake process.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

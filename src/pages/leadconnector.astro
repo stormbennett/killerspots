@@ -1,0 +1,570 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../data/navigation';
+
+const meta = {
+  title: 'LeadConnector | All-in-One CRM + Marketing Automation by Killerspots',
+  description:
+    'LeadConnector is our white-labeled CRM with AI lead scoring, two-way SMS, email automation, pipeline management, and 24/7 follow-up. Replace 6 tools with one managed platform.',
+  ogTitle: 'LeadConnector — Managed CRM by Killerspots Agency',
+  ogDescription:
+    'You\'re juggling HubSpot, ServiceTitan, Calendly, Podium, and Mailchimp. LeadConnector replaces all of them — AI-powered, fully managed, branded as you.',
+};
+
+const trustPills = ['Operated by Killerspots', 'White-Label Ready', '24/7 AI Follow-Up'];
+
+const replaces = [
+  { name: 'HubSpot / Salesforce', body: 'CRM + pipeline' },
+  { name: 'Calendly', body: 'Booking + reminders' },
+  { name: 'Podium / Birdeye', body: 'Reviews + reputation' },
+  { name: 'Mailchimp / Klaviyo', body: 'Email marketing' },
+  { name: 'Twilio / Heymarket', body: 'Two-way SMS' },
+  { name: 'Intercom / Drift', body: 'Live chat + AI bot' },
+];
+
+const features = [
+  {
+    title: 'Unified Inbox',
+    body:
+      'Texts, emails, Facebook messages, Instagram DMs, Google Chat — every conversation in one inbox. Your whole team sees the same thread. No more "I thought you were handling that."',
+  },
+  {
+    title: 'AI Chatbot + Missed-Call Text-Back',
+    body:
+      'A 24/7 AI bot answers FAQs, qualifies leads, and books appointments. Missed call at 2 AM? We auto-text the prospect back so the lead never goes cold.',
+  },
+  {
+    title: 'Smart Booking + Calendar Sync',
+    body:
+      'Google, Outlook, and Apple calendars sync in real time. Clients book themselves. Reminders go out automatically. Double bookings disappear.',
+  },
+  {
+    title: 'Pipeline + AI Lead Scoring',
+    body:
+      'Visual pipelines show every prospect\'s stage. AI scores leads by intent so your team focuses on the hottest ones. Automation rules move leads forward without manual updates.',
+  },
+  {
+    title: 'Reviews + Reputation',
+    body:
+      'Auto-request Google and Facebook reviews from happy clients via SMS. Monitor and respond from one dashboard. More reviews = higher rank = more inbound calls.',
+  },
+  {
+    title: 'Email + SMS Automation',
+    body:
+      'Build drip campaigns, nurture flows, and follow-ups in minutes. Segment by tag, behavior, or pipeline stage. Track opens, clicks, and replies.',
+  },
+  {
+    title: 'Invoices + Text-to-Pay',
+    body:
+      'Send invoices over SMS. Clients tap, pay, done — no portal logins, no friction. Money lands in your account faster.',
+  },
+  {
+    title: 'Reporting + Attribution',
+    body:
+      'Real-time dashboards: leads by source, conversion rate, customer LTV, pipeline health, team performance. Attribution closes the loop on every channel.',
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'We Set It Up',
+    body:
+      'Kickoff call. We map your tools, workflow, and goals. Then we configure LeadConnector to match how you actually work — pipelines, automations, AI bot, integrations. No "read the documentation."',
+  },
+  {
+    step: '02',
+    title: 'You Start Using It',
+    body:
+      'Your team logs in. Leads are organized. Calendar is synced. The AI bot is live. The first automated follow-up campaign goes out. We\'re available all week to optimize as you go.',
+  },
+  {
+    step: '03',
+    title: 'We Manage It',
+    body:
+      'Updates, security, performance tuning, new feature rollouts — handled. You focus on closing deals and serving clients. That\'s the difference between buying software and a managed platform.',
+  },
+];
+
+const industryFits = [
+  {
+    title: 'Home Services',
+    body:
+      'Emergency calls 24/7. AI bot books at 2 AM. Dispatch and customer history one click away. Auto-reviews to happy customers. Text-to-pay invoices.',
+  },
+  {
+    title: 'Law Firms',
+    body:
+      'Pipelines by case status. Automated retainer reminders. Document sharing. Client portals. Secure communications. Stay compliant without manual chaos.',
+  },
+  {
+    title: 'Dental & Healthcare',
+    body:
+      'Cuts no-shows by 40%+ with automated reminders. AI bot answers insurance + new-patient questions. Recall automation drives hygiene visits.',
+  },
+  {
+    title: 'Construction & Contractors',
+    body:
+      'Long sales cycles, multiple decision-makers. Pipeline visibility from quote to close. Automated follow-ups on stalled bids. Mobile access from job sites.',
+  },
+  {
+    title: 'Real Estate',
+    body:
+      'High lead volume. AI bot qualifies and schedules showings 24/7. Pipeline organized by property and stage. Automated nurture for warm buyers.',
+  },
+  {
+    title: 'Agencies (White-Label)',
+    body:
+      'Resell LeadConnector under your own brand. Wholesale rate card you mark up. Branded portals, branded reports, your logo everywhere. We stay invisible.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is LeadConnector really replacing 6 tools, or is that just marketing?',
+    a: 'Truly replacing. Our clients typically retire HubSpot or Salesforce, Calendly, Podium or Birdeye, Mailchimp or Klaviyo, Twilio or Heymarket, and Intercom or Drift — consolidated into one platform we manage.',
+  },
+  {
+    q: 'Can I use my existing phone number and email?',
+    a: 'Yes. We port your business number (or set up a tracking number that forwards), connect your email domain for sending, and integrate with Google Workspace or Microsoft 365.',
+  },
+  {
+    q: 'How long does setup take?',
+    a: 'Most accounts are running in 2–3 business days. Enterprise migrations from a complex CRM stack take longer (1–3 weeks) but we do the heavy lifting.',
+  },
+  {
+    q: 'How is white-label pricing structured?',
+    a: 'Wholesale rate card you mark up. Most agency partners run 40–70% margins. Volume discounts kick in as your book grows. Get a quote and we\'ll walk you through the math.',
+  },
+  {
+    q: 'Will you talk to my clients directly?',
+    a: 'Only when you ask us to. White-label means white-label. Reports, dashboards, communications — branded as your firm. Killerspots is invisible to your end customers unless you choose otherwise.',
+  },
+  {
+    q: 'What about security and compliance?',
+    a: 'Enterprise-grade security, encrypted data, role-based access, and audit logs. HIPAA-ready configurations available for healthcare and legal use cases.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/leadconnector#webpage',
+  url: 'https://killerspots.com/leadconnector',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'LeadConnector',
+      item: 'https://killerspots.com/leadconnector',
+    },
+  ],
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'LeadConnector',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description: meta.description,
+  url: 'https://killerspots.com/leadconnector',
+  publisher: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, softwareSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(99,102,241,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,_rgba(239,82,83,0.12)_0%,_rgba(15,20,25,0)_60%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20">
+      <div class="grid lg:grid-cols-12 gap-12 items-end">
+        <div class="lg:col-span-7">
+          <span class="eyebrow">LeadConnector</span>
+          <img
+            src={logoUrls.leadConnector}
+            alt="LeadConnector"
+            width="320"
+            height="64"
+            class="mt-6 h-14 md:h-20 w-auto"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <h1 id="hero-headline" class="hero-headline mt-7">
+            One platform.
+            <span class="text-brand-500">Every tool you've been juggling.</span>
+          </h1>
+          <p
+            id="hero-subhead"
+            class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-3xl leading-snug"
+          >
+            LeadConnector is our managed CRM and marketing automation platform — AI lead
+            scoring, two-way SMS, email, pipelines, reviews, and 24/7 follow-up. Set up
+            for you. Branded as you. Run by us.
+          </p>
+
+          <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+            <a href="/contact" class="btn btn-primary magnetic">Book a Demo</a>
+            <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+              Call {businessInfo.phone}
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-white/10 bg-surface p-7 md:p-9">
+            <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+              Replaces
+            </div>
+            <ul class="mt-5 grid grid-cols-2 gap-3">
+              {
+                replaces.map((r) => (
+                  <li class="rounded-xl border border-white/10 bg-canvas px-4 py-3">
+                    <div class="text-sm font-semibold text-white">{r.name}</div>
+                    <div class="mt-1 text-xs text-muted">{r.body}</div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Built by an agency, for the way real businesses run. Six-figure ad spends, real
+          sales pipelines, real follow-up — not just contact storage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD SHOWCASE — real product screenshots -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Inside the Platform</span>
+        <h2 class="section-headline mt-5">
+          Real dashboards. Real pipelines. Real follow-up.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Every conversation, every lead, every appointment, and every piece of marketing
+          attribution lives in one place. Here's what your team sees.
+        </p>
+      </div>
+
+      <!-- Lead Attribution + Overview Dashboard -->
+      <div class="lc-shot lc-shot--1" data-reveal>
+        <div class="lc-shot__caption">
+          <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+            Lead Attribution Dashboard
+          </div>
+          <h3 class="mt-3 text-xl md:text-2xl font-semibold text-white">
+            Know which channels are actually working.
+          </h3>
+          <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">
+            Total contacts, week-over-week trend, lead source attribution, and contacts
+            by source — in one view, refreshed in real time.
+          </p>
+        </div>
+        <div class="lc-shot__frame">
+          <!-- Drop file at: public/images/leadconnector/dashboard.png -->
+          <img
+            src="/images/leadconnector/dashboard.png"
+            alt="LeadConnector Lead Attribution Dashboard showing total contacts, week-over-week trend, and lead source breakdown"
+            loading="lazy"
+            decoding="async"
+            onerror="this.parentElement.classList.add('lc-shot__frame--missing')"
+          />
+          <div class="lc-shot__placeholder">
+            <span class="text-xs uppercase tracking-[0.22em] text-muted">
+              Dashboard screenshot
+            </span>
+            <span class="mt-2 text-xs text-muted">
+              Drop file at /public/images/leadconnector/dashboard.png
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opportunities Pipeline -->
+      <div class="lc-shot lc-shot--2 mt-16 md:mt-24" data-reveal>
+        <div class="lc-shot__frame">
+          <!-- Drop file at: public/images/leadconnector/pipeline.png -->
+          <img
+            src="/images/leadconnector/pipeline.png"
+            alt="LeadConnector Opportunities Pipeline showing kanban-style deal stages from New Leads through Won"
+            loading="lazy"
+            decoding="async"
+            onerror="this.parentElement.classList.add('lc-shot__frame--missing')"
+          />
+          <div class="lc-shot__placeholder">
+            <span class="text-xs uppercase tracking-[0.22em] text-muted">
+              Pipeline screenshot
+            </span>
+            <span class="mt-2 text-xs text-muted">
+              Drop file at /public/images/leadconnector/pipeline.png
+            </span>
+          </div>
+        </div>
+        <div class="lc-shot__caption">
+          <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+            Opportunities Pipeline
+          </div>
+          <h3 class="mt-3 text-xl md:text-2xl font-semibold text-white">
+            Every deal, every stage, every dollar.
+          </h3>
+          <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">
+            Visual pipeline shows where each opportunity sits — from new lead through hot
+            qualifier, sent proposal, and won. AI scoring flags the deals to chase first.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .lc-shot {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .lc-shot {
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+      }
+      .lc-shot--2 {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    .lc-shot__frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(ellipse at 30% 0%, rgba(99, 102, 241, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 100% 100%, rgba(168, 85, 247, 0.18) 0%, transparent 60%),
+        linear-gradient(135deg, #1e1b4b 0%, #1a1f2e 100%);
+      box-shadow:
+        0 30px 80px -30px rgba(0, 0, 0, 0.7),
+        0 6px 24px -8px rgba(99, 102, 241, 0.15);
+    }
+    .lc-shot__frame img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+    }
+    .lc-shot__placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      z-index: 0;
+    }
+    /* When the image loads cleanly, the placeholder is hidden behind it. */
+    /* When the image errors, JS hides it and adds .lc-shot__frame--missing */
+    .lc-shot__frame--missing img {
+      display: none;
+    }
+  </style>
+
+  <!-- FEATURES -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Inside LeadConnector</span>
+        <h2 class="section-headline mt-5">Everything you need. Nothing you don't.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          features.map((f) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-6 md:p-7"
+            >
+              <h3 class="text-base md:text-lg font-semibold text-white">{f.title}</h3>
+              <p class="mt-3 text-sm text-muted leading-relaxed">{f.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-headline mt-5">From kickoff to running in days, not months.</h2>
+      </div>
+
+      <ol class="grid md:grid-cols-3 gap-5 md:gap-6">
+        {
+          process.map((s) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                Step {s.step}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- INDUSTRY FITS -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Built For Your Industry</span>
+        <h2 class="section-headline mt-5">
+          Configured for how your business actually works.
+        </h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          industryFits.map((f) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7"
+            >
+              <h3 class="text-lg font-semibold text-white">{f.title}</h3>
+              <p class="mt-3 text-sm text-muted leading-relaxed">{f.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">LeadConnector questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Ready to Stop Juggling Tools?</span>
+        <h2 class="section-headline mt-5">Book your free LeadConnector demo.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          30-minute walkthrough. We'll show you the platform, answer your questions, and
+          map exactly how we'd configure it for your business. No credit card. No
+          obligation.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Book a Demo</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

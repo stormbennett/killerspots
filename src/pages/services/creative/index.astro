@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Creative & Content | Graphic Design, Logo, Content Writing | Killerspots',
+  description: 'Creative and content services — graphic design, brand identity, logo design, and content writing. In-house creative team since 1999. Built to support every channel we run.',
+  ogTitle: 'Creative & Content That Actually Sells | Killerspots',
+  ogDescription: 'Graphic design, brand identity, logo design, and content writing produced in-house by a 25-year creative agency. Branded for performance, not just aesthetics.',
+};
+
+const trustPills = ['In-House Creative', 'Since 1999', 'Built For Performance'];
+
+const services = [
+  { title: 'Graphic Design & Branding', href: '/services/creative/graphic-design', body: 'Brand identity, print design, social graphics, ad creative, and marketing collateral. In-house design team produces everything we run.' },
+  { title: 'Logo Design', href: '/services/creative/logo-design', body: 'Original logo design and brand mark development. Wordmarks, icons, full brand systems. Built to scale across every medium.' },
+  { title: 'Content Writing', href: '/services/creative/content-writing', body: 'Long-form blog content, website copy, email campaigns, and ad copy. Built to rank in Google and get cited by AI search engines.' },
+  { title: 'Green Screen Studio Rental', href: '/studio', body: 'Cincinnati-based green-screen video studio + audio rooms. Rent the space and gear for your own production work.' },
+];
+
+const why = [
+  { title: 'Creative That Connects to Performance', body: 'Pretty design isn\'t the goal. Design that drives clicks, calls, and conversions is. We build creative as part of campaigns, not as a separate art project.' },
+  { title: 'Full In-House Team', body: 'Designers, copywriters, and motion artists on staff. No outsourcing chains, no quality drift between freelancers, no surprises.' },
+  { title: 'Brand Consistency Across Channels', body: 'Same team designs your jingle artwork, your radio script, your video creative, and your social graphics. Cohesive brand voice across every channel.' },
+  { title: 'Built To Last', body: 'Logo systems and brand identities designed to scale and age well. Not a quick refresh that needs replacing in 18 months.' },
+];
+
+const faqs = [
+  { q: 'Do you design logos from scratch?', a: 'Yes. Original logo design and brand mark development with multiple concept rounds, refinement, and final delivery in every format you\'ll ever need (vector, transparent, light/dark, social-sized).' },
+  { q: 'Can you handle a full rebrand?', a: 'Yes. Full brand identity systems — logo, type, color, photography, voice, applied across web, print, social, and packaging. Sized to your business stage.' },
+  { q: 'Do you write blog content?', a: 'Yes — long-form content built for SEO + AI Optimization (AIO). We don\'t do AI-spun content; we research, interview, and write authentic content that ranks AND gets cited by AI search engines.' },
+  { q: 'How is content writing priced?', a: 'Per-piece for one-offs, monthly retainer for ongoing content production. We size to your topic complexity, research depth, and SEO/AIO requirements.' },
+  { q: 'Do you handle print design?', a: 'Yes. Brochures, business cards, signage, packaging, trade-show booths, vehicle wraps. We design for print AND we know which print vendors actually deliver. Print management included if you want it.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/creative#webpage', url: 'https://killerspots.com/services/creative', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Creative & Content', item: 'https://killerspots.com/services/creative' }] };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Creative and Content Services', provider: { '@id': 'https://killerspots.com/#localbusiness' }, areaServed: 'US', description: meta.description, url: 'https://killerspots.com/services/creative' };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Creative &amp; Content</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Creative that <span class="text-brand-500">connects to performance.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Graphic design, brand identity, logo design, and content writing produced in-house. Built to support every channel we run — not standalone art projects.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Creative Quote</a><a href="#services" class="btn btn-ghost">See Services</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years building brands. Designers, copywriters, and motion artists on staff. Same team across every channel.</p></div></div></section>
+
+  <section id="services" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Make</span><h2 class="section-headline mt-5">Creative + content that runs across every channel.</h2></div><ul class="grid sm:grid-cols-2 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why Killerspots</span><h2 class="section-headline mt-5">Creative made for the way real campaigns run.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{why.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Creative + content questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Make Something</span><h2 class="section-headline mt-5">Tell us your project. We'll size the work.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute creative call. We\'ll review your brand, your goals, and your channels — then come back with a creative plan.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

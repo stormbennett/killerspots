@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Short-Form Video Production | Reels, TikToks, Shorts | Killerspots',
+  description: 'Short-form vertical video for TikTok, Instagram Reels, and YouTube Shorts. Hook-driven, fast-cut, designed for the algorithm. Shot in our studio or on location.',
+  ogTitle: 'Short-Form Video — Reels, TikToks, Shorts | Killerspots',
+  ogDescription: 'Vertical short-form video produced in our Cincinnati studio. Hook-driven, algorithm-optimized. Multi-platform delivery.',
+};
+
+const trustPills = ['TikTok + Reels + Shorts', 'Hook-Driven', 'Multi-Platform Cuts'];
+
+const what = [
+  { title: 'Concept + Scripting', body: 'Hook-first scripting that grabs attention in the first 1.5 seconds. Built around platform-native trends and your brand voice.' },
+  { title: 'Studio Production', body: 'Vertical-format shoots in our Cincinnati studio. Green-screen capable. Quick-turn ready — multiple videos in a single shoot day.' },
+  { title: 'On-Location Shoots', body: 'Customer sites, behind-the-scenes, founder-led content shot at your location. Authentic, native-feeling, less polished — which works better.' },
+  { title: 'Editorial + Captions', body: 'Fast-cut editing, native captions, music selection, and platform-specific aspect ratio outputs (9:16 for Reels/TikTok, 9:16/1:1 for Shorts).' },
+  { title: 'Multi-Platform Delivery', body: 'Same shoot, multiple cuts. TikTok version, Instagram Reels version, YouTube Shorts version. Maximize ROI per shoot day.' },
+  { title: 'Trend Pivoting', body: 'When a platform-specific trend takes off (sound, format, meme), we cut content to ride it within hours. Native-feeling video that performs.' },
+];
+
+const faqs = [
+  { q: 'How many videos per month?', a: 'Standard package: 2–4 short-form videos per month, plus reuses across platforms (TikTok + Reels + Shorts from same source). Higher cadence available for high-volume accounts.' },
+  { q: 'Should I be on TikTok if my customers are over 50?', a: 'Maybe — TikTok\'s demos are aging up rapidly. But Instagram Reels is usually the right starting point for older demos. We\'ll recommend on the discovery call based on your actual audience.' },
+  { q: 'Do I need to be on camera?', a: 'No, but it usually helps. Founder-led short-form video performs significantly better than B-roll-only content. We can shoot you in our studio with a teleprompter, or we can build voice-over + B-roll formats if you prefer.' },
+  { q: 'Can you reuse our existing video for short-form?', a: 'Yes — repurposing existing TV/web video into short-form cuts is one of the highest-ROI moves. Same content, native delivery, way more reach.' },
+  { q: 'How fast does short-form drive results?', a: 'Reach and engagement: immediate (first week if a video hits). Follower growth: 30–90 days of consistent posting. Lead generation from short-form: 6–12 months and best as part of a broader funnel.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/social-media/short-form-video#webpage', url: 'https://killerspots.com/services/social-media/short-form-video', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Social Media', item: 'https://killerspots.com/services/social-media' }, { '@type': 'ListItem', position: 3, name: 'Short-Form Video', item: 'https://killerspots.com/services/social-media/short-form-video' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/social-media" class="hover:text-white">Social Media</a><span class="mx-2">/</span><span class="text-ink">Short-Form Video</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Short-Form Video</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Reels, TikToks, Shorts — <span class="text-brand-500">designed for the algorithm.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Hook-driven vertical video produced in our Cincinnati studio or on location. Multi-platform delivery — TikTok, Reels, Shorts — from a single shoot day.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Short-Form Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Short-form is non-negotiable now — and it\'s a different craft than broadcast TV. We shoot for the platform.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Make</span><h2 class="section-headline mt-5">Six layers of short-form production.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Short-form video questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Make Short-Form That Works</span><h2 class="section-headline mt-5">Tell us your topics. We'll shoot the content.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll plan a shoot day, identify hooks, and deliver multi-platform cuts within 2 weeks.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

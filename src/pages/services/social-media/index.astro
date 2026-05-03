@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Social Media Management | Organic, Short-Form, Paid Social | Killerspots',
+  description: 'Done-for-you social media management. Organic content, short-form video, and paid social on Instagram, Facebook, TikTok, LinkedIn, and YouTube. Daily posting, real engagement.',
+  ogTitle: 'Social Media Management That Builds Brand AND Pipeline | Killerspots',
+  ogDescription: 'Daily content, short-form video, paid social, and community management. Done-for-you on every platform that matters. Real engagement, real reporting.',
+};
+
+const trustPills = ['Done-For-You Social', 'Daily Content', 'Real Engagement'];
+
+const services = [
+  { title: 'Organic Social', href: '/services/social-media/organic-social', body: 'Daily posting, content calendars, captions, hashtags, and community management across Instagram, Facebook, TikTok, LinkedIn, and YouTube.' },
+  { title: 'Short-Form Video', href: '/services/social-media/short-form-video', body: 'Reels, TikToks, and Shorts produced in our studio or shot on location. Hook-driven, fast-cut, designed for the algorithm.' },
+  { title: 'Paid Social', href: '/services/social-media/paid-social', body: 'Meta, TikTok, and LinkedIn paid campaigns. Audience targeting, retargeting, creative production, and weekly optimization for CPL/CPA.' },
+];
+
+const why = [
+  { title: 'Daily Content, Not Monthly Batch', body: 'We post daily across your priority platforms. Not 30 posts uploaded on the 1st. Daily presence drives engagement, algorithm pickup, and real follower growth.' },
+  { title: 'Short-Form Video Native', body: 'Reels, TikToks, and Shorts are non-negotiable now. We shoot them in our studio, edit them fast, and design them around the platforms\' algorithms.' },
+  { title: 'Real Community Management', body: 'A human responds to comments and DMs daily. Not a template. Not a bot. Real conversation that drives real engagement and real sales.' },
+  { title: 'Integrated With LeadConnector', body: 'Social DMs flow into LeadConnector\'s unified inbox. Comments, mentions, and DMs all tracked alongside email, SMS, and form fills. One pipeline, one source of truth.' },
+];
+
+const faqs = [
+  { q: 'Which platforms do you post on?', a: 'Instagram, Facebook, TikTok, LinkedIn, and YouTube — depending on where your audience actually is. We won\'t recommend posting on platforms your customers don\'t use just to fill a calendar.' },
+  { q: 'How much content do you produce per month?', a: 'Standard package: 5–7 organic posts per week per platform, plus 2–4 short-form videos per month, plus stories and engagement content. We size to platforms and audience.' },
+  { q: 'Do you do paid ads on social?', a: 'Yes — Meta, TikTok, and LinkedIn paid campaigns with creative, targeting, retargeting, and weekly optimization. Reported by CPL/CPA, not impressions.' },
+  { q: 'Can you handle B2B social?', a: 'Yes. LinkedIn is the primary B2B channel, with Meta and YouTube playing supporting roles. Different content cadence (less daily, more authoritative) and different KPIs (pipeline influenced vs. raw engagement).' },
+  { q: 'How fast will I see results?', a: 'Engagement and follower growth: 30–60 days. Lead generation from organic: 90–180 days. Paid social: leads in week 2–3. Brand recall + community: 6+ months. We set realistic expectations.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/social-media#webpage', url: 'https://killerspots.com/services/social-media', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Social Media', item: 'https://killerspots.com/services/social-media' }] };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Social Media Management', provider: { '@id': 'https://killerspots.com/#localbusiness' }, areaServed: 'US', description: meta.description, url: 'https://killerspots.com/services/social-media' };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Social Media Management</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Done-for-you social — <span class="text-brand-500">daily, not monthly.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Organic content, short-form video, paid social, and community management. Instagram, Facebook, TikTok, LinkedIn, YouTube. Daily posting, real engagement, real reporting.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Social Quote</a><a href="#services" class="btn btn-ghost">See Services</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Most agencies "manage" social by posting once a week. We post daily because that\'s what actually moves engagement and growth.</p></div></div></section>
+
+  <section id="services" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Every layer of social — done for you.</h2></div><ul class="grid md:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why Killerspots</span><h2 class="section-headline mt-5">Social done the way it actually has to be done.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{why.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Social media management questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Hand It Off</span><h2 class="section-headline mt-5">Tell us your platforms. We'll handle the rest.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your audience, your platforms, and your goals — then come back with a content plan and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

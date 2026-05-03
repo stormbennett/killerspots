@@ -1,0 +1,657 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../data/navigation';
+
+const meta = {
+  title: 'Our Work | Video, Radio & Jingle Portfolio | Killerspots',
+  description:
+    'Browse our portfolio: TV and web video commercials, AI-produced video, radio commercials, jingles, and client testimonials. 25+ years of broadcast-quality production from Killerspots Agency.',
+  ogTitle: 'Killerspots Portfolio — TV, Video, Radio, Jingles',
+  ogDescription:
+    'A working library of our video and audio production. Click any title to watch or listen.',
+};
+
+// =====================================================================
+// VIDEO LIBRARY
+// ---------------------------------------------------------------------
+// Add new videos by appending to this array. Each item:
+//   - id: short unique slug (used for analytics later if wanted)
+//   - title: card title
+//   - subtitle: small label under title (client, type, etc.)
+//   - category: 'tv' | 'ai' | 'jingles' | 'testimonials' | 'behind'
+//   - src: full Vimeo iframe URL (include `?h=...` hash for private videos)
+//
+// To get the right URL: open the video on vimeo.com, click Share, copy the
+// "embed" URL — it should look like:
+//   https://player.vimeo.com/video/{ID}?h={HASH}&...
+// =====================================================================
+
+type VideoCategory = 'tv' | 'ai' | 'jingles' | 'testimonials' | 'behind';
+
+type VideoItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: VideoCategory;
+  src: string;
+};
+
+const categories: { key: VideoCategory | 'all'; label: string }[] = [
+  { key: 'all', label: 'All' },
+  { key: 'tv', label: 'TV & Web Video' },
+  { key: 'ai', label: 'AI Video' },
+  { key: 'jingles', label: 'Jingles' },
+  { key: 'testimonials', label: 'Testimonials' },
+  { key: 'behind', label: 'Behind the Scenes' },
+];
+
+const videos: VideoItem[] = [
+  {
+    id: 'reel-2026',
+    title: 'Killerspots 2026 Reel',
+    subtitle: 'A cross-section of our work',
+    category: 'tv',
+    src:
+      'https://player.vimeo.com/video/1175215931?badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+  {
+    id: '3-reasons-jingles',
+    title: '3 Reasons Jingles Are Powerful',
+    subtitle: 'Behind the music',
+    category: 'behind',
+    src:
+      'https://player.vimeo.com/video/691513344?badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+  {
+    id: 'jason-kidd-virtualjock',
+    title: 'Jason Kidd — VirtualJock.com',
+    subtitle: 'Client testimonial',
+    category: 'testimonials',
+    src:
+      'https://player.vimeo.com/video/942099143?h=a3a76163d8&badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+  {
+    id: 'jason-carnes-roofing',
+    title: 'Jason Carnes — J Carnes Roofing',
+    subtitle: 'Client testimonial',
+    category: 'testimonials',
+    src:
+      'https://player.vimeo.com/video/730465110?badge=0&autopause=0&player_id=0&app_id=58479',
+  },
+  // -------------------------------------------------------------------
+  // PLACEHOLDERS — replace `src` with the actual Vimeo embed URL once
+  // you have it (Share → Embed → copy the player.vimeo.com URL).
+  // For now these point to the showcase URL so the cards still play.
+  // -------------------------------------------------------------------
+  {
+    id: 'truth-about-radio-ads',
+    title: 'The Truth About Radio Ads',
+    subtitle: 'Storm on what works',
+    category: 'behind',
+    src: 'https://vimeo.com/showcase/11786935/embed',
+  },
+  {
+    id: 'pete-catchy-jingle',
+    title: 'What Makes a Catchy Jingle',
+    subtitle: 'Pete, Senior Jingle Producer',
+    category: 'behind',
+    src: 'https://vimeo.com/showcase/11786935/embed',
+  },
+  {
+    id: 'green-screen-studio',
+    title: 'Green Screen Studio Tour',
+    subtitle: 'Cincinnati production facility',
+    category: 'tv',
+    src: 'https://vimeo.com/showcase/11786935/embed',
+  },
+];
+
+// =====================================================================
+// AUDIO LIBRARY
+// ---------------------------------------------------------------------
+// SoundCloud playlists organized by service category. Add an entry by
+// pushing onto the array — `src` is the SoundCloud embed URL. To get
+// the right URL: open the playlist on soundcloud.com, click Share →
+// Embed, copy the URL from the iframe `src` attribute.
+// =====================================================================
+
+type AudioCategory = 'jingles' | 'radio' | 'on-hold' | 'imaging';
+
+type AudioPlaylist = {
+  id: string;
+  title: string;
+  description: string;
+  category: AudioCategory;
+  src: string;
+};
+
+const audioCategories: { key: AudioCategory; label: string }[] = [
+  { key: 'jingles', label: 'Jingles' },
+  { key: 'radio', label: 'Radio Commercials' },
+  { key: 'on-hold', label: 'On-Hold Messages' },
+  { key: 'imaging', label: 'Radio Imaging' },
+];
+
+const audio: AudioPlaylist[] = [
+  {
+    id: 'jingles-playlist',
+    title: 'Custom Jingles Playlist',
+    description: 'A curated set of jingles produced by Killerspots — across categories.',
+    category: 'jingles',
+    src:
+      'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1568669452&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true',
+  },
+  {
+    id: 'radio-commercials-playlist',
+    title: 'Radio Commercials Playlist',
+    description: 'Sample radio spots — :15s, :30s, and :60s across home services, legal, and retail.',
+    category: 'radio',
+    src:
+      'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A152639874&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true',
+  },
+  {
+    id: 'on-hold-playlist',
+    title: 'On-Hold Messaging Playlist',
+    description: 'Sample on-hold messages and IVR prompts.',
+    category: 'on-hold',
+    src:
+      'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A20082108&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true',
+  },
+  {
+    id: 'radio-imaging-playlist',
+    title: 'Radio Imaging Playlist',
+    description: 'Station IDs, sweepers, and imaging packages produced for broadcasters.',
+    category: 'imaging',
+    src:
+      'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A878642998%3Fsecret_token%3Ds-nTUag&color=%23ef5253&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://killerspots.com/portfolio#webpage',
+  url: 'https://killerspots.com/portfolio',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Our Work', item: 'https://killerspots.com/portfolio' },
+  ],
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Our Work</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Watch.
+          <span class="text-brand-500">Listen. Then let's make some.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          A working library of our video and audio production — TV commercials, AI-produced
+          video, jingles, radio commercials, and client testimonials. Click any title to
+          watch or listen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO LIBRARY -->
+  <section class="bg-deep">
+    <div class="container-page py-20 md:py-28">
+      <div class="mb-10 md:mb-12 flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div class="max-w-2xl">
+          <span class="eyebrow">Video Library</span>
+          <h2 class="section-headline mt-5">Video commercials, AI work, and behind-the-scenes.</h2>
+        </div>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="mb-8 md:mb-10 flex flex-wrap gap-2" role="tablist" aria-label="Video categories">
+        {
+          categories.map((c, i) => (
+            <button
+              type="button"
+              data-video-filter={c.key}
+              class={`media-filter ${i === 0 ? 'is-active' : ''}`}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {c.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Video grid -->
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" data-video-grid>
+        {
+          videos.map((v) => (
+            <li data-category={v.category} data-reveal>
+              <button
+                type="button"
+                class="media-card group"
+                data-media-modal
+                data-src={v.src}
+                data-title={`${v.title} — ${v.subtitle}`}
+                aria-label={`Play ${v.title}`}
+              >
+                <div class={`media-card__thumb media-card__thumb--${v.category}`}>
+                  <span class="media-card__category">{categories.find((c) => c.key === v.category)?.label ?? ''}</span>
+                  <span class="media-card__play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="media-card__body">
+                  <h3 class="media-card__title">{v.title}</h3>
+                  <p class="media-card__subtitle">{v.subtitle}</p>
+                </div>
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- AUDIO LIBRARY -->
+  <section class="bg-canvas">
+    <div class="container-page py-20 md:py-28">
+      <div class="mb-10 md:mb-12 flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div class="max-w-2xl">
+          <span class="eyebrow">Audio Library</span>
+          <h2 class="section-headline mt-5">Jingles, radio commercials, and on-hold.</h2>
+        </div>
+      </div>
+
+      <!-- Audio category tabs -->
+      <div
+        class="mb-8 md:mb-10 flex flex-wrap gap-2"
+        role="tablist"
+        aria-label="Audio categories"
+      >
+        {
+          audioCategories.map((c, i) => (
+            <button
+              type="button"
+              data-audio-filter={c.key}
+              class={`media-filter ${i === 0 ? 'is-active' : ''}`}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >
+              {c.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Audio playlists -->
+      <ul class="grid lg:grid-cols-2 gap-5 md:gap-6" data-audio-grid>
+        {
+          audio.map((p, i) => (
+            <li
+              data-category={p.category}
+              data-reveal
+              class={i === 0 ? '' : 'hidden'}
+              data-default-hidden={i === 0 ? 'false' : 'true'}
+            >
+              <div class="rounded-2xl border border-white/10 bg-surface overflow-hidden">
+                <div class="px-6 py-5 border-b border-white/10">
+                  <div class="text-xs uppercase tracking-[0.18em] text-brand-500 font-bold">
+                    {audioCategories.find((c) => c.key === p.category)?.label ?? ''}
+                  </div>
+                  <h3 class="mt-2 text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+                  <p class="mt-1 text-sm text-muted leading-relaxed">{p.description}</p>
+                </div>
+                <iframe
+                  width="100%"
+                  height="380"
+                  allow="autoplay"
+                  src={p.src}
+                  title={`${p.title} — Killerspots SoundCloud`}
+                  loading="lazy"
+                  style="display:block;border:0;background:#0a0e12;"
+                />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Like What You Hear?</span>
+        <h2 class="section-headline mt-5">Let's make something for you.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Tell us about your project. We'll come back with a quote, a turnaround date, and
+          a creative direction sized to your brand.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA MODAL -->
+  <div
+    data-modal-backdrop
+    class="fixed inset-0 z-[80] hidden items-center justify-center bg-canvas/95 backdrop-blur-sm p-4 md:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="media-modal-title"
+  >
+    <div
+      class="relative w-full max-w-5xl rounded-2xl border border-white/10 bg-deep shadow-2xl overflow-hidden"
+      data-modal-stop
+    >
+      <div class="flex items-center justify-between gap-4 px-5 py-4 border-b border-white/10">
+        <h2 id="media-modal-title" class="text-sm md:text-base font-semibold text-white truncate">
+          Now playing
+        </h2>
+        <button
+          type="button"
+          data-modal-close
+          aria-label="Close player"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink hover:text-white hover:border-brand-500 transition-colors"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path
+              d="M5 5l10 10M15 5L5 15"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div style="padding:56.25% 0 0 0;position:relative;background:#000;">
+        <iframe
+          data-modal-iframe
+          src=""
+          title="Player"
+          loading="lazy"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .media-filter {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      color: #e0e0e0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .media-filter:hover {
+      color: #fff;
+      border-color: rgba(239, 82, 83, 0.4);
+    }
+    .media-filter.is-active {
+      background: #ef5253;
+      color: #fff;
+      border-color: #ef5253;
+    }
+
+    .media-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-align: left;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1a1f2e;
+      cursor: pointer;
+      transition:
+        transform 0.3s ease,
+        border-color 0.2s ease,
+        box-shadow 0.3s ease;
+    }
+    .media-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(239, 82, 83, 0.4);
+      box-shadow: 0 24px 48px -24px rgba(239, 82, 83, 0.3);
+    }
+    .media-card__thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+    .media-card__thumb--tv {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(239, 82, 83, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 60%),
+        linear-gradient(135deg, #2a1a1a 0%, #1a1f2e 100%);
+    }
+    .media-card__thumb--ai {
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(168, 85, 247, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(34, 197, 94, 0.25) 0%, transparent 55%),
+        linear-gradient(135deg, #1e1b4b 0%, #1a1f2e 100%);
+    }
+    .media-card__thumb--jingles {
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(245, 158, 11, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 0% 100%, rgba(239, 82, 83, 0.25) 0%, transparent 55%),
+        linear-gradient(135deg, #2a2418 0%, #1a1f2e 100%);
+    }
+    .media-card__thumb--testimonials {
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(34, 197, 94, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(99, 102, 241, 0.25) 0%, transparent 55%),
+        linear-gradient(135deg, #1a2a22 0%, #1a1f2e 100%);
+    }
+    .media-card__thumb--behind {
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(99, 102, 241, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 10%, rgba(239, 82, 83, 0.25) 0%, transparent 55%),
+        linear-gradient(135deg, #1f2937 0%, #1a1f2e 100%);
+    }
+    .media-card__category {
+      display: inline-flex;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .media-card__play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      color: #ef5253;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s;
+    }
+    .media-card__play svg {
+      width: 24px;
+      height: 24px;
+      margin-left: 3px;
+    }
+    .media-card:hover .media-card__play {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .media-card__body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .media-card__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .media-card__subtitle {
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: #8a8f98;
+    }
+
+    [data-modal-backdrop]:not(.hidden) {
+      display: flex;
+    }
+    body.modal-open {
+      overflow: hidden;
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var backdrop = document.querySelector('[data-modal-backdrop]');
+      var iframe = document.querySelector('[data-modal-iframe]');
+      var titleEl = document.getElementById('media-modal-title');
+      if (!backdrop || !iframe) return;
+
+      function open(src, title) {
+        iframe.src = src + (src.indexOf('?') === -1 ? '?autoplay=1' : '&autoplay=1');
+        if (titleEl && title) titleEl.textContent = title;
+        backdrop.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      }
+
+      function close() {
+        iframe.src = '';
+        backdrop.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }
+
+      document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('[data-media-modal]');
+        if (trigger) {
+          e.preventDefault();
+          open(trigger.dataset.src, trigger.dataset.title);
+          return;
+        }
+        if (e.target.closest('[data-modal-close]')) {
+          close();
+          return;
+        }
+        if (e.target === backdrop) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !backdrop.classList.contains('hidden')) close();
+      });
+
+      // Video category filter
+      var grid = document.querySelector('[data-video-grid]');
+      var filterButtons = document.querySelectorAll('[data-video-filter]');
+      if (grid && filterButtons.length) {
+        filterButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var key = btn.dataset.videoFilter;
+            filterButtons.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle('is-active', active);
+              b.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            grid.querySelectorAll('[data-category]').forEach(function (item) {
+              if (key === 'all' || item.dataset.category === key) {
+                item.classList.remove('hidden');
+              } else {
+                item.classList.add('hidden');
+              }
+            });
+          });
+        });
+      }
+
+      // Audio category filter
+      var audioGrid = document.querySelector('[data-audio-grid]');
+      var audioBtns = document.querySelectorAll('[data-audio-filter]');
+      if (audioGrid && audioBtns.length) {
+        audioBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var key = btn.dataset.audioFilter;
+            audioBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle('is-active', active);
+              b.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            audioGrid.querySelectorAll('[data-category]').forEach(function (item) {
+              if (item.dataset.category === key) {
+                item.classList.remove('hidden');
+              } else {
+                item.classList.add('hidden');
+              }
+            });
+          });
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

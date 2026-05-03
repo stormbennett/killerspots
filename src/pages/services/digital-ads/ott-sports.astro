@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'OTT Sports Streaming Ads | ESPN+, Peacock, NFL+ | Killerspots',
+  description: 'OTT sports streaming ads on ESPN+, Peacock, Paramount+, NFL+, and MLB.TV. Premium reach during high-engagement live sports. Geo-targeted to your service area.',
+  ogTitle: 'OTT Sports Ads — Premium Sports Inventory at Local CPMs | Killerspots',
+  ogDescription: 'Run TV-quality video ads on live sports streaming — ESPN+, Peacock, NFL+, MLB.TV. Geo-targeted, audience-segmented, broadcast-quality creative.',
+};
+
+const trustPills = ['Live Sports Inventory', 'Geo-Targeted', 'Premium Engagement'];
+
+const what = [
+  { title: 'Live Sports Streams', body: 'ESPN+, Peacock, Paramount+, NFL+, MLB.TV — premium live sports inventory bookable at competitive CPMs for local advertisers.' },
+  { title: 'Game-Day Targeting', body: 'Run during specific games, leagues, or seasons. NFL Sundays, NBA Finals, MLB postseason — premium engagement windows.' },
+  { title: 'Geo + Audience Layering', body: 'ZIP code or DMA targeting on top of sports-fan audiences. Hit local sports fans in your service area.' },
+  { title: 'Creative Production', body: ':15, :30, and :60 spots produced in our Cincinnati studio. Sports-context creative with broadcast-quality.' },
+  { title: 'Sponsorship Integration', body: 'Combine OTT sports ads with team sponsorship media buys, in-arena signage, and stadium/venue retargeting for full-funnel sports marketing.' },
+  { title: 'Attribution + Measurement', body: 'Household-level conversion tracking, post-impression web traffic lift, and brand recall surveys. Measure what live-sports media actually drives.' },
+];
+
+const faqs = [
+  { q: 'Why advertise on sports streaming specifically?', a: 'Live sports has the highest concurrent viewership and engagement of any streaming content. People don\'t multitask during a fourth-quarter drive. Premium attention at digital prices.' },
+  { q: 'Can I target a specific team or sport?', a: 'Yes. NFL Sunday Ticket on YouTube TV, NBA League Pass, MLB.TV, NHL streams — all targetable. Combine with team-specific sponsorships for max impact.' },
+  { q: 'What\'s a realistic budget?', a: 'Sports inventory is more expensive than general streaming. $5K+/mo for meaningful presence in mid-size markets, $20K+ for major-market domination during a season.' },
+  { q: 'How is this different from TV sports advertising?', a: 'OTT sports inventory is geo-targeted, audience-layered, and digitally tracked. Traditional TV sports advertising is broad-market and roughly attributed. Same ad, smarter delivery.' },
+  { q: 'Can I run during specific games?', a: 'Yes — live event targeting available. Run during specific NFL games, college bowls, postseason events, or seasonal windows. Ideal for tied-to-event campaigns.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/digital-ads/ott-sports#webpage', url: 'https://killerspots.com/services/digital-ads/ott-sports', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Digital Ads', item: 'https://killerspots.com/services/digital-ads' }, { '@type': 'ListItem', position: 3, name: 'OTT / Sports', item: 'https://killerspots.com/services/digital-ads/ott-sports' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/digital-ads" class="hover:text-white">Digital Ads</a><span class="mx-2">/</span><span class="text-ink">OTT / Sports</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">OTT Sports Streaming</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Reach sports fans <span class="text-brand-500">when their attention is locked.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">ESPN+, Peacock, Paramount+, NFL+, MLB.TV — live sports streaming inventory geo-targeted to your service area. Highest engagement digital video buys.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an OTT Sports Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Live sports has the highest concurrent attention in streaming. We help local advertisers buy it without buying out the whole game.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Six layers of sports-streaming media.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">OTT sports questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Reach Sports Fans</span><h2 class="section-headline mt-5">Tell us your geo and your team. We'll build the buy.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your audience, your seasonal windows, and your creative — then come back with a sports media plan.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Digital Ads | CTV, OTT, Programmatic, Geo-Fencing | Killerspots',
+  description: 'Digital advertising beyond paid search — CTV/streaming, OTT/sports, programmatic display, geo-fencing, and email campaigns. Premium reach with creative production included.',
+  ogTitle: 'CTV, OTT, Programmatic & Geo-Fencing Digital Ads | Killerspots',
+  ogDescription: 'Connected TV, sports streaming, programmatic display, geo-fencing, and email campaigns. Premium video reach at fractional broadcast cost.',
+};
+
+const trustPills = ['CTV/OTT Specialists', 'Geo-Fencing Pros', 'Creative Included'];
+
+const services = [
+  { title: 'CTV / Streaming', href: '/services/digital-ads/ctv-streaming', body: 'Hulu, YouTube TV, Roku, Amazon Fire — TV-quality video on the platforms your customers actually watch.' },
+  { title: 'OTT / Sports', href: '/services/digital-ads/ott-sports', body: 'Live sports streaming inventory — ESPN+, Peacock, Paramount+, NFL+. Premium reach during high-engagement viewing.' },
+  { title: 'Programmatic Display', href: '/services/digital-ads/programmatic-display', body: 'Banner and native display across millions of premium publishers. Audience targeting, retargeting, and brand-safety controls.' },
+  { title: 'Geo-Fencing', href: '/services/digital-ads/geo-fencing', body: 'Hyper-local targeting — competitor locations, event venues, neighborhoods, ZIP codes. Hit prospects exactly where they are.' },
+  { title: 'Email Campaigns', href: '/services/digital-ads/email-campaigns', body: 'Email marketing campaigns with creative, deliverability, segmentation, and reporting. Integrated with LeadConnector.' },
+];
+
+const why = [
+  { title: 'Premium Inventory, Local Budgets', body: 'Run on Hulu, ESPN+, and premium publishers at hyper-local CPMs. Most of our clients didn\'t know this was possible.' },
+  { title: 'Creative Production In-House', body: 'TV-quality video and display creative produced by our studio alongside campaign management. No separate creative vendor.' },
+  { title: 'Geo-Fencing That Actually Works', body: 'Drop fences around competitor locations, event venues, and high-intent ZIPs. Re-target visitors for 30 days. Real attribution.' },
+  { title: 'Cross-Channel Attribution', body: 'CTV, programmatic, and email reported in one dashboard. See which channels actually drive conversions vs. just deliver impressions.' },
+];
+
+const faqs = [
+  { q: 'Is CTV worth it for a local business?', a: 'Yes — if you\'re running geo-targeted. Local CTV CPMs are competitive with traditional TV but with better targeting and tracking. Best for service businesses with $5K+/mo in video ad budget.' },
+  { q: 'How does geo-fencing work in practice?', a: 'We drop a virtual fence (50–500 ft typically) around target locations — your competitors, events your prospects attend, or specific neighborhoods. Devices that enter the fence get retargeted with display/video ads for 30 days.' },
+  { q: 'What\'s the minimum CTV budget?', a: 'Most CTV inventory works at $3K+/mo. Below that, the math gets thin once you account for creative production. We can do smaller test budgets to validate.' },
+  { q: 'Do you do creative for CTV?', a: 'Yes — :15 and :30 spots produced in our Cincinnati studio. Same broadcast-quality production we use for TV. Creative typically runs separately from media spend.' },
+  { q: 'How do you measure CTV success?', a: 'View-through conversions, household-level attribution, and post-impression web traffic. Plus uplift studies for larger campaigns. Reporting includes channel-level CPA where attribution is possible.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/digital-ads#webpage', url: 'https://killerspots.com/services/digital-ads', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Digital Ads', item: 'https://killerspots.com/services/digital-ads' }] };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Digital Advertising', provider: { '@id': 'https://killerspots.com/#localbusiness' }, areaServed: 'US', description: meta.description, url: 'https://killerspots.com/services/digital-ads' };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Digital Ads</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Premium reach <span class="text-brand-500">at fractional broadcast cost.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">CTV, OTT sports, programmatic display, geo-fencing, and email campaigns. TV-quality creative on streaming platforms — geo-targeted to neighborhoods you actually serve.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Digital Ads Quote</a><a href="#services" class="btn btn-ghost">See Channels</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Streaming TV is now bigger than broadcast for many demos. Local advertisers can buy this inventory — most don\'t know how. We do it for them.</p></div></div></section>
+
+  <section id="services" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Channels We Run</span><h2 class="section-headline mt-5">Reach prospects where they actually are.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why Killerspots</span><h2 class="section-headline mt-5">Streaming + production + targeting under one roof.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{why.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Digital ads questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Reach Premium Audiences</span><h2 class="section-headline mt-5">Tell us your market. We'll build the buy.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your audience, your geos, and your budget — then come back with a media plan and creative recommendation.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

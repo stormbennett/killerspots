@@ -1,0 +1,1938 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../data/navigation';
+const { killerSeox: killerSeoxLogo } = logoUrls;
+
+const meta = {
+  title: 'Full-Service Creative & Digital Marketing Agency | Killerspots',
+  description:
+    'Award-winning full-service marketing agency in Cincinnati specializing in jingles, SEO, PPC, CTV ads, and AI marketing solutions for home services, legal, small business, and radio station groups.',
+  ogTitle: "America's Top Jingle Producers + Digital Marketing Agency | Killerspots",
+  ogDescription:
+    'Killerspots is a full-service creative and digital marketing agency specializing in jingle production, SEO, PPC, CTV advertising, and AI-powered marketing solutions. 25+ years, 6x Telly Award winner.',
+};
+
+const trustPills = ['Since 1999', '25+ Years', '6× Telly Award Winner'];
+
+const industryCards = [
+  {
+    title: 'Home Services',
+    href: '/industries/home-services',
+    body:
+      'HVAC, plumbing, roofing, electrical, landscaping, pool & spa. We drive leads with SEO, local PPC, and jingle radio.',
+  },
+  {
+    title: 'Legal Services',
+    href: '/industries/legal',
+    body:
+      'Personal injury, family law, and general practice. Proven lead generation for high-value cases.',
+  },
+  {
+    title: 'Small Business',
+    href: '/industries/small-business',
+    body:
+      'General small business marketing — SEO, PPC, social, and jingles. Affordable, integrated growth for local and regional brands.',
+  },
+  {
+    title: 'Radio Stations & Groups',
+    href: '/industries/radio-stations-groups',
+    body:
+      'White-label production and digital marketing for radio station groups and broadcasters. We power your imaging, jingles, and advertiser campaigns.',
+  },
+  {
+    title: 'Platforms & White-Label',
+    href: '/industries/platforms-agencies',
+    body:
+      'Agencies and service providers: resell our creative and digital services under your brand. We handle delivery, you keep the margin.',
+  },
+];
+
+const serviceCards = [
+  {
+    title: 'Audio Production',
+    href: '/services/audio-production',
+    body:
+      'Custom jingles, voice-overs, sonic branding, and radio commercials. 25+ years making music that sells.',
+  },
+  {
+    title: 'Video Production',
+    href: '/services/video-tv',
+    body:
+      'TV commercials, testimonial videos, product demos, and brand films. Cinematic storytelling that drives action.',
+  },
+  {
+    title: 'SEO & AIO',
+    href: '/services/seo-aio',
+    body:
+      'Local and national SEO, AI-optimized content, schema markup, and technical optimization. Rank higher, attract more qualified leads.',
+  },
+  {
+    title: 'PPC Advertising',
+    href: '/services/ppc',
+    body:
+      'Google Ads, Bing, and local service ads (LSA). Experts in paid search for contractors, lawyers, and local small businesses.',
+  },
+  {
+    title: 'CTV & Digital Ads',
+    href: '/services/digital-ads',
+    body:
+      'Connected TV (OTT), display ads, programmatic buying, and video retargeting. Reach customers on their favorite streaming platforms.',
+  },
+  {
+    title: 'AI & Automation',
+    href: '/services/ai-services',
+    body:
+      'LeadConnector CRM, AI lead scoring, SMS automation, email sequences. Let AI handle the follow-up.',
+  },
+  {
+    title: 'Social Media Management',
+    href: '/services/social-media',
+    body:
+      'Done-for-you social — content calendar, daily posting, short-form video, paid ads, and community management. Instagram, Facebook, TikTok, LinkedIn, and YouTube — handled.',
+  },
+  {
+    title: 'Web Development',
+    href: '/services/websites',
+    body:
+      'Custom websites, landing pages, WordPress builds, and conversion optimization. Your site should sell, not just exist.',
+  },
+];
+
+const lcFeatures = [
+  {
+    title: 'AI Lead Scoring & Qualification',
+    body: 'Automatically identify your hottest prospects so your team focuses on high-intent leads.',
+  },
+  {
+    title: 'Two-Way SMS & Email Automation',
+    body: 'Set up drip campaigns, appointment reminders, and follow-ups that convert.',
+  },
+  {
+    title: 'Integrated Lead Capture',
+    body: 'Landing pages, forms, and chat widgets that capture leads 24/7 across all your marketing channels.',
+  },
+  {
+    title: 'Real-Time Pipeline Management',
+    body: 'See your full sales pipeline at a glance. Know exactly where every lead stands.',
+  },
+  {
+    title: 'Deal Closed & ROI Tracking',
+    body: 'Track which campaigns, keywords, and traffic sources actually close deals. Stop guessing.',
+  },
+  {
+    title: 'White-Label Option',
+    body: 'Agencies and platforms can rebrand LeadConnector and resell under their own name.',
+  },
+];
+
+type Stat = {
+  value: string;
+  label: string;
+  // Optional: animate the number portion. The display string is `prefix + counter + suffix`.
+  // Once the user fills in real numbers, swap to e.g. { counter: 1200, suffix: '+', value: '1.2K+' }.
+  counter?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+};
+
+const heroStats: Stat[] = [
+  { value: '[X]+', label: 'Clients served nationwide' },
+  { value: '[X]%', label: 'Avg. lead increase, first 90 days' },
+  { value: '[X]+', label: 'Campaigns active monthly' },
+  { value: '6×', label: 'Telly Award winner', counter: 6, suffix: '×' },
+];
+
+const seoxFeatures = [
+  'Local search opportunities',
+  'Technical SEO score',
+  'Competitor analysis',
+  'Content gaps',
+  'Quick action plan',
+];
+
+const clientLogos = [
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69dbc41a982fd67a35958717.jpg',
+  'https://storage.googleapis.com/funnel-ai-production/image-generation/E3Rv5E7JpJH3jrDtAbaE/mirrored-rSPc39aUPZ.webp',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656e62d60a230ff0797a44.jpeg',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656de1dbe4a56c73b6390c.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656ed4987e874b7d3b53ef.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656b85f92707ea5c1f953f.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/686567f86611c0fa543f2959.jpeg',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656d0d69e2a001d2860800.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/686566fadbe4a57dbab62cf0.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/686565ee8522136cb47a7c91.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/6865680a6611c0a4583f2979.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656abe3cf02d196b4fe827.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/67210f4f7a620e163d8c1092.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/66561246b4864ecdc9887d51.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/67210fcb699fa42ffbbf3c71.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/6865640e3cf02d1a2d4fde10.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/65a03f656ac4a451d65c65c8.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/66390d73ccb402cf85421f89.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69efa6310d66f2a665aba87c.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e69fa9ed4bb7f4ed4d054a.webp',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e67a3b774ef96b9bce79b9.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e67a3bed4bb7f4ed43108f.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e679642c135a8c83aeb898.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e67963cc4d90735ef35c81.webp',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e67e5ccc4d90735ef4b212.jpg',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e6796392b8c1ad7109ec65.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e679642c135a8c83aeb88b.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e6796338381eafa8eaa3c1.png',
+  'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69e67963c56ad279083d3519.svg',
+];
+
+const homeFaqs = [
+  {
+    q: 'What does Killerspots actually do?',
+    a: 'Three things, all under one roof: Technology (LeadConnector — our managed CRM), Advertising (PPC, social, CTV, plus traditional TV and radio), and Marketing (SEO, AI search visibility, social media management, jingles, video, and content). Most clients run an integrated marketing plan that combines all three.',
+  },
+  {
+    q: 'What size businesses do you work with?',
+    a: 'Most of our clients are doing $250K–$50M in annual revenue — local and regional businesses, multi-location brands, law firms, radio station groups, and white-label agency partners. We size every engagement to your stage, not a one-size-fits-all package.',
+  },
+  {
+    q: 'Do you require long-term contracts?',
+    a: 'Standard engagement is a 6-month minimum so the work has time to compound, then month-to-month. We don\'t lock you into multi-year deals — we earn the next month every month.',
+  },
+  {
+    q: 'Do you work with clients outside Cincinnati?',
+    a: 'Yes. Our office and studio are in Cincinnati, but most of our clients are spread across the U.S. — every state and a few internationally. We work remotely the same way we work locally.',
+  },
+  {
+    q: 'How fast can we launch a campaign?',
+    a: 'Audio production: 2–3 days. Paid ads: 1 week from kickoff. SEO compounds over 90–180 days. Websites: 4–8 weeks. We set timelines up front so promised dates hold.',
+  },
+  {
+    q: 'Why don\'t you show pricing on the website?',
+    a: 'Every plan is sized to the business — your market, your goals, your stage. Get a quote and we\'ll come back with something specific and honest. If we\'re not the right fit we\'ll tell you that too.',
+  },
+];
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/#webpage',
+  url: 'https://killerspots.com/',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://killerspots.com/',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, homeFaqSchema]}
+>
+  <!-- ======================================================== -->
+  <!-- SECTION 1: HERO — Vimeo background + headline overlay      -->
+  <!-- ======================================================== -->
+  <section class="hero-video relative overflow-hidden bg-canvas">
+    <!-- Video layer (scroll-scrubbed via .hero-scroll-bg) -->
+    <div class="hero-video__bg hero-scroll-bg" aria-hidden="true">
+      <iframe
+        src="https://player.vimeo.com/video/1175215931?background=1&autopause=0&app_id=58479"
+        title="Killerspots — 2026 Reel"
+        loading="eager"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        tabindex="-1"
+      ></iframe>
+    </div>
+
+    <!-- Dark + brand-tinted overlays for legibility (scrim deepens on scroll) -->
+    <div
+      aria-hidden="true"
+      class="hero-video__scrim hero-scroll-scrim absolute inset-0"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(180deg,_rgba(15,20,25,0.55)_0%,_rgba(15,20,25,0.78)_55%,_rgba(15,20,25,0.95)_100%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div
+      class="relative container-page pt-28 md:pt-36 lg:pt-44 pb-28 md:pb-36 lg:pb-44"
+    >
+      <!-- hero-scroll-text drives translateY on scroll for cinematic parallax -->
+      <div class="hero-scroll-text max-w-5xl">
+        <h1
+          id="hero-headline"
+          class="hero-headline drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+        >
+          <span class="hero-headline-reveal"
+            ><span>Your Full-Service Marketing Agency For</span></span
+          >
+          <span class="hero-headline-reveal"
+            ><span class="text-brand-500"
+              >Creative, Digital &amp; AI Solutions</span
+            ></span
+          >
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
+        >
+          Killerspots combines award-winning creative production—jingles, TV, and radio
+          commercials—with full-stack digital marketing (SEO, PPC, CTV) and AI-powered CRM
+          solutions. We're the only agency that brings it all together under one roof.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a
+            href="/services/seo-aio/killerseox-audit"
+            class="btn btn-primary magnetic"
+          >
+            Get Your Free Marketing Audit
+          </a>
+          <a
+            href="https://vimeo.com/1175215931"
+            rel="noopener"
+            target="_blank"
+            class="btn btn-ghost magnetic"
+          >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M5 3.5v9l7-4.5z" />
+            </svg>
+            Watch the Reel
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero-video {
+      isolation: isolate;
+    }
+    .hero-video__bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-video__bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 of 100vw */
+      min-height: 100%;
+      min-width: 177.7778vh; /* 16:9 of 100vh */
+      transform: translate(-50%, -50%);
+      border: 0;
+    }
+    .hero-video__scrim {
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-video > .container-page {
+      z-index: 2;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video__bg iframe {
+        display: none;
+      }
+      .hero-video__bg {
+        background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+      }
+    }
+  </style>
+
+  <!-- ======================================================== -->
+  <!-- TRUST BAND — pills + supporting copy below the hero       -->
+  <!-- ======================================================== -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20 lg:py-24">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Since 1999, we've helped home service contractors, law firms, small businesses,
+          radio station groups, and white-label partners dominate their markets. Proven results.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- CLIENT LOGOS MARQUEE                                       -->
+  <!-- ======================================================== -->
+  <section class="bg-canvas border-t border-b border-white/5">
+    <div class="container-page pt-12 md:pt-14 pb-4">
+      <p
+        class="text-center text-xs uppercase tracking-[0.22em] text-muted"
+        data-reveal
+      >
+        Trusted by brands across every industry
+      </p>
+    </div>
+
+    <div class="logos-marquee py-8 md:py-10" aria-label="Client logos">
+      <div class="logos-track">
+        {
+          clientLogos.map((src) => (
+            <img
+              src={src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="logos-item"
+            />
+          ))
+        }
+        {
+          /* duplicate set for seamless loop */
+          clientLogos.map((src) => (
+            <img
+              src={src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+              class="logos-item"
+            />
+          ))
+        }
+      </div>
+      <!-- Second row drifts in the opposite direction at slower speed for depth -->
+      <div class="logos-track logos-track--reverse" aria-hidden="true">
+        {
+          [...clientLogos]
+            .reverse()
+            .map((src) => (
+              <img
+                src={src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="logos-item"
+              />
+            ))
+        }
+        {
+          [...clientLogos]
+            .reverse()
+            .map((src) => (
+              <img
+                src={src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="logos-item"
+              />
+            ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .logos-marquee {
+      overflow: hidden;
+      mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 80px,
+        #000 calc(100% - 80px),
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 80px,
+        #000 calc(100% - 80px),
+        transparent 100%
+      );
+    }
+    .logos-track {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      width: max-content;
+      animation: logos-marquee 80s linear infinite;
+    }
+    .logos-marquee:hover .logos-track {
+      animation-play-state: paused;
+    }
+    .logos-item {
+      height: 44px;
+      max-height: 44px;
+      width: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: grayscale(1) brightness(2.2) contrast(0.9);
+      opacity: 0.75;
+      transition:
+        filter 0.3s,
+        opacity 0.3s;
+    }
+    .logos-item:hover {
+      filter: none;
+      opacity: 1;
+    }
+    @keyframes logos-marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logos-track {
+        animation: none;
+      }
+    }
+    @media (min-width: 768px) {
+      .logos-item {
+        height: 56px;
+        max-height: 56px;
+      }
+      .logos-track {
+        gap: 4.5rem;
+      }
+    }
+  </style>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 3: INDUSTRY SELECTOR GRID                          -->
+  <!-- ======================================================== -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32 lg:py-40">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Who We Help</span>
+        <h2 class="section-headline mt-5">
+          25+ years perfecting marketing for specific industries.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Whether you're in home services, legal, a local small business, a radio station
+          group, or an agency reselling under your brand, we speak your language and
+          understand your growth challenges.
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          industryCards.map((card) => (
+            <li data-reveal>
+              <a href={card.href} class="card-tile group">
+                <h3 class="text-xl md:text-2xl font-semibold text-white">{card.title}</h3>
+                <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{card.body}</p>
+                <div class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 group-hover:text-brand-300">
+                  Explore industry
+                  <svg
+                    class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- THREE PILLARS — Technology / Advertising / Marketing       -->
+  <!-- ======================================================== -->
+  <section class="bg-canvas cursor-glow">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">How We Help</span>
+        <h2 class="section-headline mt-5">
+          Three pillars. One growth engine.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Most agencies pick one — creative, ads, or tech — and lean on partners for the
+          rest. We do all three under one roof, so they actually work together.
+        </p>
+      </div>
+
+      <ul class="grid md:grid-cols-3 gap-5 md:gap-6">
+        <!-- TECHNOLOGY -->
+        <li data-reveal>
+          <a
+            href="/leadconnector"
+            class="pillar-card tilt-card group"
+            aria-label="Technology — LeadConnector"
+          >
+            <div class="pillar-card__visual pillar-card__visual--tech">
+              <!-- LeadConnector dashboard screenshot lives here.
+                   Drop the file at: public/images/leadconnector/dashboard.png
+                   It will load automatically. While missing, the LC logo
+                   shows on the gradient as a fallback. -->
+              <img
+                src="/images/leadconnector/dashboard.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="pillar-card__shot"
+                onerror="this.style.display='none'"
+              />
+              <img
+                src={logoUrls.leadConnector}
+                alt=""
+                width="280"
+                height="56"
+                class="pillar-card__logo h-12 md:h-14 w-auto drop-shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="pillar-card__chips">
+                <span class="pillar-chip">CRM</span>
+                <span class="pillar-chip">AI Lead Scoring</span>
+                <span class="pillar-chip">SMS + Email</span>
+              </div>
+            </div>
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Technology</h3>
+              <p class="pillar-card__desc">
+                Revenue-driven technology, built for you. LeadConnector is our proprietary
+                CRM with AI lead scoring, automation, and 24/7 follow-up — so leads never
+                go cold while you're working.
+              </p>
+              <span class="pillar-card__cta">
+                Explore LeadConnector
+                <svg
+                  class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <!-- ADVERTISING -->
+        <li data-reveal>
+          <a
+            href="/services/ppc"
+            class="pillar-card tilt-card group"
+            aria-label="Advertising — PPC and On-Air"
+          >
+            <div class="pillar-card__visual pillar-card__visual--ads">
+              <svg
+                class="h-14 md:h-16 w-auto text-brand-500 drop-shadow-[0_8px_32px_rgba(239,82,83,0.4)]"
+                viewBox="0 0 64 64"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="32" cy="32" r="6" fill="currentColor" />
+                <path
+                  d="M22 22a14 14 0 0 0 0 20M42 22a14 14 0 0 1 0 20M14 14a26 26 0 0 0 0 36M50 14a26 26 0 0 1 0 36"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="pillar-card__chips">
+                <span class="pillar-chip">Google Ads</span>
+                <span class="pillar-chip">LSA</span>
+                <span class="pillar-chip">CTV / OTT</span>
+                <span class="pillar-chip">TV + Radio</span>
+              </div>
+            </div>
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Advertising</h3>
+              <p class="pillar-card__desc">
+                Advertising that spends and targets intelligently — paid search, paid
+                social, programmatic, CTV, and traditional on-air (TV and radio) all
+                coordinated as one media plan.
+              </p>
+              <span class="pillar-card__cta">
+                See PPC + On-Air
+                <svg
+                  class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </li>
+
+        <!-- MARKETING -->
+        <li data-reveal>
+          <a
+            href="/services/seo-aio"
+            class="pillar-card tilt-card group"
+            aria-label="Marketing — SEO, Social, Content"
+          >
+            <div class="pillar-card__visual pillar-card__visual--mkt">
+              <svg
+                class="h-14 md:h-16 w-auto text-brand-500 drop-shadow-[0_8px_32px_rgba(239,82,83,0.4)]"
+                viewBox="0 0 64 64"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="28"
+                  cy="28"
+                  r="14"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+                <path
+                  d="M40 40l12 12"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M22 28h12M28 22v12"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="pillar-card__chips">
+                <span class="pillar-chip">SEO + AIO</span>
+                <span class="pillar-chip">Social Media</span>
+                <span class="pillar-chip">Content</span>
+                <span class="pillar-chip">Jingles</span>
+              </div>
+            </div>
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Marketing</h3>
+              <p class="pillar-card__desc">
+                Marketing that brings the right clients at the right time — SEO and AI
+                search visibility, social media management, content, jingles, and creative
+                that makes you impossible to forget.
+              </p>
+              <span class="pillar-card__cta">
+                Explore SEO &amp; Marketing
+                <svg
+                  class="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <style>
+    .pillar-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1a1f2e;
+      transition:
+        transform 0.4s ease,
+        border-color 0.3s ease,
+        box-shadow 0.4s ease;
+    }
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(239, 82, 83, 0.4);
+      box-shadow: 0 28px 60px -28px rgba(239, 82, 83, 0.35);
+    }
+    .pillar-card__visual {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.75rem 1.75rem 1.5rem;
+      overflow: hidden;
+    }
+    .pillar-card__visual--tech {
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(99, 102, 241, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(168, 85, 247, 0.3) 0%, transparent 60%),
+        linear-gradient(135deg, #1e1b4b 0%, #1a1f2e 100%);
+    }
+    .pillar-card__shot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      opacity: 0.5;
+      transform: scale(1.04);
+      transition: opacity 500ms var(--ease-cinema), transform 700ms var(--ease-cinema);
+      mix-blend-mode: luminosity;
+      filter: contrast(1.05) brightness(1.05);
+    }
+    .pillar-card:hover .pillar-card__shot {
+      opacity: 0.8;
+      transform: scale(1);
+      mix-blend-mode: normal;
+    }
+    .pillar-card__logo {
+      position: relative;
+      z-index: 2;
+    }
+    .pillar-card__visual--ads {
+      background:
+        radial-gradient(ellipse at 30% 0%, rgba(239, 82, 83, 0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(245, 158, 11, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #2a1a1a 0%, #1a1f2e 100%);
+    }
+    .pillar-card__visual--mkt {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(239, 82, 83, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(34, 197, 94, 0.18) 0%, transparent 60%),
+        linear-gradient(135deg, #1f2937 0%, #1a1f2e 100%);
+    }
+    .pillar-card__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .pillar-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+    .pillar-card__body {
+      padding: 1.75rem 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .pillar-card__title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      line-height: 1.05;
+    }
+    .pillar-card__desc {
+      margin-top: 0.85rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #8a8f98;
+      flex: 1;
+    }
+    .pillar-card__cta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #ef5253;
+      transition: color 0.2s;
+    }
+    .pillar-card.group:hover .pillar-card__cta {
+      color: #fca5a6;
+    }
+  </style>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 4: LEADCONNECTOR PRODUCT SPOTLIGHT                 -->
+  <!-- ======================================================== -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-40 top-10 h-[560px] w-[560px] rounded-full bg-brand-500/12 blur-[140px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32 lg:py-40">
+      <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div class="lg:col-span-7" data-reveal>
+          <span class="eyebrow">LeadConnector</span>
+          <h2 class="section-headline mt-5">
+            Meet LeadConnector: your CRM + marketing automation powerhouse.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            Built by marketers, for marketers. LeadConnector is our proprietary AI-powered
+            marketing solution that manages leads, automates follow-up, and turns prospects
+            into paying customers—all in one platform.
+          </p>
+
+          <p class="mt-6 text-base md:text-lg text-ink leading-relaxed max-w-2xl">
+            LeadConnector isn't just another CRM. It's built to work hand-in-hand with our
+            creative and digital marketing services. Your jingle drives awareness. Your SEO
+            and PPC drive traffic. LeadConnector captures the lead, qualifies it with AI, and
+            automates the follow-up. One integrated system. One partner. Better results.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href="/contact" class="btn btn-primary">Schedule LeadConnector Demo</a>
+            <a href="/leadconnector" class="btn btn-ghost">Learn More</a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" data-reveal>
+          <div class="rounded-2xl border border-white/10 bg-surface p-8 md:p-12">
+            <img
+              src={logoUrls.leadConnector}
+              alt="LeadConnector"
+              width="320"
+              height="64"
+              class="h-14 md:h-20 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="mt-7 md:mt-8 text-sm md:text-base text-muted leading-relaxed">
+              Operated and supported by Killerspots Agency — fully white-labeled CRM and
+              automation platform for agencies, contractors, and multi-location brands.
+            </p>
+            <div class="mt-8 grid grid-cols-3 gap-3 text-center">
+              <div class="rounded-xl border border-white/10 bg-canvas p-4">
+                <div class="text-xl md:text-2xl font-bold text-white">1×</div>
+                <div class="text-[10px] uppercase tracking-[0.18em] text-muted mt-1">
+                  Inbox
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-canvas p-4">
+                <div class="text-xl md:text-2xl font-bold text-white">∞</div>
+                <div class="text-[10px] uppercase tracking-[0.18em] text-muted mt-1">
+                  Automations
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-canvas p-4">
+                <div class="text-xl md:text-2xl font-bold text-white">24/7</div>
+                <div class="text-[10px] uppercase tracking-[0.18em] text-muted mt-1">
+                  AI follow-up
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="mt-16 md:mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {
+          lcFeatures.map((f) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 hover:border-brand-500/30 hover:shadow-[0_14px_40px_-16px_rgba(239,82,83,0.2)] transition-all duration-300"
+            >
+              <div class="flex items-start gap-3">
+                <span class="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-500">
+                  <svg
+                    class="h-3.5 w-3.5"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 7.5l3 3L12 3"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="text-base md:text-lg font-semibold text-white">{f.title}</h3>
+                  <p class="mt-2 text-sm text-muted leading-relaxed">{f.body}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 5: SERVICES OVERVIEW                               -->
+  <!-- ======================================================== -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32 lg:py-40">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Our Solutions</span>
+        <h2 class="section-headline mt-5">
+          From a jingle that sticks to AI that closes.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Killerspots is the only full-service creative and digital marketing agency that
+          delivers everything—from audio jingles that stick in your customers' heads to
+          AI-powered marketing automation that closes deals.
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          serviceCards.map((card) => (
+            <li data-reveal>
+              <a href={card.href} class="card-tile group">
+                <h3 class="text-lg md:text-xl font-semibold text-white">{card.title}</h3>
+                <p class="mt-3 text-sm text-muted leading-relaxed">{card.body}</p>
+                <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                  Explore
+                  <svg
+                    class="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 6: SOCIAL PROOF — massive stats + TrustIndex       -->
+  <!-- ======================================================== -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32 lg:py-40">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Receipts</span>
+        <h2 class="section-headline mt-5">
+          Proven results across thousands of campaigns.
+        </h2>
+      </div>
+
+      <div data-reveal>
+        <div class="hairline-accent"></div>
+        <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-14 pt-14 md:pt-16">
+          {
+            heroStats.map((s) => (
+              <div>
+                {s.counter !== undefined ? (
+                  <dd
+                    class="stat-num stat-counter"
+                    data-counter-to={s.counter}
+                    data-counter-prefix={s.prefix ?? ''}
+                    data-counter-suffix={s.suffix ?? ''}
+                    data-counter-decimals={s.decimals ?? 0}
+                  >
+                    {(s.prefix ?? '') + '0' + (s.suffix ?? '')}
+                  </dd>
+                ) : (
+                  <dd class="stat-num">{s.value}</dd>
+                )}
+                <dt class="mt-4 text-xs uppercase tracking-[0.22em] text-muted">
+                  {s.label}
+                </dt>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <!-- TrustIndex: static 5-star Google badge (renders at script location) -->
+      <div class="mt-16 md:mt-20" data-reveal>
+        <script
+          is:inline
+          defer
+          async
+          src="https://cdn.trustindex.io/loader.js?46161665119d547cd536335c46f"></script>
+      </div>
+
+      <!-- TrustIndex: scrolling reviews carousel (renders at script location) -->
+      <div class="mt-16 md:mt-20" data-reveal>
+        <script
+          is:inline
+          defer
+          async
+          src="https://cdn.trustindex.io/loader.js?77f01104828f3674bd769ded49a"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 7: KILLERSEOX FREE AUDIT — live widget             -->
+  <!-- ======================================================== -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -left-32 -top-20 h-[500px] w-[500px] rounded-full bg-brand-500/10 blur-[140px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32 lg:py-40">
+      <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-center">
+        <div class="lg:col-span-6" data-reveal>
+          <img
+            src={killerSeoxLogo}
+            alt="KillerSEOx"
+            width="200"
+            height="48"
+            class="h-12 w-auto mb-6"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="eyebrow">KillerSEOx</span>
+          <h2 class="section-headline mt-5">
+            See how your website ranks—for free.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            KillerSEOx is our proprietary SEO &amp; AI visibility audit. Plug in your domain
+            and we'll scan it for ranking potential, technical issues, content gaps, AI
+            search visibility, and competitors. Get a full report in seconds—no credit card
+            required.
+          </p>
+          <ul class="mt-8 flex flex-wrap gap-2">
+            {
+              seoxFeatures.map((f) => (
+                <li class="rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1.5 text-xs text-ink">
+                  {f}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-8 text-sm text-muted max-w-xl leading-relaxed">
+            Run your free audit now. It takes 60 seconds and could save your business from
+            leaving thousands of dollars on the table in missed leads.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6" data-reveal>
+          <!-- ============================================ -->
+          <!-- KillerSEOx Website Audit Widget              -->
+          <!-- ============================================ -->
+          <div class="ksx-audit-widget" id="ksxWidget">
+            <div class="ksx-inner">
+              <h2 class="ksx-headline">Get Your Free Website <span>SEO Audit</span></h2>
+              <p class="ksx-subhead">
+                See how your site performs in search engines and AI — results in under 60
+                seconds.
+              </p>
+              <div class="ksx-steps">
+                <div class="ksx-step active" id="ksxStep1Ind">
+                  <div class="ksx-step-num">1</div><span>Your Site</span>
+                </div>
+                <div class="ksx-step-line" id="ksxLine1"></div>
+                <div class="ksx-step" id="ksxStep2Ind">
+                  <div class="ksx-step-num">2</div><span>Your Info</span>
+                </div>
+                <div class="ksx-step-line" id="ksxLine2"></div>
+                <div class="ksx-step" id="ksxStep3Ind">
+                  <div class="ksx-step-num">3</div><span>Results</span>
+                </div>
+              </div>
+              <div class="ksx-form-step active" id="ksxFormStep1">
+                <div class="ksx-field ksx-url-field">
+                  <label for="ksxUrl">Website URL</label>
+                  <input
+                    type="url"
+                    id="ksxUrl"
+                    placeholder="yourbusiness.com"
+                    autocomplete="url"
+                  />
+                </div>
+                <button class="ksx-btn" onclick="ksxNextStep(1)">
+                  Analyze My Website &rarr;
+                </button>
+              </div>
+              <div class="ksx-form-step" id="ksxFormStep2">
+                <div class="ksx-url-chip" id="ksxUrlChip">🔗 —</div>
+                <div class="ksx-field-row">
+                  <div class="ksx-field">
+                    <label for="ksxFirst">First Name</label>
+                    <input
+                      type="text"
+                      id="ksxFirst"
+                      placeholder="John"
+                      autocomplete="given-name"
+                    />
+                  </div>
+                  <div class="ksx-field">
+                    <label for="ksxLast">Last Name</label>
+                    <input
+                      type="text"
+                      id="ksxLast"
+                      placeholder="Smith"
+                      autocomplete="family-name"
+                    />
+                  </div>
+                </div>
+                <div class="ksx-field">
+                  <label for="ksxEmail">Business Email</label>
+                  <input
+                    type="email"
+                    id="ksxEmail"
+                    placeholder="john@yourbusiness.com"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="ksx-field-row">
+                  <div class="ksx-field">
+                    <label for="ksxPhone">Phone</label>
+                    <input
+                      type="tel"
+                      id="ksxPhone"
+                      placeholder="(555) 123-4567"
+                      autocomplete="tel"
+                    />
+                  </div>
+                  <div class="ksx-field">
+                    <label for="ksxBiz">Business Name</label>
+                    <input
+                      type="text"
+                      id="ksxBiz"
+                      placeholder="Your Company"
+                      autocomplete="organization"
+                    />
+                  </div>
+                </div>
+                <button class="ksx-btn" id="ksxSubmitBtn" onclick="ksxNextStep(2)">
+                  Get My Free Report &rarr;
+                </button>
+                <p class="ksx-privacy">🔒 Your information is secure and never shared.</p>
+              </div>
+              <div class="ksx-form-step" id="ksxFormStep3">
+                <div class="ksx-loading active" id="ksxLoadingState">
+                  <div class="ksx-spinner"></div>
+                  <div class="ksx-loading-text" id="ksxLoadingText">
+                    Scanning your website...
+                  </div>
+                  <div class="ksx-loading-sub" id="ksxLoadingSub">
+                    This usually takes 30–60 seconds
+                  </div>
+                  <div class="ksx-progress-bar">
+                    <div class="ksx-progress-fill" id="ksxProgress"></div>
+                  </div>
+                  <div class="ksx-check-list">
+                    <div class="ksx-check-item-anim active" id="ksxChk1">
+                      <div class="ksx-ci-icon">●</div>Checking SSL &amp; security
+                    </div>
+                    <div class="ksx-check-item-anim" id="ksxChk2">
+                      <div class="ksx-ci-icon">●</div>Analyzing page speed
+                    </div>
+                    <div class="ksx-check-item-anim" id="ksxChk3">
+                      <div class="ksx-ci-icon">●</div>Auditing on-page SEO
+                    </div>
+                    <div class="ksx-check-item-anim" id="ksxChk4">
+                      <div class="ksx-ci-icon">●</div>Scanning technical issues
+                    </div>
+                    <div class="ksx-check-item-anim" id="ksxChk5">
+                      <div class="ksx-ci-icon">●</div>Measuring AI visibility
+                    </div>
+                    <div class="ksx-check-item-anim" id="ksxChk6">
+                      <div class="ksx-ci-icon">●</div>Generating your report
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KillerSEOx widget styles + script — inlined as authored, white card sits on dark section -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style is:global>
+    .ksx-audit-widget {
+      --ksx-blue: #2d6cca;
+      --ksx-blue-bright: #3b82f6;
+      --ksx-blue-dark: #1e4d94;
+      --ksx-blue-light: #eff6ff;
+      --ksx-blue-100: #dbeafe;
+      --ksx-white: #ffffff;
+      --ksx-black: #111827;
+      --ksx-gray-50: #f9fafb;
+      --ksx-gray-100: #f3f4f6;
+      --ksx-gray-200: #e5e7eb;
+      --ksx-gray-300: #d1d5db;
+      --ksx-gray-400: #9ca3af;
+      --ksx-gray-500: #6b7280;
+      --ksx-gray-600: #4b5563;
+      --ksx-gray-700: #374151;
+      --ksx-red: #ef4444;
+      --ksx-green: #22c55e;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ksx-white);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+      border: 1px solid var(--ksx-gray-200);
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.06),
+        0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .ksx-inner {
+      padding: 36px 32px;
+      position: relative;
+    }
+    .ksx-headline {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ksx-black);
+      line-height: 1.2;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .ksx-headline span {
+      color: var(--ksx-blue);
+    }
+    .ksx-subhead {
+      font-size: 15px;
+      color: var(--ksx-gray-500);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .ksx-steps {
+      display: flex;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .ksx-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ksx-gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: color 0.3s;
+    }
+    .ksx-step.active {
+      color: var(--ksx-blue);
+    }
+    .ksx-step.completed {
+      color: var(--ksx-gray-600);
+    }
+    .ksx-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--ksx-gray-100);
+      color: var(--ksx-gray-400);
+      transition: all 0.3s;
+    }
+    .ksx-step.active .ksx-step-num {
+      background: var(--ksx-blue);
+      color: var(--ksx-white);
+      box-shadow: 0 2px 8px rgba(45, 108, 202, 0.3);
+    }
+    .ksx-step.completed .ksx-step-num {
+      background: var(--ksx-blue-light);
+      color: var(--ksx-blue);
+    }
+    .ksx-step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--ksx-gray-200);
+      margin: 0 12px;
+      border-radius: 1px;
+    }
+    .ksx-form-step {
+      display: none;
+    }
+    .ksx-form-step.active {
+      display: block;
+      animation: ksxFadeIn 0.3s ease;
+    }
+    @keyframes ksxFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .ksx-field {
+      margin-bottom: 14px;
+    }
+    .ksx-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ksx-gray-700);
+      margin-bottom: 5px;
+    }
+    .ksx-field input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--ksx-white);
+      border: 1.5px solid var(--ksx-gray-300);
+      border-radius: 8px;
+      color: var(--ksx-black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .ksx-field input:focus {
+      border-color: var(--ksx-blue);
+      box-shadow: 0 0 0 3px rgba(45, 108, 202, 0.1);
+    }
+    .ksx-field input::placeholder {
+      color: var(--ksx-gray-400);
+    }
+    .ksx-field input.ksx-error {
+      border-color: var(--ksx-red);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+    }
+    .ksx-field-row {
+      display: flex;
+      gap: 12px;
+    }
+    .ksx-field-row .ksx-field {
+      flex: 1;
+    }
+    .ksx-url-field {
+      position: relative;
+    }
+    .ksx-url-field input {
+      padding-left: 40px;
+    }
+    .ksx-url-field::before {
+      content: '🔗';
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      pointer-events: none;
+      margin-top: 11px;
+    }
+    .ksx-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--ksx-blue);
+      color: var(--ksx-white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition:
+        background 0.2s,
+        transform 0.15s,
+        box-shadow 0.2s;
+      letter-spacing: 0.2px;
+      margin-top: 6px;
+    }
+    .ksx-btn:hover {
+      background: var(--ksx-blue-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(45, 108, 202, 0.3);
+    }
+    .ksx-btn:active {
+      transform: translateY(0);
+    }
+    .ksx-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .ksx-privacy {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--ksx-gray-400);
+    }
+    .ksx-url-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ksx-blue-light);
+      border: 1px solid var(--ksx-blue-100);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: var(--ksx-blue-dark);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .ksx-loading {
+      display: none;
+      text-align: center;
+      padding: 32px 0;
+    }
+    .ksx-loading.active {
+      display: block;
+    }
+    .ksx-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--ksx-gray-200);
+      border-top-color: var(--ksx-blue);
+      border-radius: 50%;
+      animation: ksxSpin 0.8s linear infinite;
+      margin: 0 auto 18px;
+    }
+    @keyframes ksxSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .ksx-loading-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ksx-black);
+      margin-bottom: 4px;
+    }
+    .ksx-loading-sub {
+      font-size: 13px;
+      color: var(--ksx-gray-400);
+    }
+    .ksx-progress-bar {
+      width: 220px;
+      height: 4px;
+      background: var(--ksx-gray-200);
+      border-radius: 2px;
+      margin: 16px auto 0;
+      overflow: hidden;
+    }
+    .ksx-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ksx-blue-dark), var(--ksx-blue-bright));
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+    .ksx-check-list {
+      text-align: left;
+      max-width: 280px;
+      margin: 20px auto 0;
+    }
+    .ksx-check-item-anim {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 13px;
+      color: var(--ksx-gray-400);
+      transition: color 0.3s;
+    }
+    .ksx-check-item-anim.done {
+      color: var(--ksx-gray-600);
+    }
+    .ksx-check-item-anim .ksx-ci-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      background: var(--ksx-gray-100);
+      color: var(--ksx-gray-400);
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    .ksx-check-item-anim.done .ksx-ci-icon {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--ksx-green);
+    }
+    .ksx-check-item-anim.active {
+      color: var(--ksx-blue);
+      font-weight: 500;
+    }
+    .ksx-check-item-anim.active .ksx-ci-icon {
+      background: var(--ksx-blue-light);
+      color: var(--ksx-blue);
+      animation: ksxPulse 1.2s infinite;
+    }
+    @keyframes ksxPulse {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(45, 108, 202, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(45, 108, 202, 0);
+      }
+    }
+    @media (max-width: 500px) {
+      .ksx-inner {
+        padding: 24px 20px;
+      }
+      .ksx-headline {
+        font-size: 22px;
+      }
+      .ksx-field-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .ksx-step span {
+        display: none;
+      }
+    }
+  </style>
+  <script is:inline>
+    var AUDIT_API_URL = 'https://killerseox-audit.killerspots.workers.dev/audit';
+    var auditReportUrl = null;
+    function ksxNextStep(currentStep) {
+      if (currentStep === 1) {
+        var urlInput = document.getElementById('ksxUrl');
+        var url = urlInput.value.trim();
+        if (!url) {
+          urlInput.classList.add('ksx-error');
+          urlInput.focus();
+          return;
+        }
+        if (!url.match(/^https?:\/\//)) url = 'https://' + url;
+        if (!url.match(/\.[a-z]{2,}/i)) {
+          urlInput.classList.add('ksx-error');
+          urlInput.focus();
+          return;
+        }
+        urlInput.value = url;
+        document.getElementById('ksxUrlChip').textContent =
+          '🔗 ' + url.replace(/^https?:\/\//, '');
+        document.getElementById('ksxFormStep1').classList.remove('active');
+        document.getElementById('ksxFormStep2').classList.add('active');
+        document.getElementById('ksxStep1Ind').classList.remove('active');
+        document.getElementById('ksxStep1Ind').classList.add('completed');
+        document.getElementById('ksxStep2Ind').classList.add('active');
+      } else if (currentStep === 2) {
+        var fields = ['ksxFirst', 'ksxLast', 'ksxEmail', 'ksxPhone'];
+        var hasError = false;
+        fields.forEach(function (id) {
+          var el = document.getElementById(id);
+          el.classList.remove('ksx-error');
+          if (!el.value.trim()) {
+            el.classList.add('ksx-error');
+            hasError = true;
+          }
+        });
+        if (hasError) return;
+        var email = document.getElementById('ksxEmail').value.trim();
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+          document.getElementById('ksxEmail').classList.add('ksx-error');
+          return;
+        }
+        document.getElementById('ksxSubmitBtn').disabled = true;
+        document.getElementById('ksxSubmitBtn').textContent = 'Processing...';
+        document.getElementById('ksxFormStep2').classList.remove('active');
+        document.getElementById('ksxFormStep3').classList.add('active');
+        document.getElementById('ksxStep2Ind').classList.remove('active');
+        document.getElementById('ksxStep2Ind').classList.add('completed');
+        document.getElementById('ksxStep3Ind').classList.add('active');
+        var payload = {
+          url: document.getElementById('ksxUrl').value.trim(),
+          first_name: document.getElementById('ksxFirst').value.trim(),
+          last_name: document.getElementById('ksxLast').value.trim(),
+          email: email,
+          phone: document.getElementById('ksxPhone').value.trim(),
+          company_name: document.getElementById('ksxBiz').value.trim(),
+        };
+        ksxAnimateScan();
+        ksxRunAudit(payload);
+      }
+    }
+    function ksxRunAudit(payload) {
+      fetch(AUDIT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Audit failed');
+          return response.json();
+        })
+        .then(function (data) {
+          if (data.success && data.reportUrl) {
+            auditReportUrl = data.reportUrl;
+          }
+        })
+        .catch(function (err) {
+          console.error('Audit error:', err);
+          auditReportUrl = null;
+        });
+    }
+    function ksxAnimateScan() {
+      var checks = ['ksxChk1', 'ksxChk2', 'ksxChk3', 'ksxChk4', 'ksxChk5', 'ksxChk6'];
+      var progress = document.getElementById('ksxProgress');
+      var messages = [
+        'Checking SSL & security...',
+        'Analyzing page speed metrics...',
+        'Auditing on-page SEO elements...',
+        'Scanning for technical issues...',
+        'Measuring AI search visibility...',
+        'Generating your personalized report...',
+      ];
+      var step = 0;
+      function advanceCheck() {
+        if (step > 0) {
+          var prev = document.getElementById(checks[step - 1]);
+          prev.classList.remove('active');
+          prev.classList.add('done');
+          prev.querySelector('.ksx-ci-icon').textContent = '✓';
+        }
+        if (step < checks.length) {
+          document.getElementById(checks[step]).classList.add('active');
+          document.getElementById('ksxLoadingText').textContent = messages[step];
+          progress.style.width = ((step + 1) / checks.length) * 100 + '%';
+          step++;
+          setTimeout(advanceCheck, 2500 + Math.random() * 1500);
+        } else {
+          progress.style.width = '100%';
+          document.getElementById('ksxLoadingText').textContent = 'Your report is ready!';
+          document.getElementById('ksxLoadingSub').textContent = 'Redirecting to your results...';
+          document.querySelector('.ksx-spinner').style.display = 'none';
+          setTimeout(function () {
+            if (auditReportUrl) {
+              window.location.href = auditReportUrl;
+              document.getElementById('ksxLoadingSub').innerHTML =
+                'Redirecting now... <a href="' +
+                auditReportUrl +
+                '" target="_blank" style="color:#2D6CCA;font-weight:600;">Click here</a> if it didn\'t open.';
+            } else {
+              var pollCount = 0;
+              var pollInterval = setInterval(function () {
+                pollCount++;
+                if (auditReportUrl) {
+                  clearInterval(pollInterval);
+                  window.location.href = auditReportUrl;
+                  document.getElementById('ksxLoadingSub').innerHTML =
+                    'Redirecting now... <a href="' +
+                    auditReportUrl +
+                    '" target="_blank" style="color:#2D6CCA;font-weight:600;">Click here</a> if it didn\'t open.';
+                } else if (pollCount > 30) {
+                  clearInterval(pollInterval);
+                  document.getElementById('ksxLoadingText').textContent =
+                    'Your audit is complete!';
+                  document.getElementById('ksxLoadingSub').textContent =
+                    'Your full report has been sent to your email.';
+                }
+              }, 1000);
+            }
+          }, 1000);
+        }
+      }
+      advanceCheck();
+    }
+    document.querySelectorAll('.ksx-audit-widget input').forEach(function (input) {
+      input.addEventListener('input', function () {
+        this.classList.remove('ksx-error');
+      });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var step = this.closest('.ksx-form-step');
+          if (step.id === 'ksxFormStep1') ksxNextStep(1);
+          else if (step.id === 'ksxFormStep2') ksxNextStep(2);
+        }
+      });
+    });
+  </script>
+
+  <!-- ======================================================== -->
+  <!-- HOMEPAGE FAQ — answers common pre-sales objections + AIO   -->
+  <!-- ======================================================== -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Common questions before you reach out.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          homeFaqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SECTION 8: FINAL CTA — full-width gradient banner          -->
+  <!-- ======================================================== -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[linear-gradient(135deg,_rgba(239,82,83,0.10)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+      <div
+        class="absolute -left-40 -bottom-20 h-[420px] w-[420px] rounded-full bg-brand-500/8 blur-[140px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-32 md:py-44 lg:py-52">
+      <div class="max-w-4xl" data-reveal>
+        <span class="eyebrow">Let's Talk</span>
+        <h2 class="section-headline mt-5">
+          Ready to scale your business with integrated marketing &amp; AI?
+        </h2>
+        <p class="mt-7 text-xl md:text-2xl text-ink leading-relaxed max-w-3xl">
+          Whether you need a killer jingle, a full digital marketing overhaul, or a
+          done-for-you lead generation system, Killerspots has you covered. Let's talk about
+          your goals and build a strategy that actually drives ROI.
+        </p>
+
+        <div class="mt-16 pt-12 border-t border-white/10 max-w-3xl">
+          <span class="eyebrow">Strategy Call</span>
+          <h3 class="mt-4 text-2xl md:text-4xl font-bold text-white tracking-tight">
+            Let's schedule your free strategy call.
+          </h3>
+          <p class="mt-5 text-base md:text-lg text-ink leading-relaxed">
+            Tell us a bit about your business and we'll set up a personalized 30-minute call
+            with one of our strategists. No pressure. No sales pitch. Just honest advice on
+            how to grow.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/contact" class="btn btn-primary magnetic">Book my strategy call</a>
+            <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+              Call {businessInfo.phone}
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
+          <a href="/case-studies" class="text-ink hover:text-white">
+            See our case studies →
+          </a>
+          <a href="/blog" class="text-ink hover:text-white">Read our blog →</a>
+          <a href="/case-studies" class="text-ink hover:text-white">
+            Check out our work →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

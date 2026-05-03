@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'LLM Visibility | Brand Citation Tracking in AI Search | Killerspots',
+  description: 'Track and improve how your brand appears in LLM responses — ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews. Citation monitoring, brand mention tracking, content gap analysis.',
+  ogTitle: 'LLM Visibility — Track Where AI Cites Your Brand | Killerspots',
+  ogDescription: 'Monitor your brand presence in ChatGPT, Perplexity, Gemini, and other LLMs. Citation tracking, gap analysis, and competitor benchmarking.',
+};
+
+const trustPills = ['Citation Tracking', 'Cross-LLM Monitoring', 'Competitor Benchmarks'];
+
+const what = [
+  { title: 'Brand Mention Monitoring', body: 'Daily/weekly tracking of how your brand appears in ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews for category-relevant prompts.' },
+  { title: 'Citation Tracking', body: 'How often AI engines cite your domain as a source. Which pages get cited. Which prompts trigger citations. The ground truth of AI search visibility.' },
+  { title: 'Competitor Benchmarking', body: 'Side-by-side citation count vs. your direct competitors. See who AI engines trust more — and why. Data-driven gap closing.' },
+  { title: 'Prompt Coverage Analysis', body: 'Map the prompts your prospects ask AI engines. Identify which ones cite you, which cite competitors, and which return generic non-branded answers.' },
+  { title: 'Content Gap Reports', body: 'Topics your competitors cover that you don\'t. Long-tail prompt patterns you\'re missing. Sourced from real LLM response analysis, not keyword tools.' },
+  { title: 'AI Visibility Dashboard', body: 'Plain-English monthly report: where you appeared, where you didn\'t, what changed, what to do next.' },
+];
+
+const faqs = [
+  { q: 'How do you actually measure LLM visibility?', a: 'We query major LLMs (ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews) for category-relevant prompts and score citations. Repeated weekly to track movement. KillerSEOx integrates this into our audit reports.' },
+  { q: 'Why does LLM visibility matter?', a: '30%+ of search queries that used to send Google traffic now end at an AI overview. The brands AI engines cite are the brands prospects encounter. Invisible to AI = invisible to a growing share of buyers.' },
+  { q: 'Can you guarantee citations?', a: 'No — and any agency that does is lying. AI engines weigh sources based on authority, content depth, and structure. We can dramatically improve your odds. We can\'t force a specific citation outcome.' },
+  { q: 'How is this different from Google ranking?', a: 'Google ranking shows pages. LLM citations show your brand by name in synthesized answers. Different surface, different signal. AI engines cite based on entity authority, structured content, and topical depth — not classic ranking factors alone.' },
+  { q: 'How long until I see citations appear?', a: 'AI engines index quickly. Once content is structured for citation (entity-rich, FAQ depth, structured answers), citations can appear within weeks. We track and report monthly.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/seo-aio/llm-visibility#webpage', url: 'https://killerspots.com/services/seo-aio/llm-visibility', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'SEO & AIO', item: 'https://killerspots.com/services/seo-aio' }, { '@type': 'ListItem', position: 3, name: 'LLM Visibility', item: 'https://killerspots.com/services/seo-aio/llm-visibility' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/seo-aio" class="hover:text-white">SEO &amp; AIO</a><span class="mx-2">/</span><span class="text-ink">LLM Visibility</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">LLM Visibility</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Know where AI cites your brand. <span class="text-brand-500">Then improve it.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Citation tracking, brand mention monitoring, and competitor benchmarking across ChatGPT, Claude, Perplexity, Gemini, and Google AI Overviews.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/services/seo-aio/killerseox-audit" class="btn btn-primary magnetic">Get Your Visibility Baseline</a><a href="/contact" class="btn btn-ghost">Get a Quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Most agencies guess at AI visibility. We measure it weekly across multiple engines and benchmark against your direct competitors.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Track</span><h2 class="section-headline mt-5">Six dimensions of AI brand presence.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">LLM visibility questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Start With a Baseline</span><h2 class="section-headline mt-5">Run KillerSEOx. See where you show up.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">Free 60-second audit shows your current AI visibility, citation count, and content gaps. We expand from there.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/services/seo-aio/killerseox-audit" class="btn btn-primary magnetic">Run a Free Audit</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

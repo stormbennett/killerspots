@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../data/navigation';
+
+const meta = {
+  title: 'Complete Marketing Plans | Integrated Strategy Solutions | Killerspots',
+  description:
+    'One agency, every channel. Killerspots builds complete marketing plans combining creative, digital, AI, and CRM into one integrated strategy that drives real revenue.',
+  ogTitle: 'Complete Marketing Plans — Integrated Creative + Digital + AI | Killerspots',
+  ogDescription:
+    'Stop juggling vendors. Killerspots builds end-to-end marketing plans across creative, digital, AI, and LeadConnector — coordinated, reported on, and built to scale.',
+};
+
+const trustPills = ['Since 1999', '25+ Years', 'One Agency, Every Channel'];
+
+const pillars = [
+  {
+    title: 'Creative That Sells',
+    body:
+      'Jingles, TV and radio commercials, video, voice over (via VoiceTalent.Agency), graphic design, and content. The work that makes you memorable instead of forgettable.',
+  },
+  {
+    title: 'Digital That Performs',
+    body:
+      'SEO + AIO, Google Ads, LSA, Meta, LinkedIn, programmatic display, CTV, and OTT — coordinated across channels with shared targeting and shared learnings.',
+  },
+  {
+    title: 'AI That Works',
+    body:
+      'AI chatbots, voice agents, and content automation. AI lead scoring and qualification on top of LeadConnector. Used to compound human work, not replace it.',
+  },
+  {
+    title: 'CRM That Closes',
+    body:
+      'LeadConnector — our proprietary CRM and marketing automation platform — captures every lead, scores it, and automates follow-up so deals don\'t go cold.',
+  },
+];
+
+const why = [
+  {
+    title: 'One Partner Across Every Channel',
+    body:
+      'Your jingle, your SEO, your ad campaigns, your CRM, and your reporting under one roof. No more finger-pointing between vendors. One growth plan, one accountable team.',
+  },
+  {
+    title: 'Channels That Compound',
+    body:
+      'A jingle drives awareness. SEO and PPC capture intent. CTV and social keep you top-of-mind. LeadConnector closes the loop. We design the channels to amplify each other.',
+  },
+  {
+    title: 'Real Reporting, Plain English',
+    body:
+      'Monthly reviews with the metrics that matter — leads, calls, deals, ROI. No agency jargon, no vanity dashboards. Just what worked, what didn\'t, and what we\'re changing.',
+  },
+  {
+    title: 'Built for Growth at Any Stage',
+    body:
+      'Whether you\'re a local small business, a multi-state contractor, a law firm, a radio group, or an agency reselling — we size the plan to your stage and scale with you.',
+  },
+];
+
+const stages = [
+  {
+    name: 'Discover',
+    body:
+      'Audit your current marketing, your competition, and your market. Identify quick wins and long-term opportunities. Output: a strategy doc you can use either way.',
+  },
+  {
+    name: 'Plan',
+    body:
+      'Build the integrated plan — channels, creative, budget, KPIs, and timeline. We tell you what to do, when to do it, and what to expect at each milestone.',
+  },
+  {
+    name: 'Build',
+    body:
+      'Production, ad accounts, websites, CRM setup, content, and creative. Everything needed to launch — built or rebuilt to broadcast/agency standard.',
+  },
+  {
+    name: 'Run',
+    body:
+      'Campaigns live, content shipping, leads flowing into LeadConnector. Weekly optimization, monthly reporting, and quarterly strategy reviews keep the plan honest.',
+  },
+];
+
+const sampleStack = [
+  'Brand: jingle + visual identity refresh',
+  'Search: SEO + AIO + Google Ads + LSA',
+  'Social: organic content + paid Meta + short-form video',
+  'Broadcast: TV + radio + CTV',
+  'Web: rebuilt site + landing pages for each campaign',
+  'AI: chatbot + voice agent + content automation',
+  'CRM: LeadConnector with AI scoring + SMS/email follow-up',
+];
+
+const faqs = [
+  {
+    q: 'Do I have to take every service?',
+    a: 'No. A complete marketing plan means coordinated — not maximalist. Some clients run jingles + SEO + LeadConnector. Others run the full stack. We size the plan to your goals, your budget, and your stage.',
+  },
+  {
+    q: 'How is this different from hiring a bunch of specialist agencies?',
+    a: 'Specialist agencies optimize for their channel. We optimize for your business. That means messaging, targeting, and reporting all align — and nobody can blame the other vendor when something\'s not working. One partner. One plan. One accountable team.',
+  },
+  {
+    q: 'How long does it take to launch?',
+    a: 'Discovery and planning: 2–4 weeks. Build phase: 4–8 weeks depending on scope. Most plans are running live campaigns inside 60 days. Faster if we\'re augmenting existing assets, slower for full rebuilds.',
+  },
+  {
+    q: 'How is pricing structured?',
+    a: 'Monthly retainer scoped to your channel mix and project work. We don\'t publish list pricing because every plan is different. Get a quote and we\'ll size something to your goals and budget.',
+  },
+  {
+    q: 'What about reporting?',
+    a: 'Weekly campaign-level snapshots, monthly strategy reports, quarterly executive reviews. Plain-English metrics — leads, calls, qualified deals, revenue attribution — not vanity dashboards.',
+  },
+  {
+    q: 'Do you sign annual contracts?',
+    a: 'Standard engagement is a 6-month minimum (so the plan has time to compound), then month-to-month. We don\'t lock you into long contracts — we earn the next month every month.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/marketing-plans#webpage',
+  url: 'https://killerspots.com/marketing-plans',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Marketing Plans',
+      item: 'https://killerspots.com/marketing-plans',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Integrated Marketing Strategy',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'US',
+  description: meta.description,
+  url: 'https://killerspots.com/marketing-plans',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Marketing Plans</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          One integrated plan.
+          <span class="text-brand-500">Every channel a real business needs.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          Stop juggling vendors. Killerspots builds end-to-end marketing plans across
+          creative, digital, AI, and LeadConnector — designed so every channel amplifies
+          the others, and so you finally know what's actually working.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Strategy Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Built for businesses that are tired of stitching together specialist agencies and
+          freelancers. We unify the strategy and own the result.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Four Pillars</span>
+        <h2 class="section-headline mt-5">
+          Creative, Digital, AI, and CRM — coordinated as one system.
+        </h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 gap-5 md:gap-6">
+        {
+          pillars.map((p) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Why a Plan, Not a Project</span>
+        <h2 class="section-headline mt-5">
+          Channels that compound beat campaigns that don't talk to each other.
+        </h2>
+      </div>
+
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {
+          why.map((w) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- STAGES -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">How a Plan Comes Together</span>
+        <h2 class="section-headline mt-5">Discover, plan, build, run.</h2>
+      </div>
+
+      <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          stages.map((s, i) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                Stage {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{s.name}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- LEADCONNECTOR SPOTLIGHT -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-40 top-10 h-[560px] w-[560px] rounded-full bg-brand-500/12 blur-[140px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div class="lg:col-span-7" data-reveal>
+          <span class="eyebrow">Sample Plan</span>
+          <h2 class="section-headline mt-5">
+            What a Killerspots plan can include.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+            Every plan is sized to the business. Here's a representative cross-section of
+            channels we'd typically combine for a growth-stage local or regional brand:
+          </p>
+          <ul class="mt-8 space-y-3">
+            {
+              sampleStack.map((s) => (
+                <li class="flex items-start gap-3 rounded-xl border border-white/10 bg-surface px-5 py-4">
+                  <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-500">
+                    <svg
+                      class="h-3.5 w-3.5"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 7.5l3 3L12 3"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="text-sm md:text-base text-ink leading-relaxed">{s}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="lg:col-span-5" data-reveal>
+          <div class="rounded-2xl border border-white/10 bg-surface p-7 md:p-10">
+            <img
+              src={logoUrls.leadConnector}
+              alt="LeadConnector"
+              width="200"
+              height="40"
+              class="h-10 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
+            <h3 class="mt-6 text-lg md:text-xl font-semibold text-white">
+              Every plan ends in LeadConnector.
+            </h3>
+            <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">
+              Every form, call, chat, and ad click flows into one CRM. AI scoring, SMS and
+              email automation, and revenue attribution close the loop on every channel
+              we run for you.
+            </p>
+            <div class="mt-7">
+              <a href="/leadconnector" class="btn btn-ghost">
+                Learn About LeadConnector
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Marketing plan questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-deep">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Build the Plan</span>
+        <h2 class="section-headline mt-5">
+          Tell us about your business — we'll come back with a plan.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Free 30-minute strategy call. We'll look at your market, your goals, and your
+          current marketing, then come back with a recommended plan and a quote sized for
+          your stage.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Strategy Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

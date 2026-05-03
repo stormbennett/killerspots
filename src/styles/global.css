@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #0f1419;
+  --color-deep: #111827;
+  --color-surface: #2a3038;
+
+  /* Text */
+  --color-ink: #e0e0e0;
+  --color-heading: #ffffff;
+  --color-muted: #8a8f98;
+
+  /* Brand red */
+  --color-brand-50: #ffeaea;
+  --color-brand-100: #ffd2d3;
+  --color-brand-300: #ff9595;
+  --color-brand-500: #ef5253;
+  --color-brand-600: #d83e3f;
+  --color-brand-700: #b32d2e;
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background-color: var(--color-brand-500);
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  iframe {
+    color-scheme: dark;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1280px;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease,
+      box-shadow 200ms ease;
+    white-space: nowrap;
+    min-height: 44px;
+  }
+  .btn-primary {
+    background: var(--color-brand-500);
+    color: #ffffff;
+    box-shadow: 0 6px 24px -10px rgba(239, 82, 83, 0.55);
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-600);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px -10px rgba(239, 82, 83, 0.65);
+  }
+  .btn-ghost {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--color-heading);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-1px);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-brand-500);
+  }
+
+  .card-tile {
+    display: block;
+    height: 100%;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+    padding: 2rem;
+    transition:
+      transform 350ms ease,
+      border-color 350ms ease,
+      background 350ms ease,
+      box-shadow 350ms ease;
+    backdrop-filter: blur(8px);
+  }
+  .card-tile:hover {
+    transform: translateY(-4px);
+    border-color: rgba(239, 82, 83, 0.3);
+    background:
+      linear-gradient(180deg, rgba(239, 82, 83, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+    box-shadow: 0 14px 40px -16px rgba(239, 82, 83, 0.25);
+  }
+}
+
+/* Headline scales — fluid via clamp() per Scorpion-style brief */
+.hero-headline {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--color-heading);
+}
+.section-headline {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+}
+.stat-num {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: var(--color-heading);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Hairline gradient divider — used above stats and similar reveals */
+.hairline-accent {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(239, 82, 83, 0.55) 50%,
+    transparent 100%
+  );
+}
+
+/* Trust pill (used in hero) */
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  color: var(--color-ink);
+}
+.trust-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-brand-500);
+  display: inline-block;
+}
+
+/* ============================================================
+   CINEMATIC MOTION SYSTEM
+   ============================================================
+   Custom easing curves that drive every animation on the site.
+   `--ease-cinema` is the signature curve — it starts slow, accelerates,
+   then decelerates with a soft landing. The "premium" feel.
+   ============================================================ */
+:root {
+  --ease-cinema: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-cinema-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cinema-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --reveal-distance: 36px;
+  --reveal-duration: 900ms;
+}
+
+/* Scroll-triggered reveal — staged + cinematic easing.
+   Add data-reveal-delay="200" for staggered child reveals. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--reveal-duration) var(--ease-cinema-out),
+    transform var(--reveal-duration) var(--ease-cinema-out);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal][data-reveal-from="left"] {
+  transform: translateX(calc(-1 * var(--reveal-distance)));
+}
+[data-reveal][data-reveal-from="right"] {
+  transform: translateX(var(--reveal-distance));
+}
+[data-reveal][data-reveal-from="scale"] {
+  transform: scale(0.96);
+}
+[data-reveal].is-visible[data-reveal-from] {
+  transform: none;
+}
+
+/* Headline mask reveal — runs on initial load. Use on the hero h1. */
+.hero-headline-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.hero-headline-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: hero-rise 1100ms var(--ease-cinema-out) 100ms forwards;
+}
+.hero-headline-reveal:nth-child(2) > span { animation-delay: 220ms; }
+.hero-headline-reveal:nth-child(3) > span { animation-delay: 340ms; }
+@keyframes hero-rise {
+  to { transform: translateY(0); }
+}
+
+/* Mouse-parallax 3D tilt cards. Wrap card content in `.tilt-card`. */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 600ms var(--ease-cinema-out);
+  will-change: transform;
+}
+.tilt-card__inner {
+  transform-style: preserve-3d;
+  transition: inherit;
+}
+@media (hover: none) {
+  .tilt-card { transform: none !important; }
+}
+
+/* Magnetic CTA — primary buttons gently pull toward cursor. */
+.magnetic {
+  transition:
+    transform 350ms var(--ease-cinema-out),
+    background-color 200ms ease,
+    box-shadow 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+  will-change: transform;
+}
+@media (hover: none) {
+  .magnetic { transform: none !important; }
+}
+
+/* Section gradient bleed — soft fade at the seam between sections.
+   Drop this as a pseudo-element on adjacent sections to remove hard cuts. */
+.section-bleed-top {
+  position: relative;
+}
+.section-bleed-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 20, 25, 0.55) 0%,
+    rgba(15, 20, 25, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.section-bleed-top--from-deep::before {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 24, 39, 0.85) 0%,
+    rgba(17, 24, 39, 0) 100%
+  );
+}
+
+/* Cursor-aware accent glow — subtle red radial that follows the cursor.
+   Apply to a section to opt in. JS sets --cx and --cy on the section. */
+.cursor-glow {
+  position: relative;
+  isolation: isolate;
+}
+.cursor-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--cx, 50%) var(--cy, 50%),
+    rgba(239, 82, 83, 0.12) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.cursor-glow.is-glowing::after {
+  opacity: 1;
+}
+.cursor-glow > * {
+  position: relative;
+  z-index: 1;
+}
+@media (hover: none) {
+  .cursor-glow::after { display: none; }
+}
+
+/* Stat counters — opacity holds while counting up so the number flickers
+   into focus rather than just appearing. */
+.stat-counter[data-counting="true"] {
+  background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Logo marquee — second row drifts the opposite direction.
+   The first row already animates via .logos-track. The second is added
+   below the first by wrapping logos in `.logos-track--reverse`. */
+.logos-track--reverse {
+  animation-direction: reverse !important;
+  animation-duration: 95s !important;
+  opacity: 0.5;
+  margin-top: 1.5rem;
+}
+
+/* Smooth scroll site-wide with a slightly slower scroll-padding for sticky header. */
+html {
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-headline-reveal > span {
+    transform: none;
+    animation: none;
+  }
+  .tilt-card,
+  .magnetic {
+    transform: none !important;
+    transition: none !important;
+  }
+  .cursor-glow::after { display: none; }
+}
+
+/* Header / mega menu */
+#site-header.is-scrolled {
+  box-shadow: 0 10px 30px -16px rgba(0, 0, 0, 0.6);
+  background-color: rgba(15, 20, 25, 0.92);
+}
+[data-mega-trigger][aria-expanded="true"] {
+  color: var(--color-heading);
+  background: rgba(255, 255, 255, 0.06);
+}
+[data-mega-trigger][aria-expanded="true"] svg.chevron {
+  transform: rotate(180deg);
+}
+.mega-panel:not(.hidden) {
+  animation: mega-down 220ms ease;
+}
+@keyframes mega-down {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lock scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}

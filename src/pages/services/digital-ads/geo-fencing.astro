@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Geo-Fencing Advertising | Hyper-Local Targeting | Killerspots',
+  description: 'Geo-fencing advertising — drop virtual fences around competitor locations, event venues, neighborhoods, and ZIPs. Re-target devices that enter the fence for 30 days.',
+  ogTitle: 'Geo-Fencing — Hit Prospects Exactly Where They Are | Killerspots',
+  ogDescription: 'Drop fences around competitor locations, events, and target neighborhoods. Devices that enter get retargeted with display + video ads for 30 days.',
+};
+
+const trustPills = ['Hyper-Local Targeting', 'Competitor Conquesting', '30-Day Retargeting'];
+
+const what = [
+  { title: 'Competitor Conquesting', body: 'Drop fences around your competitors\' locations. Devices that enter get retargeted with your ads for 30 days. Capture customers in their consideration set.' },
+  { title: 'Event Venue Targeting', body: 'Trade shows, sporting events, conferences, fairs — fence the venue. Reach attendees during and after the event with relevant ads.' },
+  { title: 'Neighborhood Targeting', body: 'Specific ZIP codes, custom polygons around target neighborhoods, or radius-based fences around your locations.' },
+  { title: 'Addressable Audience Building', body: 'Build retargeting audiences from real-world foot traffic. Devices that visit get added to retargeting pools you can run ads against later.' },
+  { title: 'Display + Video Creative', body: 'Banner ads, native ads, and video creative produced in-house. Specifically built for the geo-fenced campaign context.' },
+  { title: 'Foot-Traffic Attribution', body: 'Track devices that saw your ad and then visited your physical location. Closes the loop between digital ad spend and real-world store visits.' },
+];
+
+const faqs = [
+  { q: 'How small can a geo-fence be?', a: 'Down to ~50 feet around a specific building or pin. Most useful fences are 100–500 feet around a target location, or up to a few miles for neighborhood-level targeting.' },
+  { q: 'Is geo-fencing legal?', a: 'Yes — uses publicly available device-location data from apps that have user consent. We work with compliant data partners. No PII captured.' },
+  { q: 'How long do retargeted devices stay in the audience?', a: 'Standard window is 30 days. Adjustable up to 90 days for longer sales cycles. After the window, devices roll out of the retargeting pool.' },
+  { q: 'Can I conquest competitor locations?', a: 'Yes — that\'s one of the highest-value uses. Fence competitor service-area locations, retarget visitors, and pull them to your website with offers.' },
+  { q: 'What\'s the minimum budget?', a: 'Geo-fencing works at $1.5K+/mo for small radius fences. Bigger event campaigns and competitor conquesting at scale typically need $3K+/mo.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/digital-ads/geo-fencing#webpage', url: 'https://killerspots.com/services/digital-ads/geo-fencing', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Digital Ads', item: 'https://killerspots.com/services/digital-ads' }, { '@type': 'ListItem', position: 3, name: 'Geo-Fencing', item: 'https://killerspots.com/services/digital-ads/geo-fencing' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/digital-ads" class="hover:text-white">Digital Ads</a><span class="mx-2">/</span><span class="text-ink">Geo-Fencing</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Geo-Fencing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Hit prospects <span class="text-brand-500">exactly where they are.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Drop virtual fences around competitor locations, event venues, neighborhoods, and ZIPs. Devices that enter get retargeted with your ads for 30 days. Real-world foot-traffic attribution included.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Geo-Fencing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Geo-fencing is the highest-precision local digital ad channel. Most agencies don\'t use it well. We do.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">Six geo-fencing strategies.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Geo-fencing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Conquest Competitors</span><h2 class="section-headline mt-5">Tell us where to fence. We'll target the foot traffic.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your competitors, your events, and your geos — then come back with a fence map and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

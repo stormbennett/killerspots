@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'AI Services | AI Chatbots, Voice Agents & Automation | Killerspots',
+  description: 'AI services for marketing and operations — AI chatbots, AI voice agents for inbound calls, AI content production, and marketing automation. Practical AI that compounds human work.',
+  ogTitle: 'AI Services That Actually Work | Killerspots',
+  ogDescription: 'AI chatbots, AI voice agents, content automation, and marketing automation. Practical AI deployed alongside our LeadConnector CRM. Real outcomes, not hype.',
+};
+
+const trustPills = ['Practical AI Deployment', 'LeadConnector Integrated', 'Human + AI Workflows'];
+
+const services = [
+  { title: 'AI Chatbots', href: '/services/ai-services/ai-chatbots', body: 'AI bots that answer FAQs, qualify leads, and book appointments 24/7. Trained on your business. Deployed on your site, in SMS, and via chat.' },
+  { title: 'AI Voice Agents', href: '/services/ai-services/ai-voice-agents', body: 'AI voice agents that answer inbound calls, qualify, route, and book — when your team can\'t. NOT replacements for voice talent (see VoiceTalent.Agency for human voice over).' },
+  { title: 'AI Content & Automation', href: '/services/ai-services/ai-content-automation', body: 'AI-accelerated content production, marketing automation, lead scoring, and workflow triggers. Practical AI baked into LeadConnector.' },
+];
+
+const why = [
+  { title: 'Practical, Not Hype', body: 'We deploy AI where it compounds human work — never where it replaces it badly. Voice over for ads stays human (anti-AI pledge on VoiceTalent.Agency). AI handles intake and follow-up.' },
+  { title: 'Built On LeadConnector', body: 'Our AI services live inside the CRM platform we already manage. AI lead scoring, AI bot replies, AI follow-up sequences — all integrated, not bolted on.' },
+  { title: 'Trained On Your Business', body: 'AI bots and voice agents are trained on your specific FAQs, services, hours, and policies. Not generic OpenAI prompts. Your brand voice, your language, your guardrails.' },
+  { title: 'Human Escalation Built In', body: 'Every AI interaction has a clear escalation path. Bot can\'t answer? Routes to a human. Voice agent doesn\'t recognize intent? Transfers the call. Never lose a lead to AI confusion.' },
+];
+
+const faqs = [
+  { q: 'Do you replace voice talent with AI?', a: 'No. Voice over for commercials, jingles, and brand work stays 100% human via VoiceTalent.Agency — every artist signs an anti-AI pledge. AI voice agents are a different product (inbound call handling), and they\'re clearly disclosed as AI to callers.' },
+  { q: 'How fast can you deploy an AI chatbot?', a: 'Most chatbots launch in 1–2 weeks from kickoff. We need access to your FAQ docs, service descriptions, and a brand voice sample. Training and tuning takes another 2–3 weeks of optimization based on real conversations.' },
+  { q: 'Will an AI voice agent fool my customers?', a: 'No — AI voice agents disclose they\'re AI when asked. Best use case is after-hours and overflow handling. We don\'t recommend AI for relationship-based or high-stakes calls.' },
+  { q: 'How does AI lead scoring work?', a: 'LeadConnector\'s AI scores incoming leads based on intent signals, source, behavior, and historical data. High-intent leads get fast-tracked to human follow-up; low-intent goes into nurture. Your team focuses on the leads most likely to close.' },
+  { q: 'What\'s the ROI of AI services?', a: 'Highest ROI: AI bot answering after-hours = leads you\'d otherwise lose. Most clients see positive ROI in month 2–3. We track conversation-to-conversion and report monthly.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/ai-services#webpage', url: 'https://killerspots.com/services/ai-services', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'AI Services', item: 'https://killerspots.com/services/ai-services' }] };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'AI Marketing Services', provider: { '@id': 'https://killerspots.com/#localbusiness' }, areaServed: 'US', description: meta.description, url: 'https://killerspots.com/services/ai-services' };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">AI Services</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Practical AI that <span class="text-brand-500">compounds human work.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">AI chatbots, AI voice agents for inbound calls, AI content production, and marketing automation — deployed alongside LeadConnector. Real outcomes, not hype.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an AI Quote</a><a href="#services" class="btn btn-ghost">See Services</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">We use AI where it makes humans faster — not where it replaces them badly. Voice over stays human. AI handles intake and follow-up.</p></div></div></section>
+
+  <section id="services" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Deploy</span><h2 class="section-headline mt-5">AI services that drive measurable outcomes.</h2></div><ul class="grid md:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why Killerspots</span><h2 class="section-headline mt-5">AI deployed by an agency that uses it daily.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{why.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">AI services questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Deploy AI That Works</span><h2 class="section-headline mt-5">Tell us your bottleneck. We'll find the AI fit.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll map where AI compounds your team\'s work, where it doesn\'t, and what to deploy first.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

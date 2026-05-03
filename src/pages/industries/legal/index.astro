@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Legal Marketing | Personal Injury, Family, General Practice | Killerspots',
+  description: 'Marketing for law firms — personal injury, family law, general practice. SEO, Google LSA, paid social, and AI-powered intake. Built around case value, not lead volume.',
+  ogTitle: 'Legal Marketing — Built for Case Value, Not Lead Volume | Killerspots',
+  ogDescription: 'SEO, LSA for Lawyers, paid social, jingles, and AI-powered intake for law firms. Case-value reporting, intake compliance, and HIPAA-aware campaigns.',
+};
+
+const trustPills = ['Built For Law Firms', 'LSA for Lawyers Ready', 'Compliant Intake'];
+
+const subIndustries = [
+  { title: 'Personal Injury', href: '/industries/legal/personal-injury', body: 'Auto accident, slip & fall, workers comp, medical malpractice — high-value cases on a shorter sales cycle.' },
+  { title: 'Family Law', href: '/industries/legal/family-law', body: 'Divorce, custody, support, prenup — emotionally charged inquiries that need empathetic intake.' },
+  { title: 'General Practice', href: '/industries/legal/general-practice', body: 'Estate planning, business law, real estate, criminal defense — broad practice, multiple campaigns.' },
+];
+
+const painPoints = [
+  { title: 'Cost Per Case, Not Cost Per Lead', body: 'Lead volume is meaningless if cases don\'t qualify. We optimize for signed-case CPA, not vanity metrics. Every channel reported by case value.' },
+  { title: 'Intake Drops the Ball', body: 'You spend $300 on a lead and the intake team takes 4 hours to call back. We deploy LeadConnector AI bots that qualify and book consultations 24/7 — even at 11 PM Sunday.' },
+  { title: 'Compliance Ties Your Hands', body: 'Bar association rules, ABA guidelines, HIPAA on med-mal — most agencies don\'t know any of it. We do, and we run campaigns within those constraints.' },
+  { title: 'PI Mass Tort Money Distorts the Market', body: 'National PI mills bid up Google Ads costs to absurd levels. We use SEO, content authority, and strategic LSA to win at lower CPA than mass-tort competitors.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "[practice area] lawyer near me," "best [practice] attorney [city]," and the long-tail terms that close.', href: '/services/seo-aio/seo' },
+  { title: 'Google LSA for Lawyers + Ads', body: 'LSA for Lawyers (where eligible) plus paid search managed for case-CPA, not lead-CPA.', href: '/services/ppc/google-ads-lsa' },
+  { title: 'Content + Authority Building', body: 'Long-form blog and FAQ content that answers prospect questions and signals expertise to Google + AI search engines.', href: '/services/seo-aio' },
+  { title: 'CTV + YouTube Brand Building', body: 'Premium video establishing trust before the prospect needs you. Brand recall when injury happens drives inbound.', href: '/services/digital-ads/ctv-streaming' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot that handles initial intake, qualifies cases, and books consults. Compliant scripting. Spanish-language available.', href: '/leadconnector' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews from settled clients (within bar guidelines). Compound 4.9-star ratings into search dominance.', href: '/services/seo-aio' },
+];
+
+const faqs = [
+  { q: 'Do you understand bar association advertising rules?', a: 'Yes. We work within state bar advertising rules, ABA guidelines, and (for medical malpractice and PI) HIPAA-aware processes. We\'ll ask for your jurisdiction\'s specific rules on the discovery call.' },
+  { q: 'Can you handle PI mass-tort competition?', a: 'Yes — and we don\'t play their game. National PI mills bid up Google Ads to absurd CPCs. We use SEO authority, strategic LSA, and brand-building (CTV, YouTube) to win cases at lower CPA.' },
+  { q: 'How do you measure success?', a: 'Signed-case CPA — what you actually paid to acquire a paying client. Lead volume is reported but never the headline metric.' },
+  { q: 'Do you offer compliant intake automation?', a: 'Yes. LeadConnector AI bot scripts written within bar rules — no guarantees, no specific outcomes, proper disclaimers. Books consults; doesn\'t practice law.' },
+  { q: 'Can you handle multi-state firms?', a: 'Yes. State-specific landing pages, state-specific GBPs, state-specific intake routing, and state-specific bar compliance. Multi-state attribution included.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/legal#webpage', url: 'https://killerspots.com/industries/legal', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Legal', item: 'https://killerspots.com/industries/legal' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Legal Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Built for case value — <span class="text-brand-500">not lead volume.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Personal injury, family law, general practice. SEO, LSA for Lawyers, paid social, jingles, and AI-powered intake. Bar-compliant, case-CPA reported.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="#sub-industries" class="btn btn-ghost">See Your Practice</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for businesses that take legal compliance seriously. We don't fly close to the sun.</p></div></div></section>
+
+  <section id="sub-industries" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Practice Areas</span><h2 class="section-headline mt-5">Pick your specialty.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{subIndustries.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problem</span><h2 class="section-headline mt-5">Most legal marketing optimizes for lead volume. We optimize for signed cases.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas cursor-glow"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A legal channel mix tuned to case value.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Legal marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Let's Talk</span><h2 class="section-headline mt-5">Tell us your practice. We'll size the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your case-CPA targets, your jurisdiction's rules, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

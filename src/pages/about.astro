@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../data/navigation';
+
+const meta = {
+  title: 'About Killerspots | Cincinnati Marketing Agency Since 1999',
+  description:
+    'Killerspots is an independently owned full-service creative and digital marketing agency in Cincinnati. 25+ years, 6× Telly Award winner, in-house production from jingles to AI-powered CRM.',
+  ogTitle: 'About Killerspots — 25 Years of Killer Creative',
+  ogDescription:
+    'A full-service creative and digital marketing agency built on in-house production. Audio, video, design, digital, and our own CRM — all under one roof since 1999.',
+};
+
+const trustPills = ['Founded 1999', '25+ Years', '6× Telly Award Winner'];
+
+const principles = [
+  {
+    title: 'In-House Production',
+    body:
+      'Audio, video, design, animation — produced right here by our team. No freelancers, no outsourcing chains, no excuses. Consistency, speed, and quality you can trust.',
+  },
+  {
+    title: 'Technology-First',
+    body:
+      'We don\'t just use marketing tools — we build them. LeadConnector (our white-label CRM) and KillerSEOx (our SEO + AI visibility audit) are our own products. Your campaigns are data-driven from day one.',
+  },
+  {
+    title: 'Industry Specialization',
+    body:
+      'Two-and-a-half decades means we know home services, legal, small business, broadcasting, and white-label inside and out. We don\'t talk in generic marketing buzzwords — we speak your industry.',
+  },
+  {
+    title: 'White-Label Partner',
+    body:
+      'Other agencies and platforms scale through us — they resell our creative, digital, and CRM services under their own brand. We deliver. They keep the relationship and the margin.',
+  },
+  {
+    title: 'Results Over Pretty',
+    body:
+      'Pretty is the bonus. Profitable is the promise. Every campaign we run is measured by leads, calls, deals, and revenue — not vanity metrics.',
+  },
+  {
+    title: 'Lightning Turnaround',
+    body:
+      'Broadcast-quality jingle in 2–3 days. Professional video edit in a week. Built for speed without sacrificing quality. Agility is the competitive advantage.',
+  },
+];
+
+const evolution = [
+  {
+    era: '1999',
+    title: 'Started as a Jingle House',
+    body:
+      'Killerspots launched as a boutique audio production company — and grew into one of America\'s top jingle producers. Sonic identities for household brands and local legends alike.',
+  },
+  {
+    era: '2010s',
+    title: 'Full-Service Agency',
+    body:
+      'Markets evolved. Clients wanted video, design, digital, and integrated campaigns. We didn\'t outsource — we built each capability in-house. Audio + video + design + digital under one roof.',
+  },
+  {
+    era: 'Today',
+    title: 'Creative + Digital + AI',
+    body:
+      'Now we run integrated marketing plans — broadcast and digital, SEO and AI search, social, plus our own LeadConnector CRM and KillerSEOx audit platform. Independently owned. Not a franchise. Not a subsidiary.',
+  },
+];
+
+type AboutStat = {
+  value: string;
+  label: string;
+  counter?: number;
+  prefix?: string;
+  suffix?: string;
+};
+
+const stats: AboutStat[] = [
+  { value: '1999', label: 'Founded in Cincinnati', counter: 1999 },
+  { value: '25+', label: 'Years in business', counter: 25, suffix: '+' },
+  { value: '6×', label: 'Telly Award winner', counter: 6, suffix: '×' },
+  { value: '2–3', label: 'Days standard turnaround' },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': 'https://killerspots.com/about#webpage',
+  url: 'https://killerspots.com/about',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+  about: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://killerspots.com/about' },
+  ],
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">About Killerspots</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          25+ years of killer creative.
+          <span class="text-brand-500">Zero fluff.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          A full-service creative and digital marketing agency that actually produces
+          everything in-house. Audio, video, design, digital, and our own CRM — under one
+          Cincinnati roof since 1999.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          Independently owned and operated. Not a franchise, not a subsidiary of a holding
+          company — just a team of operators who've been at this for two-plus decades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="bg-canvas">
+    <div class="container-page py-20 md:py-28">
+      <div class="hairline-accent"></div>
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-14 pt-14 md:pt-16" data-reveal>
+        {
+          stats.map((s) => (
+            <div>
+              {s.counter !== undefined ? (
+                <dd
+                  class="stat-num stat-counter"
+                  data-counter-to={s.counter}
+                  data-counter-prefix={s.prefix ?? ''}
+                  data-counter-suffix={s.suffix ?? ''}
+                >
+                  {(s.prefix ?? '') + '0' + (s.suffix ?? '')}
+                </dd>
+              ) : (
+                <dd class="stat-num">{s.value}</dd>
+              )}
+              <dt class="mt-4 text-xs uppercase tracking-[0.22em] text-muted">{s.label}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- STORY / EVOLUTION -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-headline mt-5">
+          From a jingle house to a full-service digital powerhouse.
+        </h2>
+      </div>
+
+      <ol class="grid md:grid-cols-3 gap-5 md:gap-6">
+        {
+          evolution.map((e) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                {e.era}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{e.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{e.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES US DIFFERENT -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What Makes Us Different</span>
+        <h2 class="section-headline mt-5">We don't just talk about it — we do it.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          principles.map((p) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7"
+            >
+              <h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="bg-deep">
+    <div class="container-page py-20 md:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div data-reveal>
+          <span class="eyebrow">Where We Are</span>
+          <h2 class="section-headline mt-5">Cincinnati, Ohio.</h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            Our office and recording studio are in Cincinnati. Our clients are spread
+            across the U.S. — every state and a few internationally. Whether you're local
+            or 2,000 miles away, we work the same way.
+          </p>
+          <address class="not-italic mt-8 space-y-1 text-base text-ink">
+            <div class="text-white font-semibold">{businessInfo.name}</div>
+            <div>{businessInfo.address.street}</div>
+            <div>
+              {businessInfo.address.city}, {businessInfo.address.region}{' '}
+              {businessInfo.address.postal}
+            </div>
+            <div class="pt-3">
+              <a
+                href={`tel:${businessInfo.phoneTel}`}
+                class="text-white hover:text-brand-500 font-semibold"
+              >
+                {businessInfo.phone}
+              </a>
+            </div>
+            <div>
+              <a
+                href={`mailto:${businessInfo.email}`}
+                class="text-white hover:text-brand-500"
+              >
+                {businessInfo.email}
+              </a>
+            </div>
+          </address>
+        </div>
+
+        <div data-reveal class="rounded-2xl border border-white/10 overflow-hidden">
+          <iframe
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              `${businessInfo.address.street}, ${businessInfo.address.city}, ${businessInfo.address.region} ${businessInfo.address.postal}`
+            )}&output=embed`}
+            title="Killerspots Agency office on Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            style="width:100%;height:360px;border:0;display:block;filter:invert(0.92) hue-rotate(180deg) saturate(0.7);"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Work With Us</span>
+        <h2 class="section-headline mt-5">
+          Ready to put 25 years of agency experience on your team?
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Tell us about your business. We'll come back with a strategy call and — after
+          that — a quote sized to your stage.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href="/marketing-plans" class="btn btn-ghost">See Our Marketing Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

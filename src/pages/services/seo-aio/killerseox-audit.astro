@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../../../data/navigation';
+
+const meta = {
+  title: 'KillerSEOx Free Website Audit | SEO + AI Visibility Report | Killerspots',
+  description:
+    'Free SEO and AI search visibility audit. KillerSEOx scans your domain for ranking potential, technical issues, content gaps, and AI search citations in 60 seconds. No credit card.',
+  ogTitle: 'KillerSEOx — Free SEO + AI Search Audit in 60 Seconds | Killerspots',
+  ogDescription:
+    'Plug in your domain. Get a complete SEO health, AI visibility, and competitor gap report in 60 seconds. Free, no credit card. Built by Killerspots Agency.',
+};
+
+const trustPills = ['Free Audit', '60 Seconds', 'No Credit Card'];
+
+const reveals = [
+  { title: 'SEO Health Score', body: 'Technical SEO, on-page optimization, schema markup, mobile readiness, Core Web Vitals — every signal Google uses to rank your site.' },
+  { title: 'AI Search Visibility', body: 'How your brand appears (or doesn\'t) in ChatGPT, Perplexity, Google AI Overviews, and Gemini. Citation tracking and gap analysis.' },
+  { title: 'Local Search Opportunities', body: 'Google Business Profile health, local citation consistency, review velocity, and mapping signals — the things that drive "near me" rank.' },
+  { title: 'Content Gaps', body: 'Topics your competitors cover that you don\'t. Long-tail keywords with traffic potential. AI-search query patterns you\'re missing.' },
+  { title: 'Competitor Analysis', body: 'Who outranks you, why, and what they\'re doing differently. Real benchmarks, not generic comparisons.' },
+  { title: 'Quick-Action Plan', body: 'Top 5–10 fixes prioritized by impact and effort. The wins you can ship this week vs. the work that takes a quarter.' },
+];
+
+const how = [
+  { step: '01', title: 'Plug In Your Domain', body: 'Type the URL. We don\'t need a credit card, an account, or a sales call.' },
+  { step: '02', title: 'We Crawl + Score', body: 'KillerSEOx crawls public pages, checks technical SEO, queries AI search engines for citation data, and benchmarks against competitors.' },
+  { step: '03', title: 'You Get the Report', body: 'Full report delivered in 60 seconds. Email copy auto-sent. Read it on the spot or share with your team.' },
+];
+
+const faqs = [
+  { q: 'Is this really free? What\'s the catch?', a: 'Genuinely free, no credit card. We built KillerSEOx as a lead-magnet for our SEO + AIO services — if you like the report and want help executing on it, you can hire us. If not, you keep the report.' },
+  { q: 'How is this different from SEMrush, Ahrefs, or Moz?', a: 'KillerSEOx focuses on what matters for service businesses (local SEO, AI search visibility, "near me" ranking signals) rather than enterprise SEO toolkit features. Faster, more focused, and includes AI search visibility most tools don\'t.' },
+  { q: 'How accurate is the AI search visibility data?', a: 'We query major AI engines (ChatGPT, Perplexity, Gemini, Google AI Overviews) for category-relevant prompts and score citations. Accuracy varies by category — high for established brands, harder for newer or hyper-local businesses where AI engines have less training data.' },
+  { q: 'Can I run audits on my competitors?', a: 'Yes. The audit works on any public domain. Many users audit themselves first, then run their top 3 competitors to see where the gaps are.' },
+  { q: 'Do you store my data?', a: 'We store the audit results so you can revisit them, and we use anonymized aggregate data to improve the platform. We don\'t sell or share individual audit data.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/seo-aio/killerseox-audit#webpage', url: 'https://killerspots.com/services/seo-aio/killerseox-audit', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'SEO & AIO', item: 'https://killerspots.com/services/seo-aio' }, { '@type': 'ListItem', position: 3, name: 'KillerSEOx Audit', item: 'https://killerspots.com/services/seo-aio/killerseox-audit' }] };
+const softwareSchema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'KillerSEOx', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: meta.description, url: 'https://killerspots.com/services/seo-aio/killerseox-audit', publisher: { '@id': 'https://killerspots.com/#localbusiness' }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, softwareSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-24">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/seo-aio" class="hover:text-white">SEO &amp; AIO</a><span class="mx-2">/</span><span class="text-ink">KillerSEOx Audit</span></nav>
+      <div class="grid lg:grid-cols-12 gap-12 mt-6 items-start">
+        <div class="lg:col-span-7">
+          <img src={logoUrls.killerSeox} alt="KillerSEOx" width="240" height="56" class="h-12 md:h-14 w-auto mb-6" loading="eager" fetchpriority="high" decoding="async" />
+          <span class="eyebrow">Free Website Audit</span>
+          <h1 id="hero-headline" class="hero-headline mt-5">See how your site ranks — <span class="text-brand-500">in Google and in AI search.</span></h1>
+          <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-2xl leading-snug">KillerSEOx is our proprietary audit tool. Plug in your domain, get a complete SEO health, AI visibility, and competitor gap report in 60 seconds. Free, no credit card.</p>
+        </div>
+        <div class="lg:col-span-5">
+          <!-- KillerSEOx Audit Widget — same widget that's on the homepage -->
+          <div class="ksx-audit-widget" id="ksxWidget">
+            <div class="ksx-inner">
+              <h2 class="ksx-headline">Get Your Free Website <span>SEO Audit</span></h2>
+              <p class="ksx-subhead">See how your site performs in search engines and AI — results in under 60 seconds.</p>
+              <div class="ksx-steps">
+                <div class="ksx-step active" id="ksxStep1Ind"><div class="ksx-step-num">1</div><span>Your Site</span></div>
+                <div class="ksx-step-line" id="ksxLine1"></div>
+                <div class="ksx-step" id="ksxStep2Ind"><div class="ksx-step-num">2</div><span>Your Info</span></div>
+                <div class="ksx-step-line" id="ksxLine2"></div>
+                <div class="ksx-step" id="ksxStep3Ind"><div class="ksx-step-num">3</div><span>Results</span></div>
+              </div>
+              <div class="ksx-form-step active" id="ksxFormStep1">
+                <div class="ksx-field ksx-url-field"><label for="ksxUrl">Website URL</label><input type="url" id="ksxUrl" placeholder="yourbusiness.com" autocomplete="url" /></div>
+                <button class="ksx-btn" onclick="ksxNextStep(1)">Analyze My Website &rarr;</button>
+              </div>
+              <div class="ksx-form-step" id="ksxFormStep2">
+                <div class="ksx-url-chip" id="ksxUrlChip">🔗 —</div>
+                <div class="ksx-field-row">
+                  <div class="ksx-field"><label for="ksxFirst">First Name</label><input type="text" id="ksxFirst" placeholder="John" autocomplete="given-name" /></div>
+                  <div class="ksx-field"><label for="ksxLast">Last Name</label><input type="text" id="ksxLast" placeholder="Smith" autocomplete="family-name" /></div>
+                </div>
+                <div class="ksx-field"><label for="ksxEmail">Business Email</label><input type="email" id="ksxEmail" placeholder="john@yourbusiness.com" autocomplete="email" /></div>
+                <div class="ksx-field-row">
+                  <div class="ksx-field"><label for="ksxPhone">Phone</label><input type="tel" id="ksxPhone" placeholder="(555) 123-4567" autocomplete="tel" /></div>
+                  <div class="ksx-field"><label for="ksxBiz">Business Name</label><input type="text" id="ksxBiz" placeholder="Your Company" autocomplete="organization" /></div>
+                </div>
+                <button class="ksx-btn" id="ksxSubmitBtn" onclick="ksxNextStep(2)">Get My Free Report &rarr;</button>
+                <p class="ksx-privacy">🔒 Your information is secure and never shared.</p>
+              </div>
+              <div class="ksx-form-step" id="ksxFormStep3">
+                <div class="ksx-loading active" id="ksxLoadingState">
+                  <div class="ksx-spinner"></div>
+                  <div class="ksx-loading-text" id="ksxLoadingText">Scanning your website...</div>
+                  <div class="ksx-loading-sub" id="ksxLoadingSub">This usually takes 30–60 seconds</div>
+                  <div class="ksx-progress-bar"><div class="ksx-progress-fill" id="ksxProgress"></div></div>
+                  <div class="ksx-check-list">
+                    <div class="ksx-check-item-anim active" id="ksxChk1"><div class="ksx-ci-icon">●</div>Checking SSL &amp; security</div>
+                    <div class="ksx-check-item-anim" id="ksxChk2"><div class="ksx-ci-icon">●</div>Analyzing page speed</div>
+                    <div class="ksx-check-item-anim" id="ksxChk3"><div class="ksx-ci-icon">●</div>Auditing on-page SEO</div>
+                    <div class="ksx-check-item-anim" id="ksxChk4"><div class="ksx-ci-icon">●</div>Scanning technical issues</div>
+                    <div class="ksx-check-item-anim" id="ksxChk5"><div class="ksx-ci-icon">●</div>Measuring AI visibility</div>
+                    <div class="ksx-check-item-anim" id="ksxChk6"><div class="ksx-ci-icon">●</div>Generating your report</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Built by Killerspots Agency. We use this tool on every client engagement — and we offer it free for prospects to try.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What the Audit Reveals</span><h2 class="section-headline mt-5">Six layers of search health, in one report.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{reveals.map((r) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{r.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{r.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">How It Works</span><h2 class="section-headline mt-5">Three steps. Sixty seconds.</h2></div><ol class="grid md:grid-cols-3 gap-5 md:gap-6">{how.map((s) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">Step {s.step}</div><h3 class="mt-3 text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p></li>))}</ol></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">KillerSEOx audit questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Want Help Acting On the Report?</span><h2 class="section-headline mt-5">We do the SEO + AIO work, too.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">After you run the audit, if you want help fixing what it found — local SEO, content production, AI visibility, technical fixes — that's our day job. Get a quote and we\'ll size it to your audit results.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an SEO Quote</a><a href="/services/seo-aio" class="btn btn-ghost">Learn More About SEO &amp; AIO</a></div></div></div></section>
+
+  <!-- KillerSEOx widget styles + script (same as homepage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style is:global>
+    .ksx-audit-widget { --ksx-blue: #2d6cca; --ksx-blue-bright: #3b82f6; --ksx-blue-dark: #1e4d94; --ksx-blue-light: #eff6ff; --ksx-blue-100: #dbeafe; --ksx-white: #fff; --ksx-black: #111827; --ksx-gray-100: #f3f4f6; --ksx-gray-200: #e5e7eb; --ksx-gray-300: #d1d5db; --ksx-gray-400: #9ca3af; --ksx-gray-500: #6b7280; --ksx-gray-600: #4b5563; --ksx-gray-700: #374151; --ksx-red: #ef4444; --ksx-green: #22c55e; font-family: 'DM Sans', sans-serif; background: #fff; border-radius: 16px; overflow: hidden; max-width: 580px; margin: 0 auto; position: relative; border: 1px solid var(--ksx-gray-200); box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); }
+    .ksx-inner { padding: 36px 32px; position: relative; }
+    .ksx-headline { font-size: 26px; font-weight: 700; color: var(--ksx-black); line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.3px; }
+    .ksx-headline span { color: var(--ksx-blue); }
+    .ksx-subhead { font-size: 15px; color: var(--ksx-gray-500); margin-bottom: 28px; line-height: 1.5; }
+    .ksx-steps { display: flex; align-items: center; margin-bottom: 28px; }
+    .ksx-step { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--ksx-gray-400); text-transform: uppercase; letter-spacing: 0.8px; transition: color 0.3s; }
+    .ksx-step.active { color: var(--ksx-blue); }
+    .ksx-step.completed { color: var(--ksx-gray-600); }
+    .ksx-step-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; background: var(--ksx-gray-100); color: var(--ksx-gray-400); transition: all 0.3s; }
+    .ksx-step.active .ksx-step-num { background: var(--ksx-blue); color: #fff; box-shadow: 0 2px 8px rgba(45,108,202,0.3); }
+    .ksx-step.completed .ksx-step-num { background: var(--ksx-blue-light); color: var(--ksx-blue); }
+    .ksx-step-line { flex: 1; height: 2px; background: var(--ksx-gray-200); margin: 0 12px; border-radius: 1px; }
+    .ksx-form-step { display: none; }
+    .ksx-form-step.active { display: block; animation: ksxFadeIn 0.3s ease; }
+    @keyframes ksxFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .ksx-field { margin-bottom: 14px; }
+    .ksx-field label { display: block; font-size: 13px; font-weight: 600; color: var(--ksx-gray-700); margin-bottom: 5px; }
+    .ksx-field input { width: 100%; padding: 12px 14px; background: #fff; border: 1.5px solid var(--ksx-gray-300); border-radius: 8px; color: var(--ksx-black); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; box-sizing: border-box; }
+    .ksx-field input:focus { border-color: var(--ksx-blue); box-shadow: 0 0 0 3px rgba(45,108,202,0.1); }
+    .ksx-field input::placeholder { color: var(--ksx-gray-400); }
+    .ksx-field input.ksx-error { border-color: var(--ksx-red); box-shadow: 0 0 0 3px rgba(239,68,68,0.08); }
+    .ksx-field-row { display: flex; gap: 12px; }
+    .ksx-field-row .ksx-field { flex: 1; }
+    .ksx-url-field { position: relative; }
+    .ksx-url-field input { padding-left: 40px; }
+    .ksx-url-field::before { content: '🔗'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 14px; pointer-events: none; margin-top: 11px; }
+    .ksx-btn { width: 100%; padding: 14px; background: var(--ksx-blue); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; letter-spacing: 0.2px; margin-top: 6px; }
+    .ksx-btn:hover { background: var(--ksx-blue-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(45,108,202,0.3); }
+    .ksx-btn:active { transform: translateY(0); }
+    .ksx-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .ksx-privacy { text-align: center; margin-top: 14px; font-size: 11px; color: var(--ksx-gray-400); }
+    .ksx-url-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--ksx-blue-light); border: 1px solid var(--ksx-blue-100); border-radius: 6px; padding: 6px 12px; font-size: 13px; color: var(--ksx-blue-dark); margin-bottom: 20px; font-weight: 500; }
+    .ksx-loading { display: none; text-align: center; padding: 32px 0; }
+    .ksx-loading.active { display: block; }
+    .ksx-spinner { width: 40px; height: 40px; border: 3px solid var(--ksx-gray-200); border-top-color: var(--ksx-blue); border-radius: 50%; animation: ksxSpin 0.8s linear infinite; margin: 0 auto 18px; }
+    @keyframes ksxSpin { to { transform: rotate(360deg); } }
+    .ksx-loading-text { font-size: 16px; font-weight: 600; color: var(--ksx-black); margin-bottom: 4px; }
+    .ksx-loading-sub { font-size: 13px; color: var(--ksx-gray-400); }
+    .ksx-progress-bar { width: 220px; height: 4px; background: var(--ksx-gray-200); border-radius: 2px; margin: 16px auto 0; overflow: hidden; }
+    .ksx-progress-fill { height: 100%; background: linear-gradient(90deg, var(--ksx-blue-dark), var(--ksx-blue-bright)); border-radius: 2px; width: 0%; transition: width 0.5s ease; }
+    .ksx-check-list { text-align: left; max-width: 280px; margin: 20px auto 0; }
+    .ksx-check-item-anim { display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 13px; color: var(--ksx-gray-400); transition: color 0.3s; }
+    .ksx-check-item-anim.done { color: var(--ksx-gray-600); }
+    .ksx-check-item-anim .ksx-ci-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; background: var(--ksx-gray-100); color: var(--ksx-gray-400); transition: all 0.3s; flex-shrink: 0; }
+    .ksx-check-item-anim.done .ksx-ci-icon { background: rgba(34,197,94,0.1); color: var(--ksx-green); }
+    .ksx-check-item-anim.active { color: var(--ksx-blue); font-weight: 500; }
+    .ksx-check-item-anim.active .ksx-ci-icon { background: var(--ksx-blue-light); color: var(--ksx-blue); animation: ksxPulse 1.2s infinite; }
+    @keyframes ksxPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(45,108,202,0.2); } 50% { box-shadow: 0 0 0 6px rgba(45,108,202,0); } }
+    @media (max-width: 500px) { .ksx-inner { padding: 24px 20px; } .ksx-headline { font-size: 22px; } .ksx-field-row { flex-direction: column; gap: 0; } .ksx-step span { display: none; } }
+  </style>
+  <script is:inline>
+    var AUDIT_API_URL = 'https://killerseox-audit.killerspots.workers.dev/audit';
+    var auditReportUrl = null;
+    function ksxNextStep(currentStep) {
+      if (currentStep === 1) {
+        var urlInput = document.getElementById('ksxUrl');
+        var url = urlInput.value.trim();
+        if (!url) { urlInput.classList.add('ksx-error'); urlInput.focus(); return; }
+        if (!url.match(/^https?:\/\//)) url = 'https://' + url;
+        if (!url.match(/\.[a-z]{2,}/i)) { urlInput.classList.add('ksx-error'); urlInput.focus(); return; }
+        urlInput.value = url;
+        document.getElementById('ksxUrlChip').textContent = '🔗 ' + url.replace(/^https?:\/\//, '');
+        document.getElementById('ksxFormStep1').classList.remove('active');
+        document.getElementById('ksxFormStep2').classList.add('active');
+        document.getElementById('ksxStep1Ind').classList.remove('active');
+        document.getElementById('ksxStep1Ind').classList.add('completed');
+        document.getElementById('ksxStep2Ind').classList.add('active');
+      } else if (currentStep === 2) {
+        var fields = ['ksxFirst','ksxLast','ksxEmail','ksxPhone'];
+        var hasError = false;
+        fields.forEach(function (id) { var el = document.getElementById(id); el.classList.remove('ksx-error'); if (!el.value.trim()) { el.classList.add('ksx-error'); hasError = true; } });
+        if (hasError) return;
+        var email = document.getElementById('ksxEmail').value.trim();
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) { document.getElementById('ksxEmail').classList.add('ksx-error'); return; }
+        document.getElementById('ksxSubmitBtn').disabled = true;
+        document.getElementById('ksxSubmitBtn').textContent = 'Processing...';
+        document.getElementById('ksxFormStep2').classList.remove('active');
+        document.getElementById('ksxFormStep3').classList.add('active');
+        document.getElementById('ksxStep2Ind').classList.remove('active');
+        document.getElementById('ksxStep2Ind').classList.add('completed');
+        document.getElementById('ksxStep3Ind').classList.add('active');
+        var payload = { url: document.getElementById('ksxUrl').value.trim(), first_name: document.getElementById('ksxFirst').value.trim(), last_name: document.getElementById('ksxLast').value.trim(), email: email, phone: document.getElementById('ksxPhone').value.trim(), company_name: document.getElementById('ksxBiz').value.trim() };
+        ksxAnimateScan();
+        ksxRunAudit(payload);
+      }
+    }
+    function ksxRunAudit(payload) {
+      fetch(AUDIT_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function (r) { if (!r.ok) throw new Error('Audit failed'); return r.json(); })
+        .then(function (data) { if (data.success && data.reportUrl) { auditReportUrl = data.reportUrl; } })
+        .catch(function (err) { console.error('Audit error:', err); auditReportUrl = null; });
+    }
+    function ksxAnimateScan() {
+      var checks = ['ksxChk1','ksxChk2','ksxChk3','ksxChk4','ksxChk5','ksxChk6'];
+      var progress = document.getElementById('ksxProgress');
+      var messages = ['Checking SSL & security...','Analyzing page speed metrics...','Auditing on-page SEO elements...','Scanning for technical issues...','Measuring AI search visibility...','Generating your personalized report...'];
+      var step = 0;
+      function advanceCheck() {
+        if (step > 0) { var prev = document.getElementById(checks[step - 1]); prev.classList.remove('active'); prev.classList.add('done'); prev.querySelector('.ksx-ci-icon').textContent = '✓'; }
+        if (step < checks.length) {
+          document.getElementById(checks[step]).classList.add('active');
+          document.getElementById('ksxLoadingText').textContent = messages[step];
+          progress.style.width = ((step + 1) / checks.length * 100) + '%';
+          step++;
+          setTimeout(advanceCheck, 2500 + Math.random() * 1500);
+        } else {
+          progress.style.width = '100%';
+          document.getElementById('ksxLoadingText').textContent = 'Your report is ready!';
+          document.getElementById('ksxLoadingSub').textContent = 'Redirecting to your results...';
+          document.querySelector('.ksx-spinner').style.display = 'none';
+          setTimeout(function () {
+            if (auditReportUrl) {
+              window.location.href = auditReportUrl;
+              document.getElementById('ksxLoadingSub').innerHTML = 'Redirecting now... <a href="' + auditReportUrl + '" target="_blank" style="color:#2D6CCA;font-weight:600;">Click here</a> if it didn\'t open.';
+            } else {
+              var pollCount = 0;
+              var pollInterval = setInterval(function () {
+                pollCount++;
+                if (auditReportUrl) { clearInterval(pollInterval); window.location.href = auditReportUrl; document.getElementById('ksxLoadingSub').innerHTML = 'Redirecting now... <a href="' + auditReportUrl + '" target="_blank" style="color:#2D6CCA;font-weight:600;">Click here</a> if it didn\'t open.'; }
+                else if (pollCount > 30) { clearInterval(pollInterval); document.getElementById('ksxLoadingText').textContent = 'Your audit is complete!'; document.getElementById('ksxLoadingSub').textContent = 'Your full report has been sent to your email.'; }
+              }, 1000);
+            }
+          }, 1000);
+        }
+      }
+      advanceCheck();
+    }
+    document.querySelectorAll('.ksx-audit-widget input').forEach(function (input) {
+      input.addEventListener('input', function () { this.classList.remove('ksx-error'); });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); var step = this.closest('.ksx-form-step'); if (step.id === 'ksxFormStep1') ksxNextStep(1); else if (step.id === 'ksxFormStep2') ksxNextStep(2); } });
+    });
+  </script>
+</BaseLayout>

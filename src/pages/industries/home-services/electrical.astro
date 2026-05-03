@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Electrical Contractor Marketing | Service, Panel, EV Charger | Killerspots',
+  description: 'Electrical contractor marketing for residential and commercial electricians. SEO, Google LSA, paid social, and AI-powered lead capture for service calls, panel upgrades, and EV charger installs.',
+  ogTitle: 'Electrical Marketing — Own the Local Search Results | Killerspots',
+  ogDescription: 'SEO, LSA, paid social, jingles, and 24/7 AI lead capture for electrical contractors. Active LSA dispute management. Real CPL reporting.',
+};
+
+const trustPills = ['Electrical Specialists', 'Active LSA Management', '24/7 Lead Capture'];
+
+const painPoints = [
+  { title: 'Service Calls vs. Panel Upgrades', body: 'A $150 service call and a $4K panel upgrade need different marketing. We segment campaigns so the right offer reaches the right intent.' },
+  { title: 'EV Chargers Are Exploding', body: 'Tesla, Rivian, F-150 Lightning — every EV needs a Level 2 install. Most electricians aren\'t marketing this. The early movers own the category.' },
+  { title: 'Permits and Compliance Slow You Down', body: 'Marketing has to translate "I think I need work" into a qualified job that won\'t bounce on permit issues. We pre-qualify with smart landing pages and AI scripts.' },
+  { title: 'Commercial Wins, But Sales Cycles Are Long', body: 'Commercial electrical pays well but takes months. We layer LinkedIn + targeted display + content alongside search to capture both.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "electrician near me," "panel upgrade," "EV charger install [city]," and other high-intent terms.' },
+  { title: 'Google LSA + Ads', body: 'Local Service Ads with active dispute management plus paid search for terms LSA doesn\'t cover.' },
+  { title: 'EV Charger Lead Generation', body: 'Dedicated campaigns targeting Tesla and Rivian buyers via geo-targeted Meta and search. Early-mover advantage.' },
+  { title: 'Custom Jingles + Radio', body: 'A jingle that\'s the sound of electrical in your market. Pair with smart radio for top-of-mind recall.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request Google reviews after every job. Compound 4.9-star ratings into search dominance.' },
+  { title: 'AI Lead Capture (LeadConnector)', body: '24/7 AI bot qualifies service calls vs install jobs, books appointments, texts back missed calls.' },
+];
+
+const faqs = [
+  { q: 'What\'s a realistic CPL for electrical?', a: 'Typically $50–$130 per qualified lead in mid-size markets. Service calls run lower, panel upgrades and EV installs run higher. We benchmark and report monthly.' },
+  { q: 'Do you market EV charger installs specifically?', a: 'Yes — high-leverage growing category. Geo-targeted campaigns to Tesla and Rivian owners, dedicated landing pages, and follow-up sequences for the multi-step buying process.' },
+  { q: 'Can you handle commercial electrical?', a: 'Yes. Commercial uses LinkedIn + targeted display + content marketing alongside search. Longer sales cycles, but higher LTV.' },
+  { q: 'How do you handle LSA disputes?', a: 'Every charged lead reviewed. Wrong number, out of area, junk, or non-electrical inquiry → we file the dispute. Most clients get 20–40% of LSA spend back in credits.' },
+  { q: 'Do you work with electrical franchises?', a: 'Yes — both at franchisor and franchisee levels. Helped franchisees outrank corporate listings without violating brand standards.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/home-services/electrical#webpage', url: 'https://killerspots.com/industries/home-services/electrical', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Home Services', item: 'https://killerspots.com/industries/home-services' }, { '@type': 'ListItem', position: 3, name: 'Electrical', item: 'https://killerspots.com/industries/home-services/electrical' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/home-services" class="hover:text-white">Home Services</a><span class="mx-2">/</span><span class="text-ink">Electrical</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Electrical Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Service calls, panel upgrades, EV chargers — <span class="text-brand-500">own all of them.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">SEO, Google LSA, paid social, jingles, and AI lead capture for electrical contractors. Active LSA dispute management. EV charger lead-gen included.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get an Electrical Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years in the trades. We've run electrical campaigns through algorithm changes, EV adoption, and code updates.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Marketing built for the way electrical actually runs.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">An electrical channel mix that compounds.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Electrical marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Get the Phones Ringing</span><h2 class="section-headline mt-5">Tell us your service area. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your CPL, your competition, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

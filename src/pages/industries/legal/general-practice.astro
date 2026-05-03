@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'General Practice Lawyer Marketing | Estate, Business, Real Estate | Killerspots',
+  description: 'General practice law firm marketing — estate planning, business law, real estate, criminal defense. SEO, Google LSA, paid social, and AI intake. Multi-practice campaigns.',
+  ogTitle: 'General Practice Marketing — One Firm, Multiple Practices, Coordinated Campaigns | Killerspots',
+  ogDescription: 'Marketing for general practice law firms. Multi-practice SEO + LSA + AI intake. Bar-compliant. Built for firms with diverse caseloads.',
+};
+
+const trustPills = ['General Practice Specialists', 'Multi-Practice Campaigns', 'Compliant Intake'];
+
+const painPoints = [
+  { title: 'Diverse Practices = Fragmented Marketing', body: 'Estate planning, business law, real estate, criminal defense — different keywords, different intent, different buyers. Most agencies blob it together. We segment.' },
+  { title: 'Estate Planning Is Often Forgotten', body: 'Highest-LTV practice for most general firms — and most underused in marketing. We build dedicated campaigns and content authority.' },
+  { title: 'Business Law Sales Cycles Are Long', body: 'B2B legal inquiries take months. Marketing has to nurture across LinkedIn, email, and content alongside search.' },
+  { title: 'Bar Rules Vary By Practice', body: 'Criminal defense advertising rules ≠ estate planning rules. We work within each practice\'s specific compliance constraints.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Practice-specific SEO. "Estate planning attorney [city]," "small business lawyer," "real estate closing attorney" — segmented campaigns and dedicated landing pages.' },
+  { title: 'LSA for Lawyers + Google Ads', body: 'LSA for Lawyers (where eligible) plus paid search by practice area. Aggressive dispute management on bad leads.' },
+  { title: 'Authority Content', body: 'Long-form content per practice — estate planning guides, business formation FAQs, real estate closing checklists — establishes expertise.' },
+  { title: 'LinkedIn for B2B Practices', body: 'Business law, commercial real estate, employment law all benefit from LinkedIn presence + targeted ads alongside search.' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot routes inquiries by practice area. Books consults with the right attorney. Spanish-language available.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews from settled clients per practice. Compound 4.9-star ratings into search dominance.' },
+];
+
+const faqs = [
+  { q: 'Can you handle multiple practices in one firm?', a: 'Yes — that\'s the whole point. We build dedicated campaigns per practice (estate, business, real estate, etc.) and route leads to the right attorney via AI intake.' },
+  { q: 'What\'s the highest-leverage practice to market first?', a: 'Usually estate planning — high LTV, long retention, and most general firms underinvest. Real estate closing is also high-leverage if you\'re in a hot market. We\'ll prioritize on the discovery call.' },
+  { q: 'How do you handle B2B practices?', a: 'Business law, employment, and commercial real estate use LinkedIn + targeted display + content marketing alongside search. Longer sales cycles, but higher LTV.' },
+  { q: 'Can you do criminal defense too?', a: 'Yes. Different bar rules, different intent. Speed-to-lead matters — defendants often Google late at night after arrest. AI intake handles 24/7.' },
+  { q: 'How is success measured for multi-practice firms?', a: 'Per-practice case CPA. Each practice has its own targets. We report which practices are profitable, which need adjustment, and how leads flow between them.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/legal/general-practice#webpage', url: 'https://killerspots.com/industries/legal/general-practice', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Legal', item: 'https://killerspots.com/industries/legal' }, { '@type': 'ListItem', position: 3, name: 'General Practice', item: 'https://killerspots.com/industries/legal/general-practice' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/legal" class="hover:text-white">Legal</a><span class="mx-2">/</span><span class="text-ink">General Practice</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">General Practice Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Multi-practice campaigns. <span class="text-brand-500">Coordinated, not fragmented.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">SEO, LSA for Lawyers, content authority, and AI intake for general practice firms. Estate, business, real estate, criminal — segmented campaigns by practice area.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a General Practice Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years in regulated industries. We know how to run multi-practice firms without bleeding budget across confused campaigns.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Marketing built for the way general practice actually runs.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A multi-practice channel mix that compounds.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">General practice marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Build the Pipeline</span><h2 class="section-headline mt-5">Tell us your practices. We'll segment the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your practice mix, your jurisdiction, and your current marketing spend.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

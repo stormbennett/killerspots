@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Video & TV Production | Commercials, Web Video, Animation | Killerspots',
+  description: 'Video and TV production from a 25-year creative agency. TV commercials, web videos, documentaries, corporate video, social cutdowns, motion graphics, and animation.',
+  ogTitle: 'Video & TV Production That Actually Sells | Killerspots',
+  ogDescription: 'Cinematic video production for broadcast and digital. TV spots, web videos, corporate, social, and motion graphics — produced in our Cincinnati green-screen studio.',
+};
+
+const trustPills = ['Since 1999', '6× Telly Award Winner', 'Green-Screen Studio'];
+
+const services = [
+  { title: 'TV Commercials', href: '/services/video-tv/tv-commercials', body: 'Broadcast-quality :15, :30, and :60 spots. Concepting, scripting, production, and post — all in-house.' },
+  { title: 'Web Videos', href: '/services/video-tv/web-videos', body: 'Explainer videos, product videos, web hero footage. Built for embedded use, social cutdowns, and ad creative.' },
+  { title: 'Documentaries', href: '/services/video-tv/documentaries', body: 'Long-form story-driven video for brand films, founder profiles, customer journeys, and case studies.' },
+  { title: 'Corporate Video', href: '/services/video-tv/corporate-video', body: 'Training, recruiting, internal comms, and investor video. Talking-head, B-roll, and full editorial production.' },
+  { title: 'Social Video', href: '/services/video-tv/social-video', body: 'Short-form vertical video for TikTok, Reels, and Shorts. Hook-driven, fast-cut, designed for the algorithm.' },
+  { title: 'Graphics & Animations', href: '/services/video-tv/graphics-animations', body: 'Motion graphics, logo animations, kinetic typography, and 2D explainer animation. Built to support every other video format.' },
+];
+
+const why = [
+  { title: 'Full In-House Production', body: 'Concept, script, shoot, edit, color, sound, animation — all under one roof. No freelancer chains, no quality drift between vendors.' },
+  { title: 'Built For Broadcast Standards', body: 'We\'ve been producing TV commercials since 1999. Broadcast-spec deliverables, traffic-system-ready files, and color graded to spec.' },
+  { title: 'Green-Screen + Audio Studio', body: 'Pre-lit green screen cyclorama, sound-treated audio rooms, and full lighting + camera kit. Walk in, shoot, walk out with files.' },
+  { title: 'Audio + Video Combined', body: 'Voice over, jingles, sound design, and original music — produced by the same team that shoots the video. Cohesive, fast, predictable.' },
+];
+
+const faqs = [
+  { q: 'How long does a TV commercial take to produce?', a: 'A standard :30 spot from concept to broadcast-ready: 3–5 weeks for full production. Rush turnarounds available for time-sensitive buys. Existing assets can shorten significantly.' },
+  { q: 'Do you write the script too?', a: 'Yes. Concepting and scripting are included in standard production packages. We can also produce against scripts you bring.' },
+  { q: 'What about media buying — do you place the spots?', a: 'Yes. CTV, broadcast TV, social, and digital media buying handled in-house. Production + media under one roof = better creative-to-placement attribution.' },
+  { q: 'Can you produce in our studio or on location?', a: 'Both. Our Cincinnati studio handles green-screen and controlled-environment shoots. We travel for location work, customer site shoots, and event coverage.' },
+  { q: 'Do you do AI-generated video?', a: 'Selective and disclosed. AI tools accelerate motion graphics, b-roll generation, and certain explainer formats. We use them transparently and never on talent-driven work where we cast a real human (see our anti-AI voice pledge on VoiceTalent.Agency).' },
+  { q: 'What\'s a realistic budget for a TV spot?', a: 'Wildly variable based on talent, location, and complexity. Single-location, scripted-talent :30 spots start in the low five figures. Multi-location, premium-talent productions go up from there. Get a quote.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/video-tv#webpage', url: 'https://killerspots.com/services/video-tv', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Video & TV', item: 'https://killerspots.com/services/video-tv' }] };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', serviceType: 'Video and TV Production', provider: { '@id': 'https://killerspots.com/#localbusiness' }, areaServed: 'US', description: meta.description, url: 'https://killerspots.com/services/video-tv' };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Video &amp; TV</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Cinematic video, <span class="text-brand-500">broadcast-spec delivery.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">TV commercials, web video, documentaries, corporate, social, and motion graphics — produced in our Cincinnati green-screen studio. Concept to broadcast under one roof.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Production Quote</a><a href="/portfolio" class="btn btn-ghost">See Our Work</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years producing video for broadcasters, agencies, and brands. Our Cincinnati studio is a working production facility — green screen, audio rooms, gear, the whole stack.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Produce</span><h2 class="section-headline mt-5">Every video format. Concept to delivery.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why Killerspots</span><h2 class="section-headline mt-5">Built for production speed and broadcast quality.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{why.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Video production questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Let's Make Something</span><h2 class="section-headline mt-5">Tell us your project. We'll size the production.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute creative call. We'll review your brief, your timeline, and your budget — then come back with a production plan and a quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

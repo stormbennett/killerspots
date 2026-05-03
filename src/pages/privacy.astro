@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../data/navigation';
+
+const meta = {
+  title: 'Privacy Policy | Killerspots Agency',
+  description: 'Privacy policy for Killerspots Agency. How we collect, use, and protect personal information from website visitors and clients.',
+};
+
+const lastUpdated = 'January 2026';
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: 'https://killerspots.com/privacy' },
+  ],
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description} schema={[breadcrumbs]}>
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div>
+    </div>
+    <div class="container-page pt-24 md:pt-32 pb-12 md:pb-16">
+      <div class="max-w-3xl">
+        <span class="eyebrow">Legal</span>
+        <h1 class="hero-headline mt-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">Privacy Policy</h1>
+        <p class="mt-6 text-base md:text-lg text-muted">Last updated: {lastUpdated}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="container-page py-12 md:py-16">
+      <div class="prose-content max-w-3xl space-y-8 text-base md:text-lg text-ink leading-relaxed">
+        <p>
+          {businessInfo.name} ("we," "us," or "our") respects your privacy and is committed
+          to protecting the personal information you share with us. This Privacy Policy
+          explains what information we collect, how we use it, and the rights you have over
+          your data.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Information We Collect</h2>
+        <p>
+          We collect information you voluntarily provide when you:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Fill out a contact, quote-request, or audit form on our website</li>
+          <li>Sign up for our newsletter or marketing communications</li>
+          <li>Engage our services or enter a contract with us</li>
+          <li>Contact us by email, phone, or chat</li>
+        </ul>
+        <p>
+          This may include your name, email, phone number, business name, website URL, and
+          any other information you choose to share.
+        </p>
+        <p>
+          We also automatically collect technical information when you visit our site —
+          IP address, browser type, device type, pages visited, and referral source — via
+          cookies and analytics tools (Google Analytics, Cloudflare).
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">How We Use Your Information</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>To respond to your inquiries and deliver requested services</li>
+          <li>To send you marketing communications (if you opt in)</li>
+          <li>To improve our website, services, and customer experience</li>
+          <li>To comply with legal obligations</li>
+        </ul>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Sharing Your Information</h2>
+        <p>
+          We do not sell your personal information. We share information with:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Service providers who help us operate our business (CRM, email, analytics, hosting)</li>
+          <li>Legal authorities if required by law</li>
+          <li>Business successors in the event of a merger or acquisition</li>
+        </ul>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Your Rights</h2>
+        <p>
+          Depending on your jurisdiction, you may have the right to:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Access the personal information we hold about you</li>
+          <li>Request correction or deletion of your data</li>
+          <li>Opt out of marketing communications at any time</li>
+          <li>File a complaint with a data protection authority</li>
+        </ul>
+        <p>
+          To exercise these rights, email us at <a href={`mailto:${businessInfo.email}`} class="text-brand-500 hover:text-brand-300">{businessInfo.email}</a>.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Cookies + Tracking</h2>
+        <p>
+          We use cookies for analytics, site functionality, and (with your consent) marketing
+          retargeting. You can disable cookies in your browser settings, though some site
+          features may not work as expected.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Third-Party Services</h2>
+        <p>
+          Our website integrates with third-party services including Google Analytics,
+          Vimeo (video hosting), SoundCloud (audio hosting), Cloudflare (hosting + CDN),
+          Go High Level / LeadConnector (forms + CRM), and TrustIndex (reviews). Each has
+          its own privacy policy governing data they collect.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Children's Privacy</h2>
+        <p>
+          Our services are not directed at children under 13. We do not knowingly collect
+          information from children. If you believe we have, contact us and we will delete
+          it.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy periodically. The "Last updated" date at the
+          top reflects the most recent revision. Continued use of our site after changes
+          constitutes acceptance of the updated policy.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight pt-6">Contact</h2>
+        <p>
+          Questions about this policy? Reach us at:
+        </p>
+        <address class="not-italic">
+          {businessInfo.name}<br />
+          {businessInfo.address.street}<br />
+          {businessInfo.address.city}, {businessInfo.address.region} {businessInfo.address.postal}<br />
+          <a href={`mailto:${businessInfo.email}`} class="text-brand-500 hover:text-brand-300">{businessInfo.email}</a><br />
+          <a href={`tel:${businessInfo.phoneTel}`} class="text-brand-500 hover:text-brand-300">{businessInfo.phone}</a>
+        </address>
+
+        <p class="text-sm text-muted pt-8 border-t border-white/10">
+          <strong>Note:</strong> This privacy policy is provided as a general template. Consult an attorney to ensure full compliance with GDPR, CCPA, and other applicable laws for your specific jurisdiction.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

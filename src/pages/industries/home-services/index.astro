@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Home Services Marketing | HVAC, Plumbing, Roofing & More | Killerspots',
+  description:
+    'Marketing built for home service contractors. HVAC, plumbing, roofing, electrical, landscaping, and pool & spa — SEO, Google LSA, paid social, and integrated marketing plans that drive real calls.',
+  ogTitle: 'Home Services Marketing — Built For Real Contractors | Killerspots',
+  ogDescription:
+    'We do marketing for home service contractors who care about cost-per-lead, not vanity metrics. SEO, LSA, jingles, and AI-powered follow-up under one roof.',
+};
+
+const trustPills = ['Built For Contractors', 'Since 1999', 'CPL-Driven Reporting'];
+
+const subIndustries = [
+  {
+    title: 'HVAC',
+    href: '/industries/home-services/hvac',
+    body: 'Heating + cooling + indoor air. Emergency-ready SEO, LSA, and seasonal campaigns.',
+  },
+  {
+    title: 'Plumbing',
+    href: '/industries/home-services/plumbing',
+    body: 'Drain, water heater, leak — be the first call when a pipe bursts at 2 AM.',
+  },
+  {
+    title: 'Roofing',
+    href: '/industries/home-services/roofing',
+    body: 'Storm-chaser-resistant marketing for residential and commercial roofers.',
+  },
+  {
+    title: 'Electrical',
+    href: '/industries/home-services/electrical',
+    body: 'Service calls, panel upgrades, EV chargers — own the local search results.',
+  },
+  {
+    title: 'Landscaping',
+    href: '/industries/home-services/landscaping',
+    body: 'Spring rush, fall cleanup, snow contracts — seasonal demand on a yearly plan.',
+  },
+  {
+    title: 'Pool & Spa',
+    href: '/industries/home-services/pool-spa',
+    body: 'Build, install, service, retail — full-funnel marketing for a seasonal business.',
+  },
+];
+
+const painPoints = [
+  {
+    title: 'Bad Leads From "SEO" Vendors',
+    body: 'You\'re paying for traffic that doesn\'t convert. Or worse — leads that ghost. Our SEO is measured by qualified calls, not impressions.',
+  },
+  {
+    title: 'Google LSA Is a Black Box',
+    body: 'Most agencies set up LSA and walk away. We actively dispute bad leads, optimize categories, and run it like a real ad channel.',
+  },
+  {
+    title: 'Your Phone Rings After Hours',
+    body: 'And the lead goes cold. LeadConnector\'s AI bot answers at 2 AM, qualifies the job, and books a slot — even when your team is off.',
+  },
+  {
+    title: 'Brand Recognition Costs Too Much',
+    body: 'Custom jingles + radio + CTV build name recognition for a fraction of what big-agency campaigns charge. Your truck shouldn\'t be the only place people see your name.',
+  },
+];
+
+const services = [
+  {
+    title: 'Local SEO + AI Search',
+    body: 'Rank in the maps pack, the AI overviews, and the organic results. Built for hyperlocal contractor terms.',
+    href: '/services/seo-aio/seo',
+  },
+  {
+    title: 'Google Ads + LSA',
+    body: 'Paid search + Local Service Ads with active dispute management. The fastest path to qualified phone calls.',
+    href: '/services/ppc/google-ads-lsa',
+  },
+  {
+    title: 'Custom Jingles + Radio',
+    body: 'A jingle is the cheapest brand asset you\'ll ever own. Pair it with smart radio buys and you\'re top-of-mind across your service area.',
+    href: '/services/audio-production/custom-jingles',
+  },
+  {
+    title: 'CTV / OTT Streaming',
+    body: 'Your TV commercial — but on Hulu, YouTube TV, and Roku. Geo-targeted to the neighborhoods you serve.',
+    href: '/services/digital-ads/ctv-streaming',
+  },
+  {
+    title: 'AI Chatbots + Follow-Up',
+    body: 'LeadConnector\'s AI bot answers FAQs, books jobs, and texts back missed calls — 24/7. The lead never goes cold.',
+    href: '/leadconnector',
+  },
+  {
+    title: 'Reviews + Reputation',
+    body: 'Auto-request Google and Facebook reviews after every job. More 5-stars = higher rank = more inbound calls. Compounding.',
+    href: '/services/seo-aio',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do you specialize in home services or do you take any client?',
+    a: 'Home services is one of our four core verticals (along with legal, small business, and broadcasting). We\'ve been doing contractor marketing since 1999 — we know LSA disputes, seasonal demand cycles, and what a real CPL looks like in HVAC vs. roofing.',
+  },
+  {
+    q: 'How fast will I see results?',
+    a: 'LSA and Google Ads can drive calls within 1–2 weeks. SEO compounds over 90–180 days. Jingles and CTV build brand recall over 3–6 months. We set expectations up front and report against them every month.',
+  },
+  {
+    q: 'What\'s your minimum budget for home services?',
+    a: 'Depends on the channel mix and your market size. Single-service engagements (just LSA management or just SEO) start lower. Integrated marketing plans (SEO + LSA + jingles + LeadConnector) start higher. Get a quote and we\'ll size it to your goals.',
+  },
+  {
+    q: 'Can you handle multi-location contractors?',
+    a: 'Yes. Plenty of our clients run 2–20 locations. We build location-specific landing pages, manage GBP profiles, and deliver attribution per location so you know where leads are coming from.',
+  },
+  {
+    q: 'Do you work with home services franchises?',
+    a: 'Yes — both at the franchisor level (national brand support, lead distribution systems) and the franchisee level (local-market campaigns). We\'ve helped franchisees outrank corporate listings without violating brand standards.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/industries/home-services#webpage',
+  url: 'https://killerspots.com/industries/home-services',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Home Services',
+      item: 'https://killerspots.com/industries/home-services',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, faqSchema]}
+>
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div>
+    </div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Home Services</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Marketing built for contractors who care about
+          <span class="text-brand-500">cost per lead, not vanity metrics.</span>
+        </h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">
+          HVAC, plumbing, roofing, electrical, landscaping, pool & spa. SEO, Google LSA,
+          paid social, jingles, CTV, and AI-powered follow-up — sized to your service area
+          and reported by qualified call.
+        </p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href="#sub-industries" class="btn btn-ghost">See Your Trade</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep">
+    <div class="container-page py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          25+ years marketing for contractors. We've seen every algorithm change, every
+          LSA category shift, and every economic cycle. We build for the long haul.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sub-industries" class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Your Trade</span>
+        <h2 class="section-headline mt-5">Pick your specialty.</h2>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {subIndustries.map((s) => (
+          <li data-reveal>
+            <a href={s.href} class="card-tile group">
+              <h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+              <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                Explore
+                <svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">The Real Problem</span>
+        <h2 class="section-headline mt-5">Most contractor marketing is set-and-forget. That's the problem.</h2>
+      </div>
+      <ul class="grid md:grid-cols-2 gap-5 md:gap-6">
+        {painPoints.map((p) => (
+          <li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8">
+            <h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3>
+            <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-canvas cursor-glow">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What We Run</span>
+        <h2 class="section-headline mt-5">A real channel mix — coordinated, not stitched together.</h2>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {services.map((s) => (
+          <li data-reveal>
+            <a href={s.href} class="card-tile group">
+              <h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+              <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                Explore
+                <svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Home services marketing questions.</h2>
+      </div>
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {faqs.map((f) => (
+          <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+            <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+              <span>{f.q}</span>
+              <svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div>
+    </div>
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Let's Talk</span>
+        <h2 class="section-headline mt-5">Tell us your service area. We'll size the plan.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Free 30-minute strategy call. We'll look at your competition, your CPL targets,
+          and your current marketing — then come back with a recommendation.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

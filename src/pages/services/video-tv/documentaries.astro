@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Documentary & Brand Film Production | Killerspots',
+  description: 'Documentary and brand film production — long-form story-driven video for founder profiles, customer journeys, case studies, and brand storytelling. Cinematic production.',
+  ogTitle: 'Documentary & Brand Film Production | Killerspots',
+  ogDescription: 'Long-form story-driven video. Founder profiles, customer journeys, case studies, brand films. Cinematic production from a 25-year creative agency.',
+};
+
+const trustPills = ['Story-First Production', 'Cinematic Quality', 'Long-Form Editorial'];
+
+const what = [
+  { title: 'Founder Profiles', body: 'Story-driven founder and team profiles for brand-building, recruiting, or investor materials. Real interviews, real insight, cinematic delivery.' },
+  { title: 'Customer Journey Films', body: 'Documentary-style customer stories — from problem to solution to outcome. The most credible form of testimonial.' },
+  { title: 'Case Study Documentaries', body: 'Long-form case studies that show the work, the results, and the people behind both. For sales enablement and credibility content.' },
+  { title: 'Brand Films', body: 'Brand-building films that establish identity and emotional connection. Used for fundraising, recruiting, and category-defining marketing.' },
+  { title: 'Behind-the-Scenes Content', body: 'How-it\'s-made content for manufacturers, makers, and craft businesses. Documentary-style access that builds authority and authenticity.' },
+  { title: 'Editorial Editing', body: 'Story-first editing approach. Pacing, narrative arc, music supervision, and color grading that elevates raw footage to broadcast-quality storytelling.' },
+];
+
+const faqs = [
+  { q: 'What\'s the difference between a brand film and a TV commercial?', a: 'TV commercials sell a product or offer in 15–60 seconds. Brand films build identity, story, and emotional connection over 3–10+ minutes. Different length, different intent, different deliverable.' },
+  { q: 'How long does a documentary take?', a: 'Standard timeline: 8–16 weeks from concept to final delivery. Includes pre-production research, multi-day shooting, and editorial. Larger projects with multiple subjects can take 4–6 months.' },
+  { q: 'How is this typically used?', a: 'Brand websites, conference reels, fundraising decks, recruiting content, and sales enablement. Excellent earned-media potential when story is strong enough.' },
+  { q: 'What\'s a realistic budget?', a: 'Single-subject documentary: $25K–$60K typical. Multi-subject brand films: $60K–$150K+. Wildly variable based on travel, talent, and animation needs.' },
+  { q: 'Do you research and develop the story?', a: 'Yes. Pre-production research, subject interviews, and narrative development are part of the engagement. We don\'t just show up and shoot — we plan the story first.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/video-tv/documentaries#webpage', url: 'https://killerspots.com/services/video-tv/documentaries', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Video & TV', item: 'https://killerspots.com/services/video-tv' }, { '@type': 'ListItem', position: 3, name: 'Documentaries', item: 'https://killerspots.com/services/video-tv/documentaries' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/video-tv" class="hover:text-white">Video &amp; TV</a><span class="mx-2">/</span><span class="text-ink">Documentaries</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Documentaries &amp; Brand Films</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Long-form story <span class="text-brand-500">that builds brand and trust.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Founder profiles, customer journey films, case study documentaries, and brand films. Cinematic production with story-first editorial. From a 25-year creative agency.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Documentary Quote</a><a href="/portfolio" class="btn btn-ghost">See Our Work</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">A great brand film is the most credible marketing asset you\'ll ever make. We treat them like films, not commercials.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Make</span><h2 class="section-headline mt-5">Six documentary formats.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Documentary questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Tell Your Story</span><h2 class="section-headline mt-5">Tell us the story you want to tell. We'll plan the film.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute creative call. We\'ll review your subjects, your story arc, and your timeline — then come back with a production plan.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

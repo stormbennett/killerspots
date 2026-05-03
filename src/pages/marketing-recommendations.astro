@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo, logoUrls } from '../data/navigation';
+
+const meta = {
+  title: 'Marketing Tools & Recommendations | DIY Stack | Killerspots',
+  description:
+    'The marketing tools, software, and platforms we actually use and recommend. CRM, SEO, voice talent, content, and creative tools — vetted by Killerspots Agency.',
+  ogTitle: 'Tools We Use & Recommend | Killerspots Marketing Stack',
+  ogDescription:
+    'A curated stack of marketing software and platforms we actually use to run our agency and our clients. Some links are affiliate links — we only recommend what we use.',
+};
+
+// =====================================================================
+// AFFILIATE / RECOMMENDATION DATA
+// ---------------------------------------------------------------------
+// Each entry below renders as a card. To add or edit a recommendation:
+//   - logo: full image URL (PNG/SVG, transparent bg ideal)
+//   - name: brand or product name
+//   - tagline: short pitch (one short sentence)
+//   - body: 2-3 sentence description in our voice
+//   - href: affiliate or partner URL
+//   - cta: button label (defaults to "Visit")
+//   - affiliate: true if this is an affiliate link (renders disclosure pill)
+//   - firstParty: true if this is a Killerspots-built / -operated product
+// =====================================================================
+
+type Recommendation = {
+  logo: string;
+  name: string;
+  tagline: string;
+  body: string;
+  href: string;
+  cta?: string;
+  affiliate?: boolean;
+  firstParty?: boolean;
+};
+
+type Category = {
+  heading: string;
+  description: string;
+  items: Recommendation[];
+};
+
+const categories: Category[] = [
+  {
+    heading: 'CRM & Marketing Automation',
+    description:
+      'The platforms that capture leads, automate follow-up, and turn prospects into customers.',
+    items: [
+      {
+        logo: logoUrls.leadConnector,
+        name: 'LeadConnector',
+        tagline: 'Our white-labeled CRM + marketing automation platform.',
+        body:
+          'Built and operated by Killerspots Agency. AI lead scoring, two-way SMS, email automation, pipeline management, and 24/7 follow-up — all under one roof. The same platform we run our clients on.',
+        href: '/leadconnector',
+        cta: 'Learn About LeadConnector',
+        firstParty: true,
+      },
+    ],
+  },
+  {
+    heading: 'SEO & AI Search Visibility',
+    description:
+      'Tools to monitor and improve how you rank on Google — and how you show up in AI search.',
+    items: [
+      {
+        logo: logoUrls.killerSeox,
+        name: 'KillerSEOx',
+        tagline: 'Our proprietary SEO + AI visibility audit.',
+        body:
+          'Built in-house. Plug in your domain, get a complete audit of SEO health, technical issues, AI search visibility (ChatGPT, Perplexity, Gemini), and competitor gaps in 60 seconds — free.',
+        href: '/services/seo-aio/killerseox-audit',
+        cta: 'Run a Free Audit',
+        firstParty: true,
+      },
+    ],
+  },
+  {
+    heading: 'Voice Talent & Audio',
+    description: 'Where we cast voice over artists for our productions.',
+    items: [
+      {
+        logo: logoUrls.color,
+        name: 'VoiceTalent.Agency',
+        tagline: 'Real voice talent. Never AI.',
+        body:
+          'The voice talent marketplace we built and operate. Every artist signs an anti-AI pledge — no synthetic voices, no clones, just real humans. Search by language, accent, and read style. VIP tier managed directly by Killerspots.',
+        href: 'https://voicetalent.agency',
+        cta: 'Browse Voice Talent',
+        firstParty: true,
+      },
+    ],
+  },
+  {
+    heading: 'Creative & Design Tools',
+    description:
+      'The design and creative platforms we use day-to-day — and recommend to clients running their own DIY work.',
+    items: [
+      // -----------------------------------------------------------------
+      // PLACEHOLDER — replace href, logo, copy with your affiliate details
+      // -----------------------------------------------------------------
+      {
+        logo: '',
+        name: 'Add a tool',
+        tagline: 'Your affiliate goes here.',
+        body:
+          'Drop your affiliate link, logo, and a short paragraph about why you recommend the tool. Edit src/pages/marketing-recommendations.astro to add entries.',
+        href: '#',
+        cta: 'Coming soon',
+        affiliate: true,
+      },
+    ],
+  },
+  {
+    heading: 'Productivity & AI',
+    description:
+      'The tools we use to manage projects, ship work, and lean on AI without losing the human touch.',
+    items: [
+      {
+        logo: '',
+        name: 'Add a tool',
+        tagline: 'Your affiliate goes here.',
+        body:
+          'Drop your affiliate link, logo, and a short paragraph about why you recommend the tool.',
+        href: '#',
+        cta: 'Coming soon',
+        affiliate: true,
+      },
+    ],
+  },
+  {
+    heading: 'Hosting & Infrastructure',
+    description: 'Where we run our own sites — and where we point clients running theirs.',
+    items: [
+      {
+        logo: '',
+        name: 'Add a tool',
+        tagline: 'Your affiliate goes here.',
+        body:
+          'Drop your affiliate link, logo, and a short paragraph about why you recommend the tool.',
+        href: '#',
+        cta: 'Coming soon',
+        affiliate: true,
+      },
+    ],
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/marketing-recommendations#webpage',
+  url: 'https://killerspots.com/marketing-recommendations',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Marketing Recommendations',
+      item: 'https://killerspots.com/marketing-recommendations',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Marketing Recommendations</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          The tools we use,
+          <span class="text-brand-500">and the ones we recommend.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          A curated stack of marketing software and platforms we actually run our agency
+          and our clients on. Honest pitches, real-world experience, and direct links if
+          you want to try them yourself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLOSURE -->
+  <section class="bg-deep">
+    <div class="container-page py-8 md:py-10">
+      <div
+        class="rounded-2xl border border-white/10 bg-surface px-6 py-5 text-sm text-ink leading-relaxed"
+      >
+        <strong class="text-white">Affiliate disclosure:</strong> Some of the links on this
+        page are affiliate links — meaning if you sign up through them, Killerspots may
+        earn a small commission at no extra cost to you. We only recommend tools we
+        actively use ourselves or run for our clients. First-party products
+        (LeadConnector, KillerSEOx, VoiceTalent.Agency) are owned and operated by
+        Killerspots Agency.
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY GRIDS -->
+  {
+    categories.map((cat) => (
+      <section class="bg-canvas odd:bg-canvas even:bg-deep">
+        <div class="container-page py-20 md:py-28">
+          <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+            <span class="eyebrow">{cat.heading}</span>
+            <p class="mt-5 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+              {cat.description}
+            </p>
+          </div>
+
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {cat.items.map((item) => (
+              <li data-reveal>
+                <a
+                  href={item.href}
+                  rel={item.href.startsWith('http') ? 'noopener sponsored' : undefined}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  class="group block h-full rounded-2xl border border-white/10 bg-surface p-6 md:p-7 transition-all hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-[0_24px_48px_-24px_rgba(239,82,83,0.3)]"
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex h-14 md:h-16 w-auto items-center min-w-0">
+                      {item.logo ? (
+                        <img
+                          src={item.logo}
+                          alt={item.name}
+                          width="220"
+                          height="48"
+                          loading="lazy"
+                          decoding="async"
+                          class="max-h-12 md:max-h-14 w-auto object-contain"
+                        />
+                      ) : (
+                        <div class="h-12 md:h-14 px-4 inline-flex items-center rounded-xl border border-dashed border-white/15 text-xs uppercase tracking-[0.18em] text-muted">
+                          Logo
+                        </div>
+                      )}
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-1.5 shrink-0">
+                      {item.firstParty && (
+                        <span class="inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-500">
+                          First-party
+                        </span>
+                      )}
+                      {item.affiliate && (
+                        <span class="inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
+                          Affiliate
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <h3 class="mt-6 text-xl font-semibold text-white">{item.name}</h3>
+                  <p class="mt-1 text-sm font-medium text-ink">{item.tagline}</p>
+                  <p class="mt-4 text-sm text-muted leading-relaxed">{item.body}</p>
+
+                  <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                    {item.cta ?? 'Visit'}
+                    <svg
+                      class="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- SUBMIT-A-TOOL CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Recommend a Tool</span>
+        <h2 class="section-headline mt-5">
+          Run a tool we should know about?
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Drop us a line. We're always looking for good marketing tools to test, integrate
+          with, and recommend to clients. If it's worth shipping, we'll add it.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Submit a Tool</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

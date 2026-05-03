@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'White-Label Marketing Services | Resell Under Your Brand | Killerspots',
+  description: 'Full white-label production for agencies and platforms. Audio, video, design, SEO, PPC, and LeadConnector — branded as your shop, delivered invisibly. Wholesale rate card.',
+  ogTitle: 'White-Label Marketing — Branded As You, Delivered By Us | Killerspots',
+  ogDescription: 'Resell our creative + digital + CRM services as your own. Branded reports, branded portals, fully invisible delivery. We never touch your client.',
+};
+
+const trustPills = ['Fully White-Labeled', 'Wholesale Rate Card', 'Volume Retainers'];
+
+const benefits = [
+  { title: 'You Keep Every Relationship', body: 'Your agency owns the customer. Your team owns the conversation. We never sell directly to your clients. Ever.' },
+  { title: 'You Set the Markup', body: 'We give you wholesale rates. You set retail. Most partners run 40–70% margin. Volume discounts compound as your book grows.' },
+  { title: 'Branded Everything', body: 'Reports, dashboards, client portals, email communications — all branded as your agency. We\'re invisible to your customers.' },
+  { title: 'Predictable Production Capacity', body: 'Monthly retainer covers a defined volume across services. No per-project surcharges. No surprise invoices. Easy to budget.' },
+];
+
+const services = [
+  { title: 'Audio Production', body: 'Custom jingles, radio commercials, voice over, on-hold messaging, IVR. 2–3 day standard turnaround. Branded as your studio.' },
+  { title: 'Video Production', body: 'TV commercials, corporate video, motion graphics, social cutdowns. Full production from script to broadcast-ready files.' },
+  { title: 'SEO + AIO', body: 'Local SEO, content production, technical audits, AI search visibility. Reports branded for your agency, delivered monthly.' },
+  { title: 'PPC + Paid Social', body: 'Google Ads, Meta, LinkedIn, programmatic. Campaign builds, optimization, weekly reporting — all under your brand.' },
+  { title: 'Web Development', body: 'Landing pages, business sites, marketing sites. WordPress, Astro, custom builds. Branded handoff to your client.' },
+  { title: 'LeadConnector CRM', body: 'Resell our managed CRM platform. Branded portals, branded support, your logo everywhere. We stay invisible.' },
+];
+
+const faqs = [
+  { q: 'Will Killerspots ever talk to my clients?', a: 'Only when you ask us to — and only as your team. White-label means white-label. Reports, dashboards, emails, calls — all branded as you.' },
+  { q: 'How are deliverables branded?', a: 'Your logo on every report, your domain on every portal, your color scheme on every dashboard. The end client never sees Killerspots branding unless you choose to introduce us.' },
+  { q: 'How do volume retainers work?', a: 'Monthly retainer covers a defined deliverable volume — say, "20 SEO content pieces + 5 paid campaigns + 10 landing pages per month." Predictable cost, no per-project surcharges.' },
+  { q: 'What\'s the smallest engagement?', a: 'Single-project work for one-off needs (a jingle here, an SEO audit there) up to full-stack monthly retainers covering creative + digital + CRM. We size to your business.' },
+  { q: 'Do you offer NDAs and IP transfer?', a: 'Yes. Standard mutual NDA + white-label deliverable agreement + IP transfer terms in every engagement. Lawyer-reviewed. Protects you and your clients.' },
+  { q: 'Can I see white-label work samples?', a: 'Yes — under NDA. We have case studies showing how our work has been delivered as agency-partner shops. Schedule a call and we\'ll walk through them.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/platforms-agencies/white-label#webpage', url: 'https://killerspots.com/industries/platforms-agencies/white-label', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Platforms & Agencies', item: 'https://killerspots.com/industries/platforms-agencies' }, { '@type': 'ListItem', position: 3, name: 'White Label', item: 'https://killerspots.com/industries/platforms-agencies/white-label' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/platforms-agencies" class="hover:text-white">Platforms & Agencies</a><span class="mx-2">/</span><span class="text-ink">White Label</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">White Label</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Branded as you. <span class="text-brand-500">Delivered by us.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Audio, video, design, SEO, PPC, and CRM — all delivered fully white-labeled to your agency. Branded reports, branded portals, fully invisible production.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a White-Label Rate Card</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years powering agencies behind the scenes. We've delivered millions in white-label work without our name ever surfacing to the end client.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Why White Label Works</span><h2 class="section-headline mt-5">Built so your agency wins — not us.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{benefits.map((b) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{b.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{b.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What You Can Resell</span><h2 class="section-headline mt-5">A full-service agency stack — yours to mark up.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">White-label questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Get the Rate Card</span><h2 class="section-headline mt-5">Tell us your services. We'll send wholesale rates.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute partnership call. NDA signed up front. Wholesale rate card delivered within 48 hours of the call.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Become a Partner</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

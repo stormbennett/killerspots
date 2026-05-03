@@ -1,0 +1,490 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { businessInfo } from '../data/navigation';
+
+const meta = {
+  title: 'Green Screen Studio + Audio Recording Studio Rental | Cincinnati | Killerspots',
+  description:
+    'Professional green screen video studio and audio recording studio rental in Cincinnati. Broadcast-quality equipment, sound-treated rooms, engineer on-site, same-day file delivery.',
+  ogTitle: 'Cincinnati Studio Rental — Green Screen + Audio | Killerspots',
+  ogDescription:
+    'Rent our Cincinnati studio for video shoots, voiceover sessions, podcasts, music, and broadcast production. Professional gear, experienced engineers, comfortable talent lounge.',
+};
+
+const trustPills = ['Cincinnati, OH', 'Broadcast-Quality', 'Engineer On-Site Optional'];
+
+const features = [
+  {
+    title: 'Green Screen Video Studio',
+    body:
+      'Pre-lit cyclorama and green screen wall built for clean keying. Studio strobe and continuous LED lighting, teleprompter, and full camera kit. Ready for product, talent, training, and commercial shoots.',
+  },
+  {
+    title: 'Sound-Treated Audio Rooms',
+    body:
+      'Acoustically optimized spaces for voiceover, podcast, music, and audiobook recording. Multiple room configurations to fit the project — from a single VO booth to multi-mic ensemble tracking.',
+  },
+  {
+    title: 'Professional-Grade Equipment',
+    body:
+      'Industry-standard mics (Neumann, Shure), Behringer X32 console, RME Fireface interface, monitor speakers, and full editing workstation. The same gear used by major broadcasters and production companies.',
+  },
+  {
+    title: 'Engineer On-Site (Optional)',
+    body:
+      'Work with one of our experienced engineers — they\'ll dial in levels, capture clean takes, and offer real-time guidance. Or bring your own engineer and use our setup.',
+  },
+  {
+    title: 'Comfortable Talent Lounge',
+    body:
+      'Coffee, water, and a calm waiting area between takes. Comfortable space for crew, talent, and clients to stay focused and fresh.',
+  },
+  {
+    title: 'High-Speed File Delivery',
+    body:
+      'Files delivered same-day via cloud transfer. Broadcast-spec WAV and MP3 audio. Edit-ready video raws or color-managed proxies — your call.',
+  },
+];
+
+const gearRental = [
+  {
+    title: 'Camera Kits',
+    body:
+      'Cinema-grade camera bodies, lens kits, and accessories. Available with the studio space or as standalone gear rental for off-site shoots.',
+  },
+  {
+    title: 'Lighting Packages',
+    body:
+      'LED panel kits, key lights, soft boxes, and full three-point setups. Pre-configured packages or custom builds based on your shoot list.',
+  },
+  {
+    title: 'Audio Gear',
+    body:
+      'Lavalier and boom mic kits, field recorders, wireless systems, and broadcast-quality interfaces — all the audio gear our own engineers trust.',
+  },
+  {
+    title: 'Grip & Stands',
+    body:
+      'C-stands, light stands, flags, scrims, and rigging. The supporting cast that keeps your A-list gear pointed where it needs to be.',
+  },
+  {
+    title: 'Teleprompter',
+    body:
+      'Professional teleprompter setup for clean talent reads — ideal for corporate, training, and recruiting shoots without on-camera improv.',
+  },
+  {
+    title: 'Studio + Gear Bundle',
+    body:
+      'Bundle gear rental with studio time at a flat day rate. The simplest path for full-day productions: walk in, shoot, walk out with files.',
+  },
+];
+
+const useCases = [
+  {
+    title: 'Voiceover Sessions',
+    body:
+      'Commercial VO, narration, explainer videos, e-learning, and more. Broadcast-quality recordings ready for ad delivery the same day. (Need talent? Cast on VoiceTalent.Agency.)',
+  },
+  {
+    title: 'Podcast Episodes',
+    body:
+      'Multi-track podcast recording with optional mixing and editing. Two- to four-host configurations available, plus remote-guest recording over Zoom or Riverside.',
+  },
+  {
+    title: 'TV & Web Commercials',
+    body:
+      'Green screen shoots for TV spots, web ads, and explainer videos. Pre-production support, on-set direction, and post available — turn a brief into a finished spot under one roof.',
+  },
+  {
+    title: 'Corporate & Training Video',
+    body:
+      'Talking-head, training modules, recruiting videos, and internal communications. Teleprompter, lighting, and direction included on shoot day.',
+  },
+  {
+    title: 'Audiobook Production',
+    body:
+      'Author or voice talent recording? Clean, ACX-spec audio captured in a treated booth with same-day file delivery and optional editing/mastering.',
+  },
+  {
+    title: 'Music Demos & Tracks',
+    body:
+      'Lay down original music or demos with broadcast-grade signal chain. Multi-mic configurations and full mixing services available.',
+  },
+];
+
+const workflow = [
+  {
+    step: '01',
+    title: 'Book Your Session',
+    body:
+      'Tell us the date, the project type, and how long you need the room. We\'ll confirm availability and prep the studio for your specific use case.',
+  },
+  {
+    step: '02',
+    title: 'Show Up Ready',
+    body:
+      'Room is set up, lighting is in. Bring your script, your guests, your talent — we handle the technical side. Free parking on-site.',
+  },
+  {
+    step: '03',
+    title: 'Record With Confidence',
+    body:
+      'Work with our engineer or bring your own. We\'ll capture clean takes and manage technical details so you can focus on the performance.',
+  },
+  {
+    step: '04',
+    title: 'Files Delivered Same-Day',
+    body:
+      'Cloud transfer before the end of business. Broadcast-spec audio and edit-ready video. Optional edit and mix services available on request.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is the studio set up for green screen video AND audio recording?',
+    a: 'Yes — our facility includes a pre-lit green screen cyc wall for video shoots and separate sound-treated rooms for audio. You can book either or both depending on the project.',
+  },
+  {
+    q: 'Can I bring my own engineer or producer?',
+    a: 'Absolutely. The room and gear are yours for the booked session. Bring your own engineer, DP, or producer — we just provide the space, equipment, and technical baseline.',
+  },
+  {
+    q: 'What equipment is included?',
+    a: 'Industry-standard mics (Neumann, Shure, others), Behringer X32 mixing console, RME Fireface audio interface, monitor speakers, full editing workstation, plus full lighting kit and green screen for video. Specific gear lists available on request.',
+  },
+  {
+    q: 'Is there parking?',
+    a: 'Yes — ample free parking on-site, easily accessible from the front entrance. Handicap-accessible parking is available.',
+  },
+  {
+    q: 'Can I book a full day?',
+    a: 'Yes. Half-day, full-day, and multi-day bookings are all available with advance notice. Get a quote and we\'ll size it to your project.',
+  },
+  {
+    q: 'How fast do I get my files?',
+    a: 'Standard delivery is same-day via cloud transfer — files in your inbox before end of business on session day. Rush delivery or pre-session preview can be arranged in advance.',
+  },
+  {
+    q: 'Do you offer remote sessions?',
+    a: 'Remote-guest recording (Zoom, Riverside, source-connect) is supported for podcasts and voiceover. Full remote-direct studio sessions are evolving — reach out and we\'ll talk through what works for your project.',
+  },
+  {
+    q: 'Can I rent gear without booking the studio?',
+    a: 'Yes. Camera kits, lighting, audio gear, and grip are available as standalone rentals for off-site shoots. Or bundle gear with studio time at a flat day rate — the simplest path for full-day productions.',
+  },
+];
+
+const speakable = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://killerspots.com/studio#webpage',
+  url: 'https://killerspots.com/studio',
+  name: meta.title,
+  description: meta.description,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['#hero-headline', '#hero-subhead'],
+  },
+  isPartOf: { '@id': 'https://killerspots.com/#localbusiness' },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Studio Rental',
+      item: 'https://killerspots.com/studio',
+    },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Studio Rental',
+  provider: { '@id': 'https://killerspots.com/#localbusiness' },
+  areaServed: 'Cincinnati, OH',
+  description: meta.description,
+  url: 'https://killerspots.com/studio',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
+      <div class="max-w-5xl">
+        <span class="eyebrow">Studio Rental</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">
+          Green screen video. Broadcast-quality audio.
+          <span class="text-brand-500">Cincinnati's working studio.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
+        >
+          A real production studio you can book by the hour or the day. Green screen
+          cyclorama, sound-treated audio rooms, professional gear, and an engineer on-site
+          if you need one.
+        </p>
+
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary">Book the Studio</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="bg-deep">
+    <div class="container-page py-14 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div class="flex flex-wrap items-center gap-2.5">
+          {trustPills.map((p) => <span class="trust-pill">{p}</span>)}
+        </div>
+        <p class="text-base md:text-lg text-muted leading-relaxed">
+          We've used this studio to produce thousands of commercials, jingles, and corporate
+          videos since 1999. Now you can book it for yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Studio Features</span>
+        <h2 class="section-headline mt-5">Professional-grade gear, professional results.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          features.map((f) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/5 bg-deep/60 p-7 md:p-8"
+            >
+              <h3 class="text-lg font-semibold text-white">{f.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{f.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- GREEN SCREEN STUDIO TOUR -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-10 md:mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">Studio Tour</span>
+        <h2 class="section-headline mt-5">Walk through the green screen studio.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          A look inside our Cincinnati production facility — the green screen cyclorama,
+          the audio rooms, the gear, and the lounge. See what your shoot day actually
+          looks like.
+        </p>
+      </div>
+
+      <div
+        data-reveal
+        class="relative overflow-hidden rounded-3xl border border-white/10 bg-canvas shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]"
+      >
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <!-- TODO: replace src with the direct Vimeo player URL once available.
+               For now this points to the curated showcase containing this video. -->
+          <iframe
+            src="https://vimeo.com/showcase/11786935/embed"
+            title="Killerspots Green Screen Studio Tour"
+            loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">What You Can Record</span>
+        <h2 class="section-headline mt-5">Built for any audio or video project.</h2>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          useCases.map((u) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <h3 class="text-lg font-semibold text-white">{u.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{u.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- GEAR RENTAL -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Gear Rental</span>
+        <h2 class="section-headline mt-5">
+          Rent the gear too — with the studio or on its own.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed max-w-2xl">
+          Cameras, lighting, audio, and grip — broadcast-grade gear our own producers use.
+          Rent it bundled with studio time, or check it out for off-site shoots and field
+          production.
+        </p>
+      </div>
+
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {
+          gearRental.map((g) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <h3 class="text-lg font-semibold text-white">{g.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{g.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 md:mt-14" data-reveal>
+        <a href="/contact" class="btn btn-primary">Get a Gear Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-headline mt-5">From booking to files in your inbox.</h2>
+      </div>
+
+      <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        {
+          workflow.map((s) => (
+            <li
+              data-reveal
+              class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"
+            >
+              <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+                Step {s.step}
+              </div>
+              <h3 class="mt-3 text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-deep">
+    <div class="container-page py-24 md:py-32">
+      <div class="mb-14 max-w-3xl" data-reveal>
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-headline mt-5">Studio booking questions.</h2>
+      </div>
+
+      <div class="max-w-3xl space-y-3" data-reveal>
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5">
+              <summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4">
+                <span>{f.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </summary>
+              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div
+        class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"
+      >
+      </div>
+    </div>
+
+    <div class="container-page py-24 md:py-32">
+      <div class="max-w-3xl" data-reveal>
+        <span class="eyebrow">Book Your Session</span>
+        <h2 class="section-headline mt-5">
+          Ready to record? Let's get you on the calendar.
+        </h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+          Tell us your project type, dates, and session length. We'll confirm availability,
+          prep the room, and have everything ready when you arrive.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/contact" class="btn btn-primary">Get a Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
+            Call {businessInfo.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

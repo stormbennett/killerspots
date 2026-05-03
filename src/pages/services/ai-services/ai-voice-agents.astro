@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'AI Voice Agents | Inbound Call Handling | Killerspots',
+  description: 'AI voice agents that answer inbound calls, qualify intent, route to the right person, and book appointments — when your team can\'t. Disclosed as AI. Human escalation built in.',
+  ogTitle: 'AI Voice Agents — After-Hours and Overflow Call Handling | Killerspots',
+  ogDescription: 'AI voice agents for inbound calls. Disclosed as AI to callers. Human escalation built in. NOT a replacement for voice over (see VoiceTalent.Agency for human voice).',
+};
+
+const trustPills = ['Disclosed as AI', 'Human Escalation', 'After-Hours + Overflow'];
+
+const what = [
+  { title: 'After-Hours Coverage', body: 'AI voice agent answers calls outside business hours. Handles FAQs, books appointments, captures contact info. Routes to voicemail or on-call rep when needed.' },
+  { title: 'Overflow Handling', body: 'When all your reps are on calls, the AI agent picks up the spillover. Lead never hits a busy signal. Human escalation when the conversation needs it.' },
+  { title: 'Lead Qualification', body: 'Bot asks qualifying questions, scores intent, and routes high-intent calls to live reps via warm transfer. Low-intent goes into nurture sequences.' },
+  { title: 'Appointment Booking', body: 'Connects to your calendar (Google, Outlook, LeadConnector). Books slots conversationally. Sends confirmation via SMS and email.' },
+  { title: 'Custom Training', body: 'Trained on your specific FAQs, services, hours, policies, and pricing rules. Not a generic OpenAI prompt — your business knowledge.' },
+  { title: 'Human Escalation', body: 'Every conversation has a clear escalation path. Bot doesn\'t recognize intent? Transfers to a human rep. Disclosed as AI when asked.' },
+];
+
+const faqs = [
+  { q: 'Will the AI fool my customers?', a: 'No. AI voice agents disclose they\'re AI when asked. Best use case is after-hours and overflow handling. We don\'t recommend AI for relationship-based or high-stakes calls.' },
+  { q: 'How is this different from voice over (VoiceTalent.Agency)?', a: 'Different products. AI voice agents handle inbound calls (utility). Voice over for ads, jingles, and brand work stays 100% human via VoiceTalent.Agency — every artist signs an anti-AI pledge. Don\'t confuse them.' },
+  { q: 'How does it handle complex calls?', a: 'Human escalation is built in. When the bot detects complexity, frustration, or specific keywords ("speak to a human," "I want to cancel"), it transfers to a live rep.' },
+  { q: 'How fast can you deploy a voice agent?', a: 'Typical: 2–4 weeks from kickoff. We need access to your phone system, FAQ docs, and a brand voice sample. Tuning continues for 4–6 weeks based on real calls.' },
+  { q: 'How is this priced?', a: 'Setup fee + monthly retainer based on call volume. We size to your typical inbound traffic. Most clients see ROI in month 2 because the AI captures leads they\'d otherwise miss.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/ai-services/ai-voice-agents#webpage', url: 'https://killerspots.com/services/ai-services/ai-voice-agents', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'AI Services', item: 'https://killerspots.com/services/ai-services' }, { '@type': 'ListItem', position: 3, name: 'AI Voice Agents', item: 'https://killerspots.com/services/ai-services/ai-voice-agents' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/ai-services" class="hover:text-white">AI Services</a><span class="mx-2">/</span><span class="text-ink">AI Voice Agents</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">AI Voice Agents</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Answer every call — <span class="text-brand-500">even after hours.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">AI voice agents handle inbound call overflow, after-hours coverage, FAQ answering, and appointment booking. Disclosed as AI. Human escalation built in. NOT a voice over service.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Voice Agent Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">Voice over for ads stays 100% human (anti-AI pledge on VoiceTalent.Agency). AI voice agents are a different product — utility, not creative.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What It Does</span><h2 class="section-headline mt-5">Six call-handling capabilities.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">AI voice agent questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Capture Every Call</span><h2 class="section-headline mt-5">Tell us your call patterns. We'll deploy the agent.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your inbound volume, your hours, and your common inquiries — then deploy a voice agent in 2–4 weeks.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="/voice-talent" class="btn btn-ghost">For Real Voice Talent →</a></div></div></div></section>
+</BaseLayout>

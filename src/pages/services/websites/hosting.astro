@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Managed Website Hosting | Cloudflare, WP Engine | Killerspots',
+  description: 'Managed website hosting on Cloudflare Pages, WP Engine, or your platform of choice. Performance, security, backups, uptime monitoring, and ongoing maintenance.',
+  ogTitle: 'Managed Hosting That Doesn\'t Break | Killerspots',
+  ogDescription: 'Cloudflare Pages, WP Engine, or custom hosting setups — managed end-to-end. Performance optimization, security hardening, automated backups, uptime monitoring.',
+};
+
+const trustPills = ['Cloudflare + WP Engine', 'Backups + Uptime', 'Security Hardened'];
+
+const what = [
+  { title: 'Cloudflare Pages Hosting', body: 'Static + JAMstack hosting on Cloudflare\'s global edge. Free tier covers most marketing sites. Unlimited bandwidth, no surprises.' },
+  { title: 'WordPress Managed Hosting', body: 'WP Engine, Kinsta, or Cloudways for WordPress sites that need easy editing or specific plugins. Daily backups, security updates, performance tuning.' },
+  { title: 'Performance Optimization', body: 'CDN configuration, image optimization, lazy loading, browser caching, and Core Web Vitals monitoring. Lighthouse 95+ targets.' },
+  { title: 'Security Hardening', body: 'WAF rules, malware scanning, brute-force protection, SSL setup, and DNSSEC. The work most hosts don\'t do without prompting.' },
+  { title: 'Backups + DR', body: 'Daily automated backups, 30-day retention minimum, and tested restore procedures. Disaster recovery actually works when you need it.' },
+  { title: 'Uptime Monitoring', body: '24/7 monitoring with multi-region health checks. Alerts to our team within 60 seconds of downtime. Most clients never know about issues we\'ve already fixed.' },
+];
+
+const faqs = [
+  { q: 'Why not just use [GoDaddy / Bluehost / SiteGround]?', a: 'Cheap shared hosting is fine for personal blogs. For business sites, the performance and security gaps cost more in lost conversions and security incidents than the hosting savings. We use enterprise-grade hosts with proper management.' },
+  { q: 'How much does hosting cost?', a: 'Cloudflare Pages: free for most marketing sites. WP Engine starts ~$30/mo for small sites. Plus our management retainer (~$200–$500/mo for typical business sites) covering monitoring, backups, security, and ongoing maintenance.' },
+  { q: 'Do you handle migrations?', a: 'Yes. Migrating from existing hosts (including the bad cheap ones) is part of the engagement. Zero-downtime migrations standard for most setups.' },
+  { q: 'What about email hosting?', a: 'We handle web hosting + DNS. Email hosting we recommend Google Workspace or Microsoft 365 — we set up the DNS records but the actual email service runs on those platforms.' },
+  { q: 'What if my site goes down?', a: '24/7 monitoring + alerts. Most issues caught and fixed before clients notice. Major incidents (host outage, DNS attack) get escalation and clear communication. We don\'t hide.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/services/websites/hosting#webpage', url: 'https://killerspots.com/services/websites/hosting', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Websites', item: 'https://killerspots.com/services/websites' }, { '@type': 'ListItem', position: 3, name: 'Hosting', item: 'https://killerspots.com/services/websites/hosting' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/services/websites" class="hover:text-white">Websites</a><span class="mx-2">/</span><span class="text-ink">Hosting</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Managed Hosting</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Hosting that <span class="text-brand-500">doesn\'t go down — and doesn\'t get hacked.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Cloudflare Pages, WP Engine, or your platform of choice — managed end-to-end. Performance optimization, security hardening, daily backups, and 24/7 uptime monitoring.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Hosting Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">We host on enterprise-grade infrastructure (Cloudflare, WP Engine, Kinsta) — not budget shared hosts. Faster, more secure, properly managed.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What\'s Included</span><h2 class="section-headline mt-5">Six layers of managed hosting.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{what.map((w) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7"><h3 class="text-lg font-semibold text-white">{w.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{w.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Hosting questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Move to Real Hosting</span><h2 class="section-headline mt-5">Tell us your current setup. We'll migrate.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We\'ll review your current host, your stack, and your traffic — then come back with a migration plan and quote.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

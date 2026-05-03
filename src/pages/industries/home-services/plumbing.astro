@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const meta = {
+  title: 'Plumbing Marketing | Drain, Water Heater, Emergency Service | Killerspots',
+  description: 'Plumbing marketing built for emergency calls and high-ticket installs. SEO, Google LSA, paid social, jingles, and AI-powered 24/7 lead capture for residential and commercial plumbers.',
+  ogTitle: 'Plumbing Marketing — Be the First Call When the Pipe Bursts | Killerspots',
+  ogDescription: 'SEO, LSA, paid social, jingles, and 24/7 AI lead capture for plumbers. Active LSA dispute management. Real CPL reporting.',
+};
+
+const trustPills = ['Plumbing Specialists', 'Active LSA Management', '24/7 Lead Capture'];
+
+const painPoints = [
+  { title: 'Emergencies Don\'t Wait', body: 'Pipe burst at midnight, water heater dead Sunday morning. The homeowner calls the first three names that show up. We make sure you\'re one of them — even at 3 AM.' },
+  { title: 'High-Ticket vs Service Call Mix', body: 'Sewer replacements pay 50× a snake job, but they\'re harder to win. We segment campaigns so you\'re ranking for both — and routing the right customer to the right call.' },
+  { title: 'LSA Disputes Are a Time Sink', body: 'Wrong number, out of area, "just looking for a price" — Google charges anyway unless you actively dispute. Most agencies don\'t. We do.' },
+  { title: 'Repeat Customers Are Your Goldmine', body: 'A loyal customer base is worth more than any campaign. Auto-review requests, maintenance reminders, and SMS reactivation sequences keep them coming back.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "plumber near me," "emergency plumber [city]," "water heater install," and the long-tail terms that close.' },
+  { title: 'Google LSA + Ads', body: 'Local Service Ads with active dispute management plus paid search for terms LSA doesn\'t cover.' },
+  { title: 'Custom Jingles + Radio', body: 'A jingle that\'s the sound of plumbing in your market. Pair with smart radio buys for top-of-mind recall.' },
+  { title: 'CTV + Streaming Ads', body: 'Geo-targeted to neighborhoods you serve. Hulu, YouTube TV, Roku — premium video at fractional cost.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews after every service. Respond to negatives in real time. More 5-stars = higher rank.' },
+  { title: 'AI Lead Capture (LeadConnector)', body: '24/7 AI bot answers FAQs, qualifies emergencies, books appointments. Missed calls auto-text back.' },
+];
+
+const faqs = [
+  { q: 'What\'s a realistic CPL for plumbing?', a: 'Typically $50–$150 per qualified lead in mid-size markets. Emergency leads run higher. We benchmark you against trade averages and report real CPL by channel monthly.' },
+  { q: 'Do you handle commercial plumbing too?', a: 'Yes. Commercial plumbing has different intent and longer sales cycles. We segment campaigns and use LinkedIn + targeted display alongside search.' },
+  { q: 'Can you grow a single-truck shop?', a: 'Yes. Single-truck operations up to 30+ truck regional players. We size the channel mix and budget to where you are.' },
+  { q: 'How do you handle LSA disputes?', a: 'Every charged lead gets reviewed. Wrong number, out of service area, junk, non-plumbing inquiry → we file the dispute. Most clients get 20–40% of LSA spend back in disputed-lead credits.' },
+  { q: 'Do you market drain cleaning specifically?', a: 'Yes — drain cleaning is one of the highest-volume plumbing search categories. We build dedicated campaigns and landing pages for it.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/home-services/plumbing#webpage', url: 'https://killerspots.com/industries/home-services/plumbing', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Home Services', item: 'https://killerspots.com/industries/home-services' }, { '@type': 'ListItem', position: 3, name: 'Plumbing', item: 'https://killerspots.com/industries/home-services/plumbing' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <section class="relative overflow-hidden bg-canvas">
+    <div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
+    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
+      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/home-services" class="hover:text-white">Home Services</a><span class="mx-2">/</span><span class="text-ink">Plumbing</span></nav>
+      <div class="max-w-5xl mt-6">
+        <span class="eyebrow">Plumbing Marketing</span>
+        <h1 id="hero-headline" class="hero-headline mt-5">Be the first call <span class="text-brand-500">when the pipe bursts at 2 AM.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">SEO, Google LSA, paid social, jingles, CTV, and 24/7 AI lead capture for plumbers. Active LSA dispute management included.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Plumbing Marketing Quote</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for the trades. We've run plumbing campaigns through every algorithm change and economic cycle.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Marketing built for the way plumbing actually runs.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A plumbing channel mix that compounds.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Plumbing marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Get the Phones Ringing</span><h2 class="section-headline mt-5">Tell us your service area. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your CPL, your competition, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

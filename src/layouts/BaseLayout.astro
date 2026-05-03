@@ -1,0 +1,336 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { businessInfo, logoUrls } from '../data/navigation';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  noindex?: boolean;
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = logoUrls.color,
+  ogTitle,
+  ogDescription,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const finalOgTitle = ogTitle ?? title;
+const finalOgDescription = ogDescription ?? description;
+const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: businessInfo.name,
+  url: 'https://killerspots.com',
+  logo: logoUrls.color,
+  email: businessInfo.email,
+  telephone: businessInfo.phoneTel,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: businessInfo.address.street,
+    addressLocality: businessInfo.address.city,
+    addressRegion: businessInfo.address.region,
+    postalCode: businessInfo.address.postal,
+    addressCountry: businessInfo.address.country,
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: businessInfo.phoneTel,
+    email: businessInfo.email,
+    contactType: 'Sales',
+    areaServed: 'US',
+    availableLanguage: 'en',
+  },
+  sameAs: [
+    businessInfo.social.facebook,
+    businessInfo.social.linkedin,
+    businessInfo.social.instagram,
+  ],
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://killerspots.com/#localbusiness',
+  name: businessInfo.name,
+  image: logoUrls.color,
+  url: 'https://killerspots.com',
+  telephone: businessInfo.phoneTel,
+  email: businessInfo.email,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: businessInfo.address.street,
+    addressLocality: businessInfo.address.city,
+    addressRegion: businessInfo.address.region,
+    postalCode: businessInfo.address.postal,
+    addressCountry: businessInfo.address.country,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href={logoUrls.icon} />
+    <link rel="apple-touch-icon" href={logoUrls.icon} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="preconnect" href="https://i.vimeocdn.com" />
+    <link rel="preconnect" href="https://assets.cdn.filesafe.space" />
+    <link rel="preconnect" href="https://cdn.trustindex.io" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={finalOgTitle} />
+    <meta property="og:description" content={finalOgDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Killerspots Agency" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={finalOgTitle} />
+    <meta name="twitter:description" content={finalOgDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#0f1419" />
+
+    <!-- Google Analytics (GA4) — fires on every page via BaseLayout -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3C0Y3SX0KB"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-3C0Y3SX0KB');
+    </script>
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(orgSchema)}
+    />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(localBusinessSchema)}
+    />
+    {
+      schemaArray.map((s) => (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(s)} />
+      ))
+    }
+  </head>
+  <body class="bg-canvas text-ink">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-canvas"
+      >Skip to content</a
+    >
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      // ================================================================
+      // CINEMATIC MOTION SYSTEM — runs on every page via BaseLayout.
+      // Each block is independent; if one block has nothing to bind to,
+      // it's a no-op. Reduced-motion is respected at the CSS layer.
+      // ================================================================
+
+      // 1. Reveal-on-scroll with stagger support.
+      //    Add data-reveal-delay="200" for staggered children in lists.
+      const reveals = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if (reveals.length) {
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  const delay = (e.target as HTMLElement).dataset.revealDelay;
+                  if (delay) {
+                    setTimeout(
+                      () => e.target.classList.add('is-visible'),
+                      parseInt(delay, 10)
+                    );
+                  } else {
+                    e.target.classList.add('is-visible');
+                  }
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+          );
+          reveals.forEach((el) => io.observe(el));
+        } else {
+          reveals.forEach((el) => el.classList.add('is-visible'));
+        }
+      }
+
+      // 2. Stat counters — count up from 0 to data-target when in view.
+      //    Markup: <dd class="stat-num stat-counter" data-target="25" data-suffix="+">25+</dd>
+      const counters = document.querySelectorAll<HTMLElement>('[data-counter-to]');
+      if (counters.length && 'IntersectionObserver' in window) {
+        const counterIO = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target as HTMLElement;
+              const target = parseFloat(el.dataset.counterTo ?? '0');
+              const duration = parseInt(el.dataset.counterDuration ?? '1600', 10);
+              const prefix = el.dataset.counterPrefix ?? '';
+              const suffix = el.dataset.counterSuffix ?? '';
+              const decimals = parseInt(el.dataset.counterDecimals ?? '0', 10);
+              const start = performance.now();
+              el.dataset.counting = 'true';
+              const tick = (now: number) => {
+                const t = Math.min(1, (now - start) / duration);
+                // ease-out-expo for a soft landing
+                const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+                const value = target * eased;
+                el.textContent =
+                  prefix + value.toFixed(decimals) + suffix;
+                if (t < 1) {
+                  requestAnimationFrame(tick);
+                } else {
+                  el.dataset.counting = 'false';
+                }
+              };
+              requestAnimationFrame(tick);
+              counterIO.unobserve(el);
+            });
+          },
+          { threshold: 0.4 }
+        );
+        counters.forEach((el) => counterIO.observe(el));
+      }
+
+      // 3. Mouse-parallax 3D tilt — apply to elements with `.tilt-card`.
+      //    Inner content can use `.tilt-card__inner` for layered depth.
+      const tiltCards = document.querySelectorAll<HTMLElement>('.tilt-card');
+      const supportsHover = window.matchMedia('(hover: hover)').matches;
+      const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+      if (tiltCards.length && supportsHover && !reduceMotion) {
+        tiltCards.forEach((card) => {
+          let raf = 0;
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width - 0.5;
+            const py = (e.clientY - rect.top) / rect.height - 0.5;
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              card.style.transform = `perspective(1000px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateZ(0)`;
+            });
+          });
+          card.addEventListener('mouseleave', () => {
+            cancelAnimationFrame(raf);
+            card.style.transform = '';
+          });
+        });
+      }
+
+      // 4. Magnetic CTAs — buttons gently pull toward cursor.
+      const magnets = document.querySelectorAll<HTMLElement>('.magnetic');
+      if (magnets.length && supportsHover && !reduceMotion) {
+        magnets.forEach((el) => {
+          let raf = 0;
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const px = e.clientX - (rect.left + rect.width / 2);
+            const py = e.clientY - (rect.top + rect.height / 2);
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              el.style.transform = `translate(${(px * 0.18).toFixed(1)}px, ${(py * 0.18).toFixed(1)}px)`;
+            });
+          });
+          el.addEventListener('mouseleave', () => {
+            cancelAnimationFrame(raf);
+            el.style.transform = '';
+          });
+        });
+      }
+
+      // 5. Cursor-aware accent glow — sets --cx/--cy on `.cursor-glow` elements.
+      const glowSections = document.querySelectorAll<HTMLElement>('.cursor-glow');
+      if (glowSections.length && supportsHover && !reduceMotion) {
+        glowSections.forEach((sec) => {
+          sec.addEventListener('mouseenter', () => sec.classList.add('is-glowing'));
+          sec.addEventListener('mouseleave', () => sec.classList.remove('is-glowing'));
+          sec.addEventListener('mousemove', (e) => {
+            const rect = sec.getBoundingClientRect();
+            sec.style.setProperty('--cx', `${e.clientX - rect.left}px`);
+            sec.style.setProperty('--cy', `${e.clientY - rect.top}px`);
+          });
+        });
+      }
+
+      // 6. Hero scroll-scrub — drives translateY on .hero-scroll-text and a
+      //    scale on .hero-scroll-bg as the user scrolls into the page.
+      const heroText = document.querySelector<HTMLElement>('.hero-scroll-text');
+      const heroBg = document.querySelector<HTMLElement>('.hero-scroll-bg');
+      const heroScrim = document.querySelector<HTMLElement>('.hero-scroll-scrim');
+      if ((heroText || heroBg || heroScrim) && !reduceMotion) {
+        let scrollRaf = 0;
+        const updateHeroScroll = () => {
+          const y = window.scrollY;
+          const max = window.innerHeight * 0.8;
+          const t = Math.max(0, Math.min(1, y / max));
+          if (heroText) {
+            heroText.style.transform = `translate3d(0, ${(t * -80).toFixed(1)}px, 0)`;
+            heroText.style.opacity = `${(1 - t * 0.65).toFixed(3)}`;
+          }
+          if (heroBg) {
+            heroBg.style.transform = `scale(${(1 + t * 0.08).toFixed(3)})`;
+          }
+          if (heroScrim) {
+            heroScrim.style.opacity = `${(0.6 + t * 0.4).toFixed(3)}`;
+          }
+        };
+        const onScroll = () => {
+          cancelAnimationFrame(scrollRaf);
+          scrollRaf = requestAnimationFrame(updateHeroScroll);
+        };
+        updateHeroScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    </script>
+  </body>
+</html>

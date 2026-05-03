@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — Killerspots Agency"
+  description="The page you were looking for doesn't exist. Let's get you back on track."
+  noindex={true}
+>
+  <section class="container-page py-32 md:py-44 text-center">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-500">404</p>
+    <h1 class="mt-4 text-5xl md:text-7xl font-extrabold tracking-tight">
+      This page wandered off.
+    </h1>
+    <p class="mt-5 text-ink max-w-xl mx-auto text-lg">
+      The link is broken or the page has moved. Let's send you somewhere useful.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <a href="/" class="btn btn-primary">Back to home</a>
+      <a href="/contact" class="btn btn-ghost">Talk to us</a>
+    </div>
+  </section>
+</BaseLayout>
