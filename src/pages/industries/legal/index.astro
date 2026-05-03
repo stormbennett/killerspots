@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
 import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463965?h=923fbcbdf5&background=1&autopause=0&app_id=58479';
 
 const meta = {
   title: 'Legal Marketing | Personal Injury, Family, General Practice | Killerspots',
@@ -47,16 +51,14 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
 ---
 
 <BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
-  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
-    <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
-      <div class="max-w-5xl">
-        <span class="eyebrow">Legal Marketing</span>
-        <h1 id="hero-headline" class="hero-headline mt-5">Built for case value — <span class="text-brand-500">not lead volume.</span></h1>
-        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Personal injury, family law, general practice. SEO, LSA for Lawyers, paid social, jingles, and AI-powered intake. Bar-compliant, case-CPA reported.</p>
-        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="#sub-industries" class="btn btn-ghost">See Your Practice</a></div>
-      </div>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Legal Reel">
+    <div class="max-w-5xl">
+      <span class="eyebrow">Legal Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">Built for case value — <span class="text-brand-500">not lead volume.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">Personal injury, family law, general practice. SEO, LSA for Lawyers, paid social, jingles, and AI-powered intake. Bar-compliant, case-CPA reported.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="#sub-industries" class="btn btn-ghost magnetic">See Your Practice</a></div>
     </div>
-  </section>
+  </HeroVideo>
 
   <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for businesses that take legal compliance seriously. We don't fly close to the sun.</p></div></div></section>
 
