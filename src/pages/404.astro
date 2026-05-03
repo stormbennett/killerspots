@@ -16,33 +16,8 @@ import { businessInfo } from '../data/navigation';
     </div>
 
     <div class="container-page pt-24 md:pt-32 pb-20 md:pb-28">
-      <!-- Top: full-width Mario GIF hero -->
-      <div class="relative" data-reveal data-reveal-from="scale">
-        <div class="relative rounded-3xl border border-white/10 bg-deep p-3 md:p-4 overflow-hidden">
-          <!-- Subtle pixel grid backdrop -->
-          <div
-            aria-hidden="true"
-            class="absolute inset-0 opacity-30"
-            style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px;"
-          ></div>
-
-          <img
-            src="https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f78594086be1f079d30309.gif"
-            alt="Mario running through a level still searching for the Princess — and your page"
-            loading="eager"
-            decoding="async"
-            class="relative block w-full h-auto rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]"
-            style="image-rendering: pixelated;"
-          />
-
-          <p class="relative mt-4 text-center text-xs uppercase tracking-[0.22em] text-muted">
-            Mario's been searching since 1985. Your leads shouldn't.
-          </p>
-        </div>
-      </div>
-
-      <!-- Below: copy + CTAs -->
-      <div class="mt-16 md:mt-20 max-w-4xl mx-auto text-center" data-reveal>
+      <!-- Top: copy + CTAs -->
+      <div class="max-w-4xl mx-auto text-center" data-reveal>
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-500">
           Error 404
         </p>
@@ -74,6 +49,31 @@ import { businessInfo } from '../data/navigation';
           <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">
             Call {businessInfo.phone}
           </a>
+        </div>
+      </div>
+
+      <!-- Below: full-width Mario GIF hero -->
+      <div class="relative mt-16 md:mt-20" data-reveal data-reveal-from="scale">
+        <div class="relative rounded-3xl border border-white/10 bg-deep p-3 md:p-4 overflow-hidden">
+          <!-- Subtle pixel grid backdrop -->
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 opacity-30"
+            style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px;"
+          ></div>
+
+          <img
+            src="https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f78594086be1f079d30309.gif"
+            alt="Mario running through a level still searching for the Princess — and your page"
+            loading="eager"
+            decoding="async"
+            class="relative block w-full h-auto rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]"
+            style="image-rendering: pixelated;"
+          />
+
+          <p class="relative mt-4 text-center text-xs uppercase tracking-[0.22em] text-muted">
+            Mario's been searching since 1985. Your leads shouldn't.
+          </p>
         </div>
       </div>
     </div>
