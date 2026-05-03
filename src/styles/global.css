@@ -259,21 +259,27 @@
   transform: none;
 }
 
-/* Headline mask reveal — runs on initial load. Use on the hero h1. */
-.hero-headline-reveal {
+/* Headline mask reveal — word-by-word stagger. Each .hero-word receives
+   a CSS custom property --i (its 0-based word index) to compute the delay. */
+.hero-word {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-right: 0.22em;
 }
-.hero-headline-reveal > span {
+.hero-word > span {
   display: inline-block;
   transform: translateY(110%);
-  animation: hero-rise 1100ms var(--ease-cinema-out) 100ms forwards;
+  animation: hero-word-rise 900ms var(--ease-cinema-out) calc(80ms + var(--i, 0) * 70ms) forwards;
 }
-.hero-headline-reveal:nth-child(2) > span { animation-delay: 220ms; }
-.hero-headline-reveal:nth-child(3) > span { animation-delay: 340ms; }
-@keyframes hero-rise {
+@keyframes hero-word-rise {
   to { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-word > span {
+    transform: none;
+    animation: none;
+  }
 }
 
 /* Mouse-parallax 3D tilt cards. Wrap card content in `.tilt-card`. */

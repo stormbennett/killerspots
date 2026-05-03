@@ -299,7 +299,7 @@ const breadcrumbs = {
   <!-- ======================================================== -->
   <!-- SECTION 1: HERO — Vimeo background + headline overlay      -->
   <!-- ======================================================== -->
-  <section class="hero-video relative overflow-hidden bg-canvas">
+  <section class="hero-video cursor-glow relative overflow-hidden bg-canvas">
     <!-- Video layer (scroll-scrubbed via .hero-scroll-bg) -->
     <div class="hero-video__bg hero-scroll-bg" aria-hidden="true">
       <iframe
@@ -336,14 +336,21 @@ const breadcrumbs = {
           id="hero-headline"
           class="hero-headline drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
         >
-          <span class="hero-headline-reveal"
-            ><span>Your Full-Service Marketing Agency For</span></span
-          >
-          <span class="hero-headline-reveal"
-            ><span class="text-brand-500"
-              >Creative, Digital &amp; AI Solutions</span
-            ></span
-          >
+          {
+            'Your Full-Service Marketing Agency For'.split(' ').map((w, i) => (
+              <span class="hero-word" style={`--i:${i}`}>
+                <span>{w}</span>
+              </span>
+            ))
+          }
+          {' '}
+          {
+            'Creative, Digital & AI Solutions'.split(' ').map((w, i) => (
+              <span class="hero-word" style={`--i:${i + 5}`}>
+                <span class="text-brand-500">{w}</span>
+              </span>
+            ))
+          }
         </h1>
         <p
           id="hero-subhead"
@@ -1104,7 +1111,7 @@ const breadcrumbs = {
         {
           serviceCards.map((card) => (
             <li data-reveal>
-              <a href={card.href} class={`card-tile group svc-card svc-card--${card.icon}`}>
+              <a href={card.href} class={`card-tile tilt-card group svc-card svc-card--${card.icon}`}>
                 <span class="svc-icon" aria-hidden="true" set:html={serviceIcons[card.icon]} />
                 <h3 class="text-lg md:text-xl font-semibold text-white">{card.title}</h3>
                 <p class="mt-3 text-sm text-muted leading-relaxed">{card.body}</p>
