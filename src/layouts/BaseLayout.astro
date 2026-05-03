@@ -224,8 +224,11 @@ const localBusinessSchema = {
                 // ease-out-expo for a soft landing
                 const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
                 const value = target * eased;
-                el.textContent =
-                  prefix + value.toFixed(decimals) + suffix;
+                const formatted = value.toLocaleString('en-US', {
+                  minimumFractionDigits: decimals,
+                  maximumFractionDigits: decimals,
+                });
+                el.textContent = prefix + formatted + suffix;
                 if (t < 1) {
                   requestAnimationFrame(tick);
                 } else {
