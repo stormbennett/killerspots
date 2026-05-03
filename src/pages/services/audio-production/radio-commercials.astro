@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
 import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/394077040?background=1&autopause=0&app_id=58479';
 
 const meta = {
   title: 'Radio Commercial Production | 15s, 30s, 60s Spots | Killerspots',
@@ -169,48 +173,39 @@ const RADIO_PLAYLIST =
   schema={[speakable, breadcrumbs, serviceSchema, faqSchema]}
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden bg-canvas">
-    <div aria-hidden="true" class="absolute inset-0 -z-10">
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Radio Commercial Reel">
+    <nav aria-label="Breadcrumb" class="text-xs text-white/70 uppercase tracking-[0.2em]">
+      <a href="/services/audio-production" class="hover:text-white">Audio Production</a>
+      <span class="mx-2">/</span>
+      <span class="text-white">Radio Commercials</span>
+    </nav>
+
+    <div class="max-w-5xl mt-6">
+      <span class="eyebrow">Radio Commercials</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">
+        Radio spots that
+        <span class="text-brand-500">stop the dial.</span>
+      </h1>
+      <p
+        id="hero-subhead"
+        class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug"
       >
+        High-impact 15, 30, and 60-second radio commercials. Scripting, real-human voice
+        talent, original sound design, and broadcast-ready mixing — delivered in 2–3
+        business days.
+      </p>
+
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+        <a href="/contact" class="btn btn-primary magnetic">Get a Spot Quote</a>
+        <a href="#listen" class="btn btn-ghost magnetic">
+          <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M5 3.5v9l7-4.5z" />
+          </svg>
+          Listen to Samples
+        </a>
       </div>
     </div>
-
-    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
-      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]">
-        <a href="/services/audio-production" class="hover:text-white">Audio Production</a>
-        <span class="mx-2">/</span>
-        <span class="text-ink">Radio Commercials</span>
-      </nav>
-
-      <div class="max-w-5xl mt-6">
-        <span class="eyebrow">Radio Commercials</span>
-        <h1 id="hero-headline" class="hero-headline mt-5">
-          Radio spots that
-          <span class="text-brand-500">stop the dial.</span>
-        </h1>
-        <p
-          id="hero-subhead"
-          class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug"
-        >
-          High-impact 15, 30, and 60-second radio commercials. Scripting, real-human voice
-          talent, original sound design, and broadcast-ready mixing — delivered in 2–3
-          business days.
-        </p>
-
-        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
-          <a href="/contact" class="btn btn-primary">Get a Spot Quote</a>
-          <a href="#listen" class="btn btn-ghost">
-            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M5 3.5v9l7-4.5z" />
-            </svg>
-            Listen to Samples
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </HeroVideo>
 
   <!-- TRUST -->
   <section class="bg-deep">
