@@ -469,78 +469,89 @@ body.menu-open {
   transform: translateY(-2px);
 }
 
-/* Audio: waveform bars animate height (idle subtle, hover full) */
-.svc-bar {
-  transform-origin: 50% 50%;
-  transition: stroke-width 0.25s ease;
-}
-.svc-card--audio:hover .svc-bar {
-  animation: svc-wave 1.1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-.svc-card--audio:hover .svc-bar--1 { animation-delay: 0s; }
-.svc-card--audio:hover .svc-bar--2 { animation-delay: 0.12s; }
-.svc-card--audio:hover .svc-bar--3 { animation-delay: 0.24s; }
-.svc-card--audio:hover .svc-bar--4 { animation-delay: 0.36s; }
-.svc-card--audio:hover .svc-bar--5 { animation-delay: 0.48s; }
-@keyframes svc-wave {
-  0%, 100% { transform: scaleY(0.2); }
-  50% { transform: scaleY(2.2); }
-}
+/* All icons run a low-amplitude ambient animation by default. On hover the
+   amplitude/speed bumps up via animation-name swap. Each icon's hover-only
+   animation reuses the ambient name where possible to avoid double-keyframes. */
+
+/* Audio: bars wave continuously with stagger; hover increases amplitude */
 .svc-card--audio .svc-icon svg { overflow: visible; }
-.svc-card--audio .svc-bar {
-  stroke-width: 2.4;
-  transform: scaleY(0.2);
+.svc-bar {
   transform-box: fill-box;
   transform-origin: 50% 50%;
+  animation: svc-wave-idle 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.svc-bar--1 { animation-delay: 0s; }
+.svc-bar--2 { animation-delay: 0.14s; }
+.svc-bar--3 { animation-delay: 0.28s; }
+.svc-bar--4 { animation-delay: 0.42s; }
+.svc-bar--5 { animation-delay: 0.56s; }
+.svc-card--audio:hover .svc-bar {
+  animation: svc-wave-hover 1.1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes svc-wave-idle {
+  0%, 100% { transform: scaleY(0.55); }
+  50% { transform: scaleY(1.1); }
+}
+@keyframes svc-wave-hover {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1.6); }
 }
 
-/* Video: play triangle pulse + frame breathe */
+/* Video: play triangle pulse — ambient slow, hover faster */
 .svc-play {
   transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  animation: svc-pulse-idle 3s ease-in-out infinite;
 }
 .svc-card--video:hover .svc-play {
-  animation: svc-pulse 1.4s ease-in-out infinite;
+  animation: svc-pulse-hover 1.4s ease-in-out infinite;
 }
-@keyframes svc-pulse {
+@keyframes svc-pulse-idle {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+@keyframes svc-pulse-hover {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.18); opacity: 0.85; }
 }
 
-/* SEO: magnifying glass — handle slides, glass orbits subtly */
-.svc-glass, .svc-handle {
-  transform-origin: 13px 13px;
-  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+/* SEO: magnifying glass pans gently always, more on hover */
+.svc-glass {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: svc-glass-idle 4s ease-in-out infinite;
 }
 .svc-card--seo:hover .svc-glass {
-  animation: svc-glass-pan 2s ease-in-out infinite;
+  animation: svc-glass-hover 2s ease-in-out infinite;
 }
-@keyframes svc-glass-pan {
+@keyframes svc-glass-idle {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(1px, -1px); }
+}
+@keyframes svc-glass-hover {
   0%, 100% { transform: translate(0, 0); }
   25% { transform: translate(2px, -1px); }
   50% { transform: translate(0, -2px); }
   75% { transform: translate(-2px, -1px); }
 }
 
-/* PPC: target rings rotate counter-directions */
+/* PPC: target rings always rotate, faster on hover */
 .svc-ring--outer, .svc-ring--mid {
   transform-origin: 16px 16px;
 }
-.svc-card--ppc:hover .svc-ring--outer {
-  animation: svc-spin 4s linear infinite;
-}
-.svc-card--ppc:hover .svc-ring--mid {
-  animation: svc-spin-rev 3s linear infinite;
-}
+.svc-ring--outer { animation: svc-spin 12s linear infinite; }
+.svc-ring--mid { animation: svc-spin-rev 9s linear infinite; }
+.svc-card--ppc:hover .svc-ring--outer { animation-duration: 4s; }
+.svc-card--ppc:hover .svc-ring--mid { animation-duration: 3s; }
 @keyframes svc-spin { to { transform: rotate(360deg); } }
 @keyframes svc-spin-rev { to { transform: rotate(-360deg); } }
 
-/* Digital ads: scanline sweeps top to bottom */
+/* Digital ads: scanline always sweeps, faster on hover */
 .svc-scan {
   opacity: 0.6;
+  animation: svc-scan 3.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 .svc-card--digital:hover .svc-scan {
-  animation: svc-scan 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-duration: 1.6s;
 }
 @keyframes svc-scan {
   0% { transform: translateY(0); opacity: 0; }
@@ -549,45 +560,48 @@ body.menu-open {
   100% { transform: translateY(11px); opacity: 0; }
 }
 
-/* AI: spark flicker + soft glow */
+/* AI: spark always flickers softly, harder on hover */
 .svc-spark {
   transform-origin: center;
-  filter: drop-shadow(0 0 0 transparent);
-  transition: filter 0.3s ease;
+  animation: svc-flicker-idle 3s ease-in-out infinite;
 }
 .svc-card--ai:hover .svc-spark {
-  animation: svc-flicker 1.2s ease-in-out infinite;
+  animation: svc-flicker-hover 1.2s ease-in-out infinite;
 }
-@keyframes svc-flicker {
+@keyframes svc-flicker-idle {
+  0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 2px rgba(239, 82, 83, 0.3)); }
+  50% { transform: scale(1.04) rotate(3deg); filter: drop-shadow(0 0 5px rgba(239, 82, 83, 0.5)); }
+}
+@keyframes svc-flicker-hover {
   0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 4px rgba(239, 82, 83, 0.5)); }
   40% { transform: scale(1.08) rotate(8deg); filter: drop-shadow(0 0 8px rgba(239, 82, 83, 0.85)); }
   60% { transform: scale(0.96) rotate(-6deg); filter: drop-shadow(0 0 3px rgba(239, 82, 83, 0.4)); }
 }
 
-/* Social: bubbles bob with stagger */
-.svc-card--social:hover .svc-bubble--1 {
-  animation: svc-bob 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-.svc-card--social:hover .svc-bubble--2 {
-  animation: svc-bob 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  animation-delay: 0.4s;
-}
+/* Social: bubbles bob always, stagger preserved */
+.svc-bubble--1 { animation: svc-bob 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.svc-bubble--2 { animation: svc-bob 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; animation-delay: 0.6s; }
+.svc-card--social:hover .svc-bubble--1 { animation-duration: 1.4s; }
+.svc-card--social:hover .svc-bubble--2 { animation-duration: 1.4s; animation-delay: 0.4s; }
 @keyframes svc-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-2px); }
 }
 
-/* Web: brackets slide apart, slash glides */
-.svc-bracket--left, .svc-bracket--right, .svc-slash {
+/* Web: slash drifts always, brackets spread on hover */
+.svc-bracket--left, .svc-bracket--right {
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .svc-card--web:hover .svc-bracket--left { transform: translateX(-3px); }
 .svc-card--web:hover .svc-bracket--right { transform: translateX(3px); }
+.svc-slash {
+  animation: svc-slash-shift 3s ease-in-out infinite;
+}
 .svc-card--web:hover .svc-slash {
-  animation: svc-slash-shift 1.4s ease-in-out infinite;
+  animation-duration: 1.4s;
 }
 @keyframes svc-slash-shift {
-  0%, 100% { transform: translateX(0); }
+  0%, 100% { transform: translateX(-1px); }
   50% { transform: translateX(2px); }
 }
 
@@ -597,4 +611,37 @@ body.menu-open {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ========================================================== */
+/* Stat accent — green growing up-arrow next to a key metric    */
+/* ========================================================== */
+.stat-arrow-up {
+  width: clamp(2rem, 4vw, 3.25rem);
+  height: clamp(2rem, 4vw, 3.25rem);
+  color: #22c55e;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));
+  animation: stat-arrow-grow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transform-origin: 50% 80%;
+}
+@keyframes stat-arrow-grow {
+  0% {
+    transform: translateY(6px) scale(0.7);
+    opacity: 0.55;
+    filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.2));
+  }
+  50% {
+    transform: translateY(-2px) scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.65));
+  }
+  100% {
+    transform: translateY(6px) scale(0.7);
+    opacity: 0.55;
+    filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.2));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-arrow-up { animation: none; }
 }

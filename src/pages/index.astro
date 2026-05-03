@@ -127,7 +127,7 @@ const serviceCards: ServiceCard[] = [
 ];
 
 const serviceIcons: Record<ServiceCard['icon'], string> = {
-  audio: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line class="svc-bar svc-bar--1" x1="6" y1="16" x2="6" y2="16"/><line class="svc-bar svc-bar--2" x1="11" y1="16" x2="11" y2="16"/><line class="svc-bar svc-bar--3" x1="16" y1="16" x2="16" y2="16"/><line class="svc-bar svc-bar--4" x1="21" y1="16" x2="21" y2="16"/><line class="svc-bar svc-bar--5" x1="26" y1="16" x2="26" y2="16"/></svg>`,
+  audio: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line class="svc-bar svc-bar--1" x1="6" y1="10" x2="6" y2="22"/><line class="svc-bar svc-bar--2" x1="11" y1="10" x2="11" y2="22"/><line class="svc-bar svc-bar--3" x1="16" y1="10" x2="16" y2="22"/><line class="svc-bar svc-bar--4" x1="21" y1="10" x2="21" y2="22"/><line class="svc-bar svc-bar--5" x1="26" y1="10" x2="26" y2="22"/></svg>`,
   video: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect class="svc-frame" x="3" y="6" width="26" height="20" rx="3"/><polygon class="svc-play" points="13,12 22,16 13,20" fill="currentColor" stroke="none"/></svg>`,
   seo: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle class="svc-glass" cx="13" cy="13" r="8"/><line class="svc-handle" x1="19" y1="19" x2="27" y2="27"/></svg>`,
   ppc: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle class="svc-ring svc-ring--outer" cx="16" cy="16" r="12"/><circle class="svc-ring svc-ring--mid" cx="16" cy="16" r="7"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>`,
@@ -173,11 +173,12 @@ type Stat = {
   prefix?: string;
   suffix?: string;
   decimals?: number;
+  accent?: 'arrow-up';
 };
 
 const heroStats: Stat[] = [
   { value: '5,750+', label: 'Clients served nationwide', counter: 5750, suffix: '+' },
-  { value: '47%', label: 'Avg. lead increase, first 90 days', counter: 47, suffix: '%' },
+  { value: '47%', label: 'Avg. lead increase, first 90 days', counter: 47, suffix: '%', accent: 'arrow-up' },
   { value: '6×', label: 'Telly Award winner', counter: 6, suffix: '×' },
 ];
 
@@ -1158,19 +1159,36 @@ const breadcrumbs = {
           {
             heroStats.map((s) => (
               <div>
-                {s.counter !== undefined ? (
-                  <dd
-                    class="stat-num stat-counter"
-                    data-counter-to={s.counter}
-                    data-counter-prefix={s.prefix ?? ''}
-                    data-counter-suffix={s.suffix ?? ''}
-                    data-counter-decimals={s.decimals ?? 0}
-                  >
-                    {(s.prefix ?? '') + '0' + (s.suffix ?? '')}
-                  </dd>
-                ) : (
-                  <dd class="stat-num">{s.value}</dd>
-                )}
+                <div class="flex items-baseline gap-3">
+                  {s.counter !== undefined ? (
+                    <dd
+                      class="stat-num stat-counter"
+                      data-counter-to={s.counter}
+                      data-counter-prefix={s.prefix ?? ''}
+                      data-counter-suffix={s.suffix ?? ''}
+                      data-counter-decimals={s.decimals ?? 0}
+                    >
+                      {(s.prefix ?? '') + '0' + (s.suffix ?? '')}
+                    </dd>
+                  ) : (
+                    <dd class="stat-num">{s.value}</dd>
+                  )}
+                  {s.accent === 'arrow-up' && (
+                    <svg
+                      class="stat-arrow-up"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="5,18 12,8 19,18" />
+                      <line x1="12" y1="8" x2="12" y2="22" />
+                    </svg>
+                  )}
+                </div>
                 <dt class="mt-4 text-xs uppercase tracking-[0.22em] text-muted">
                   {s.label}
                 </dt>
