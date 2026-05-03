@@ -645,3 +645,50 @@ body.menu-open {
 @media (prefers-reduced-motion: reduce) {
   .stat-arrow-up { animation: none; }
 }
+
+/* ========================================================== */
+/* Hero video — full-bleed Vimeo background with dark scrim    */
+/* Used on the homepage and industry hero sections.             */
+/* JS in BaseLayout drives parallax via .hero-scroll-bg/-text. */
+/* ========================================================== */
+.hero-video {
+  isolation: isolate;
+}
+.hero-video__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-video__bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 of 100vw */
+  min-height: 100%;
+  min-width: 177.7778vh; /* 16:9 of 100vh */
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+.hero-video__scrim {
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-video > .container-page {
+  z-index: 2;
+}
+/* Drop-shadows for text legibility over the video bg */
+.hero-video .hero-headline {
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.5));
+}
+.hero-video .hero-scroll-text p {
+  filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.5));
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video__bg iframe { display: none; }
+  .hero-video__bg {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+  }
+}

@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
 import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463904?h=b2a0dd1642&background=1&autopause=0&app_id=58479';
 
 const meta = {
   title: 'Roofing Marketing | Storm Lead, Insurance Claims, Replacement | Killerspots',
@@ -41,17 +45,15 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
 ---
 
 <BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
-  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div></div>
-    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-20 md:pb-28">
-      <nav aria-label="Breadcrumb" class="text-xs text-muted uppercase tracking-[0.2em]"><a href="/industries/home-services" class="hover:text-white">Home Services</a><span class="mx-2">/</span><span class="text-ink">Roofing</span></nav>
-      <div class="max-w-5xl mt-6">
-        <span class="eyebrow">Roofing Marketing</span>
-        <h1 id="hero-headline" class="hero-headline mt-5">Win on reviews and authority — <span class="text-brand-500">not door knocks.</span></h1>
-        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">SEO, Google LSA, paid social, storm-response campaigns, and AI lead capture for residential and commercial roofers. Storm-chaser-resistant by design.</p>
-        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Roofing Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a></div>
-      </div>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Home Services Reel">
+    <nav aria-label="Breadcrumb" class="text-xs text-white/70 uppercase tracking-[0.2em]"><a href="/industries/home-services" class="hover:text-white">Home Services</a><span class="mx-2">/</span><span class="text-white">Roofing</span></nav>
+    <div class="max-w-5xl mt-6">
+      <span class="eyebrow">Roofing Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">Win on reviews and authority — <span class="text-brand-500">not door knocks.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">SEO, Google LSA, paid social, storm-response campaigns, and AI lead capture for residential and commercial roofers. Storm-chaser-resistant by design.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Roofing Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div>
     </div>
-  </section>
+  </HeroVideo>
 
   <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years in the trades. We've run roofing campaigns through hailstorms, insurance changes, and PE rollups.</p></div></div></section>
 

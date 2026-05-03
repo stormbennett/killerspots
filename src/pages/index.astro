@@ -389,44 +389,6 @@ const breadcrumbs = {
     </div>
   </section>
 
-  <style>
-    .hero-video {
-      isolation: isolate;
-    }
-    .hero-video__bg {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-video__bg iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 56.25vw; /* 16:9 of 100vw */
-      min-height: 100%;
-      min-width: 177.7778vh; /* 16:9 of 100vh */
-      transform: translate(-50%, -50%);
-      border: 0;
-    }
-    .hero-video__scrim {
-      z-index: 1;
-      pointer-events: none;
-    }
-    .hero-video > .container-page {
-      z-index: 2;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-video__bg iframe {
-        display: none;
-      }
-      .hero-video__bg {
-        background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
-      }
-    }
-  </style>
 
   <!-- ======================================================== -->
   <!-- TRUST BAND — pills + supporting copy below the hero       -->

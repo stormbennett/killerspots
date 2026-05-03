@@ -1,0 +1,30 @@
+---
+interface Props {
+  videoUrl: string;
+  videoTitle?: string;
+}
+const { videoUrl, videoTitle = 'Background video' } = Astro.props;
+---
+<section class="hero-video cursor-glow relative overflow-hidden bg-canvas">
+  <div class="hero-video__bg hero-scroll-bg" aria-hidden="true">
+    <iframe
+      src={videoUrl}
+      title={videoTitle}
+      loading="eager"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      tabindex="-1"
+    ></iframe>
+  </div>
+
+  <div aria-hidden="true" class="hero-video__scrim hero-scroll-scrim absolute inset-0">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,_rgba(15,20,25,0.55)_0%,_rgba(15,20,25,0.78)_55%,_rgba(15,20,25,0.95)_100%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div>
+  </div>
+
+  <div class="relative container-page pt-28 md:pt-36 lg:pt-44 pb-24 md:pb-32 lg:pb-40">
+    <div class="hero-scroll-text">
+      <slot />
+    </div>
+  </div>
+</section>
