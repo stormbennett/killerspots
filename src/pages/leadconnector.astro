@@ -1,6 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroVideo from '../components/HeroVideo.astro';
 import { businessInfo, logoUrls } from '../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1165421763?h=5d62f1f26c&background=1&autopause=0&app_id=58479';
+
+// Watchable (clickable, full-controls) version of the same video used in the body
+const overviewVideoUrl =
+  'https://player.vimeo.com/video/1165421763?h=5d62f1f26c&badge=0&autopause=0&player_id=0&app_id=58479';
 
 const meta = {
   title: 'LeadConnector | All-in-One CRM + Marketing Automation by Killerspots',
@@ -204,73 +212,60 @@ const faqSchema = {
   schema={[speakable, breadcrumbs, softwareSchema, faqSchema]}
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden bg-canvas">
-    <div aria-hidden="true" class="absolute inset-0 -z-10">
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(99,102,241,0.18)_0%,_rgba(15,20,25,0)_55%)]"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,_rgba(239,82,83,0.12)_0%,_rgba(15,20,25,0)_60%)]"
-      >
-      </div>
-    </div>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — LeadConnector Demo">
+    <div class="grid lg:grid-cols-12 gap-12 items-end">
+      <div class="lg:col-span-7">
+        <span class="eyebrow">LeadConnector</span>
+        <img
+          src={logoUrls.leadConnector}
+          alt="LeadConnector"
+          width="320"
+          height="64"
+          class="mt-6 h-14 md:h-20 w-auto drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <h1 id="hero-headline" class="hero-headline mt-7">
+          One platform.
+          <span class="text-brand-500">Every tool you've been juggling.</span>
+        </h1>
+        <p
+          id="hero-subhead"
+          class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-3xl leading-snug"
+        >
+          LeadConnector is our managed CRM and marketing automation platform — AI lead
+          scoring, two-way SMS, email, pipelines, reviews, and 24/7 follow-up. Set up
+          for you. Branded as you. Run by us.
+        </p>
 
-    <div class="container-page pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20">
-      <div class="grid lg:grid-cols-12 gap-12 items-end">
-        <div class="lg:col-span-7">
-          <span class="eyebrow">LeadConnector</span>
-          <img
-            src={logoUrls.leadConnector}
-            alt="LeadConnector"
-            width="320"
-            height="64"
-            class="mt-6 h-14 md:h-20 w-auto"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-          <h1 id="hero-headline" class="hero-headline mt-7">
-            One platform.
-            <span class="text-brand-500">Every tool you've been juggling.</span>
-          </h1>
-          <p
-            id="hero-subhead"
-            class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-3xl leading-snug"
-          >
-            LeadConnector is our managed CRM and marketing automation platform — AI lead
-            scoring, two-way SMS, email, pipelines, reviews, and 24/7 follow-up. Set up
-            for you. Branded as you. Run by us.
-          </p>
-
-          <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
-            <a href="/contact" class="btn btn-primary magnetic">Book a Demo</a>
-            <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">
-              Call {businessInfo.phone}
-            </a>
-          </div>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Book a Demo</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">
+            Call {businessInfo.phone}
+          </a>
         </div>
+      </div>
 
-        <div class="lg:col-span-5">
-          <div class="rounded-2xl border border-white/10 bg-surface p-7 md:p-9">
-            <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
-              Replaces
-            </div>
-            <ul class="mt-5 grid grid-cols-2 gap-3">
-              {
-                replaces.map((r) => (
-                  <li class="rounded-xl border border-white/10 bg-canvas px-4 py-3">
-                    <div class="text-sm font-semibold text-white">{r.name}</div>
-                    <div class="mt-1 text-xs text-muted">{r.body}</div>
-                  </li>
-                ))
-              }
-            </ul>
+      <div class="lg:col-span-5">
+        <div class="rounded-2xl border border-white/10 bg-surface/85 backdrop-blur-md p-7 md:p-9 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+          <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">
+            Replaces
           </div>
+          <ul class="mt-5 grid grid-cols-2 gap-3">
+            {
+              replaces.map((r) => (
+                <li class="rounded-xl border border-white/10 bg-canvas/80 px-4 py-3">
+                  <div class="text-sm font-semibold text-white">{r.name}</div>
+                  <div class="mt-1 text-xs text-muted">{r.body}</div>
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </HeroVideo>
 
   <!-- TRUST -->
   <section class="bg-deep">
@@ -287,8 +282,69 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- DASHBOARD SHOWCASE — real product screenshots -->
+  <!-- WHAT IS LEADCONNECTOR — overview video + explanation -->
   <section class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Video left -->
+        <div class="lg:col-span-7" data-reveal data-reveal-from="scale">
+          <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-deep shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]" style="padding-top:56.25%;">
+            <iframe
+              src={overviewVideoUrl}
+              title="What is LeadConnector?"
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              class="absolute inset-0 w-full h-full border-0"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Copy right -->
+        <div class="lg:col-span-5" data-reveal>
+          <span class="eyebrow">What Is LeadConnector?</span>
+          <h2 class="section-headline mt-5">
+            The CRM your business should have been running on.
+          </h2>
+          <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">
+            LeadConnector is a fully managed CRM + marketing automation platform built
+            for businesses that are tired of duct-taping six tools together. We set it
+            up for you, configure it to your workflows, and run it as a service — not
+            as software you have to figure out.
+          </p>
+          <ul class="mt-8 space-y-3 text-base text-muted">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-500 shrink-0"></span>
+              <span><span class="text-white font-semibold">One inbox</span> for SMS, email, Facebook, Instagram, Google Chat, and live web chat.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-500 shrink-0"></span>
+              <span><span class="text-white font-semibold">24/7 AI bot</span> that books appointments, qualifies leads, and texts back missed calls — even at 2 AM.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-500 shrink-0"></span>
+              <span><span class="text-white font-semibold">Visual pipelines</span> with AI lead scoring, automation rules, and real-time attribution.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-500 shrink-0"></span>
+              <span><span class="text-white font-semibold">Email + SMS automation</span>, review requests, calendar sync, and text-to-pay invoices.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 rounded-full bg-brand-500 shrink-0"></span>
+              <span><span class="text-white font-semibold">Branded as you.</span> White-label ready. Killerspots stays invisible.</span>
+            </li>
+          </ul>
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a href="/contact" class="btn btn-primary magnetic">Book a Demo</a>
+            <a href="#features" class="btn btn-ghost magnetic">See Every Feature</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD SHOWCASE — real product screenshots -->
+  <section class="bg-deep">
     <div class="container-page py-24 md:py-32">
       <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
         <span class="eyebrow">Inside the Platform</span>
