@@ -190,7 +190,7 @@ const seoxFeatures = [
   'Quick action plan',
 ];
 
-const clientLogos: { name: string; src: string }[] = [
+const clientLogos: { name: string; src: string; size?: 'large' }[] = [
   { name: 'Unknown 1', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69dbc41a982fd67a35958717.jpg' },
   { name: 'Unknown 2', src: 'https://storage.googleapis.com/funnel-ai-production/image-generation/E3Rv5E7JpJH3jrDtAbaE/mirrored-rSPc39aUPZ.webp' },
   { name: 'Unknown 3', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/68656e62d60a230ff0797a44.jpeg' },
@@ -219,10 +219,10 @@ const clientLogos: { name: string; src: string }[] = [
   { name: 'Sinclair Broadcasting', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7866d6b07ab330347b7d8.png' },
   { name: 'Kiss FM', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f78634d868be0085500f35.png' },
   { name: 'Sugar and Spice', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f79083d868be008551f2e1.png' },
-  { name: 'All City Plumbing', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7911edd67e758c0ee8130.png' },
-  { name: 'Seneca', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d170fdf2432ccfe2abfe.png' },
-  { name: 'VA', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d178d868be00855db691.png' },
-  { name: 'SafeSurfin', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d8d7fdf2432ccfe3fefa.png' },
+  { name: 'All City Plumbing', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7911edd67e758c0ee8130.png', size: 'large' },
+  { name: 'Seneca', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d170fdf2432ccfe2abfe.png', size: 'large' },
+  { name: 'VA', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d178d868be00855db691.png', size: 'large' },
+  { name: 'SafeSurfin', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7d8d7fdf2432ccfe3fefa.png', size: 'large' },
   { name: 'Dan Newlin Attorneys', src: 'https://assets.cdn.filesafe.space/E3Rv5E7JpJH3jrDtAbaE/media/69f7db98dd67e758c0fbee98.png' },
 ];
 
@@ -441,7 +441,7 @@ const breadcrumbs = {
               alt={logo.name.startsWith('Unknown') ? '' : `${logo.name} logo`}
               loading="lazy"
               decoding="async"
-              class="logos-item"
+              class={logo.size === 'large' ? 'logos-item logos-item--large' : 'logos-item'}
             />
           ))
         }
@@ -454,7 +454,7 @@ const breadcrumbs = {
               loading="lazy"
               decoding="async"
               aria-hidden="true"
-              class="logos-item"
+              class={logo.size === 'large' ? 'logos-item logos-item--large' : 'logos-item'}
             />
           ))
         }
@@ -470,7 +470,7 @@ const breadcrumbs = {
                 alt=""
                 loading="lazy"
                 decoding="async"
-                class="logos-item"
+                class={logo.size === 'large' ? 'logos-item logos-item--large' : 'logos-item'}
               />
             ))
         }
@@ -483,7 +483,7 @@ const breadcrumbs = {
                 alt=""
                 loading="lazy"
                 decoding="async"
-                class="logos-item"
+                class={logo.size === 'large' ? 'logos-item logos-item--large' : 'logos-item'}
               />
             ))
         }
@@ -530,6 +530,11 @@ const breadcrumbs = {
       transition:
         filter 0.3s,
         opacity 0.3s;
+    }
+    /* Logos whose marks include a lot of whitespace or small wordmark text need a bump. */
+    .logos-item--large {
+      height: 68px;
+      max-height: 68px;
     }
     .logos-item:hover {
       filter: none;
