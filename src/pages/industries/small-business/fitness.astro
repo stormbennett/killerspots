@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463832?h=e0929ec738&background=1&autopause=0&app_id=58479';
+
+const meta = {
+  title: 'Fitness & Gym Marketing | Membership Growth Engine | Killerspots',
+  description: 'Marketing for gyms, studios, and fitness brands — local SEO, paid social, jingles, and AI-powered membership funnels. Built for member acquisition and retention.',
+  ogTitle: 'Fitness & Gym Marketing — Memberships, Not Just Leads | Killerspots',
+  ogDescription: 'SEO, paid social, jingles, CTV, and 24/7 AI follow-up for gyms and fitness studios. Built around LTV, not vanity sign-ups.',
+};
+
+const trustPills = ['Built For Member LTV', 'Local + Multi-Location', 'Retention-Focused'];
+
+const painPoints = [
+  { title: 'Sign-Ups Are Easy. Retention Isn\'t.', body: 'Most gyms hemorrhage members in months 2–4. We build the entire lifecycle — top-of-funnel ads, intake automation, and retention campaigns — so members stay.' },
+  { title: 'Class Schedules Change Weekly', body: 'Static landing pages can\'t keep up. We build dynamic site sections and automation that pull from your scheduling software so the offer is always current.' },
+  { title: 'Big-Box Competition + Boutique Pricing', body: 'You\'re fighting Planet Fitness on price and Equinox on premium. We position around your actual differentiator — community, results, niche, or location — not a price war.' },
+  { title: 'Trial Conversions Stall', body: 'A free week is not a strategy. We build proper trial-to-member funnels with onboarding sequences, accountability nudges, and conversion triggers built in.' },
+];
+
+const services = [
+  { title: 'Local SEO + GBP', body: 'Rank for "gym near me," "[neighborhood] yoga," "personal trainer [city]," and the niche modifiers your members actually search.' },
+  { title: 'Meta + TikTok Ads', body: 'Member testimonials, transformation reels, and class previews running as paid social. Highest-converting fitness creative format right now.' },
+  { title: 'Custom Jingles + Radio', body: 'A jingle that becomes the sound of fitness in your market. Cheap brand asset that compounds over years.' },
+  { title: 'Trial-to-Member Automation', body: 'AI sequences that nurture trials into members — text reminders, class booking, accountability check-ins, and conversion offers.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews after the first transformation milestone, not just after sign-up. Real social proof, not generic stars.' },
+  { title: 'AI Lead Capture (LeadConnector)', body: '24/7 AI bot books trial classes, handles cancellation requests, and texts back missed inquiries — even Sunday at 6 AM.' },
+];
+
+const faqs = [
+  { q: 'What\'s a realistic CPL for a gym?', a: 'Typically $15–$60 per qualified trial in mid-size markets. Boutique studios and premium concepts run higher. We optimize for member CAC, not just trial CPL — there\'s a big difference.' },
+  { q: 'Can you handle multi-location gym chains?', a: 'Yes. Location-specific landing pages, location-specific Google Business Profiles, and per-location attribution. Common for 2–20 location operators.' },
+  { q: 'Do you do creative for fitness ads?', a: 'Yes — we shoot member testimonials, transformation reels, class previews, and instructor spotlights in-house. The creative is usually the unlock for fitness paid social.' },
+  { q: 'How do you handle seasonality?', a: 'January is the sign-up rush. Summer is the slump. We build campaigns that smooth the curve — referral incentives in summer, retention pushes in fall, and ramp-up creative for January.' },
+  { q: 'Do you work with franchise gyms?', a: 'Yes — both with franchisor brands and individual franchisees. We respect brand standards while running local-market campaigns that outperform corporate.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/small-business/fitness#webpage', url: 'https://killerspots.com/industries/small-business/fitness', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Small Business', item: 'https://killerspots.com/industries/small-business' }, { '@type': 'ListItem', position: 3, name: 'Fitness & Gyms', item: 'https://killerspots.com/industries/small-business/fitness' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Fitness Reel">
+    <nav aria-label="Breadcrumb" class="text-xs text-white/70 uppercase tracking-[0.2em]"><a href="/industries/small-business" class="hover:text-white">Small Business</a><span class="mx-2">/</span><span class="text-white">Fitness & Gyms</span></nav>
+    <div class="max-w-5xl mt-6">
+      <span class="eyebrow">Fitness & Gym Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">Build memberships that <span class="text-brand-500">stick past month three.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">SEO, paid social, jingles, CTV, and 24/7 AI follow-up for gyms, studios, and fitness brands. Built around member LTV — not vanity sign-ups.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Fitness Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div>
+    </div>
+  </HeroVideo>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">We've run fitness marketing through every January rush, every summer slump, and every "just-do-30-days" trend cycle. The formula is consistency, not gimmicks.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Where most gym marketing breaks down.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A fitness channel mix tuned to LTV.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Fitness marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Build the Membership Engine</span><h2 class="section-headline mt-5">Tell us your concept. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll map your member economics, your retention curve, your competition, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

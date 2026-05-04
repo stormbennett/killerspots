@@ -41,9 +41,32 @@ export const whoWeHelp: MegaMenu = {
       ],
     },
     {
+      heading: 'Healthcare',
+      href: '/industries/healthcare',
+      items: [
+        { label: 'Doctors Offices', href: '/industries/healthcare/doctors' },
+        { label: 'Dental', href: '/industries/healthcare/dental' },
+        { label: 'Optical', href: '/industries/healthcare/optical' },
+      ],
+    },
+    {
+      heading: 'Restaurants, Bars & Nightclubs',
+      href: '/industries/restaurants-bars-nightclubs',
+      items: [
+        { label: 'Events (Des Vu)', href: '/industries/restaurants-bars-nightclubs/events' },
+      ],
+    },
+    {
+      heading: 'Financial Services',
+      href: '/industries/financial-services',
+      items: [],
+    },
+    {
       heading: 'Small Business',
       href: '/industries/small-business',
-      items: [],
+      items: [
+        { label: 'Fitness & Gyms', href: '/industries/small-business/fitness' },
+      ],
     },
     {
       heading: 'Radio Stations & Groups',

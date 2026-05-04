@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463873?h=79a608cc56&background=1&autopause=0&app_id=58479';
+
+const meta = {
+  title: 'Healthcare Marketing | Doctors, Dental, Optical | Killerspots',
+  description: 'Patient-acquisition marketing for healthcare practices — doctors offices, dental practices, and optical/vision providers. SEO, paid search, AI intake, and recall automation.',
+  ogTitle: 'Healthcare Marketing — Patient Acquisition Done Right | Killerspots',
+  ogDescription: 'SEO, paid search, AI intake, and recall automation for medical, dental, and optical practices. HIPAA-aware. Patient-LTV focused.',
+};
+
+const trustPills = ['Patient-LTV Focused', 'HIPAA-Aware Workflows', 'Recall + Retention Built-In'];
+
+const subIndustries = [
+  { title: 'Doctors Offices', href: '/industries/healthcare/doctors', body: 'Primary care, specialty practices, urgent care — patient acquisition and recall automation.' },
+  { title: 'Dental', href: '/industries/healthcare/dental', body: 'General, cosmetic, ortho, and pediatric dental — new-patient marketing with hygiene-recall built in.' },
+  { title: 'Optical', href: '/industries/healthcare/optical', body: 'Eye exams, frames, contacts — patient acquisition for independent and franchise optical practices.' },
+];
+
+const painPoints = [
+  { title: 'Lead Volume vs. Patient Value', body: 'Most healthcare agencies report leads. We report acquired patients and lifetime value — because a $50 lead that becomes a $5K patient is the only metric that matters.' },
+  { title: 'Compliance Ties Most Agencies\' Hands', body: 'HIPAA, HHS, state medical board rules — most agencies don\'t know any of it. We do, and we run patient-acquisition campaigns within those constraints.' },
+  { title: 'Recall and Retention Get Ignored', body: 'Acquiring a new patient costs 5–10× more than retaining one. Most agencies only run acquisition. We run the full lifecycle — acquisition, hygiene recall, treatment plan reactivation, and review generation.' },
+  { title: 'Front Desk Drops the Lead', body: 'You pay $200 for a new-patient lead and the front desk takes 4 hours to call back. We deploy LeadConnector AI bots that book consultations 24/7 — even after hours.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "[specialty] near me," "best [practice] [city]," and the long-tail terms that convert into booked appointments.', href: '/services/seo-aio/seo' },
+  { title: 'Google Ads + LSA', body: 'Local Service Ads (where eligible) plus paid search managed for booked-patient CPA, not lead-CPA.', href: '/services/ppc/google-ads-lsa' },
+  { title: 'Reputation + Reviews', body: 'Auto-request Google reviews after every visit. Compound 4.9-star ratings into search dominance and trust.', href: '/services/seo-aio' },
+  { title: 'Recall + Reactivation', body: 'Email + SMS sequences that bring patients back for hygiene visits, follow-ups, and treatment plan completion.', href: '/services/digital-ads/email-campaigns' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot that handles new-patient inquiries, books appointments, and texts back missed calls. Compliant scripting.', href: '/leadconnector' },
+  { title: 'Patient Education Content', body: 'Long-form blog and video content that answers patient questions, builds authority, and drives organic discovery.', href: '/services/seo-aio' },
+];
+
+const faqs = [
+  { q: 'Do you understand HIPAA and medical advertising rules?', a: 'Yes. We work within HIPAA, HHS guidance, state medical board rules, and FTC Endorsement Guides for testimonials. We\'ll ask for your specialty\'s and jurisdiction\'s rules on the discovery call.' },
+  { q: 'Can you handle multi-location practices?', a: 'Yes. Location-specific landing pages, location-specific Google Business Profiles, and per-location attribution. Common for 2–50 location practice groups.' },
+  { q: 'Do you do recall and retention, or just acquisition?', a: 'Both — recall is usually higher-leverage than acquisition. Email + SMS sequences for hygiene recall, treatment plan completion, and lapsed-patient reactivation are standard in our healthcare engagements.' },
+  { q: 'How do you measure success?', a: 'Booked appointments and patient LTV — what you actually paid to acquire a paying patient. Lead volume is reported but never the headline metric.' },
+  { q: 'Can you handle DSO and group practices?', a: 'Yes. Multi-location attribution, location-specific GBPs, brand-consistent campaigns at scale, and reporting that rolls up at both the location and group level.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/healthcare#webpage', url: 'https://killerspots.com/industries/healthcare', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Healthcare', item: 'https://killerspots.com/industries/healthcare' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Healthcare Reel">
+    <div class="max-w-5xl">
+      <span class="eyebrow">Healthcare Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">Built for booked patients — <span class="text-brand-500">not vanity leads.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">Doctors offices, dental, and optical. SEO, paid search, AI intake, and recall automation. HIPAA-aware. Booked-patient CPA reported.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href="#sub-industries" class="btn btn-ghost magnetic">See Your Specialty</a></div>
+    </div>
+  </HeroVideo>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for businesses that take compliance seriously. We don't fly close to the sun.</p></div></div></section>
+
+  <section id="sub-industries" class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">Specialties</span><h2 class="section-headline mt-5">Pick your specialty.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{subIndustries.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problem</span><h2 class="section-headline mt-5">Most healthcare marketing optimizes for lead volume. We optimize for booked patients.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A healthcare channel mix tuned to patient LTV.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal><a href={s.href} class="card-tile group"><h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p><div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">Explore<svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div></a></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Healthcare marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-canvas"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Let's Talk</span><h2 class="section-headline mt-5">Tell us your practice. We'll size the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your patient-CPA targets, your jurisdiction's rules, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

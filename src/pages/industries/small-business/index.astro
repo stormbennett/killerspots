@@ -1,6 +1,14 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { businessInfo } from '../../data/navigation';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const subIndustries = [
+  {
+    title: 'Fitness & Gyms',
+    href: '/industries/small-business/fitness',
+    body: 'Studios, big-box gyms, boutique fitness, personal trainers — turning local awareness into recurring memberships.',
+  },
+];
 
 const meta = {
   title: 'Small Business Marketing | SEO, PPC, Social & Jingles | Killerspots',
@@ -211,9 +219,35 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- PAIN POINTS -->
-  <section class="bg-canvas">
+  <!-- SUB-INDUSTRIES -->
+  <section id="sub-industries" class="bg-canvas">
     <div class="container-page py-24 md:py-32">
+      <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
+        <span class="eyebrow">Specialty Niches</span>
+        <h2 class="section-headline mt-5">Specialty marketing for specific small business niches.</h2>
+      </div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {subIndustries.map((s) => (
+          <li data-reveal>
+            <a href={s.href} class="card-tile group">
+              <h3 class="text-lg md:text-xl font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{s.body}</p>
+              <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500 group-hover:text-brand-300">
+                Explore
+                <svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="bg-deep">
+    <div class="container-page py-20 md:py-24">
       <div class="mb-14 md:mb-20 max-w-3xl" data-reveal>
         <span class="eyebrow">The Real Problem</span>
         <h2 class="section-headline mt-5">

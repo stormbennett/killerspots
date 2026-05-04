@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HeroVideo from '../../../components/HeroVideo.astro';
+import { businessInfo } from '../../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463873?h=79a608cc56&background=1&autopause=0&app_id=58479';
+
+const meta = {
+  title: 'Dental Marketing | New Patients + Hygiene Recall | Killerspots',
+  description: 'Marketing for general, cosmetic, ortho, and pediatric dental practices. SEO, paid search, AI intake, and hygiene-recall automation. Built for new-patient CPA and retention.',
+  ogTitle: 'Dental Marketing — New Patients + Lifetime Hygiene Recall | Killerspots',
+  ogDescription: 'SEO, paid search, AI intake, and hygiene-recall automation for dental practices and DSOs. New-patient CPA reporting.',
+};
+
+const trustPills = ['Dental Practice Specialists', 'Hygiene Recall Built-In', 'DSO + Single-Office'];
+
+const painPoints = [
+  { title: 'New-Patient CPA, Not Lead Volume', body: 'A $50 lead that never books an appointment is worthless. We optimize for booked-new-patient CPA — and we report it monthly.' },
+  { title: 'Hygiene Recall Drives 70%+ of Revenue', body: 'Most dental agencies only run new-patient acquisition. We build the entire lifecycle — including SMS + email recall sequences that bring patients back every 6 months.' },
+  { title: 'Insurance Verification Friction', body: 'Patients abandon when verification takes more than 24 hours. AI intake bots can pre-collect insurance info and trigger verification automatically — bookings convert higher.' },
+  { title: 'Cosmetic Cases Need Different Marketing', body: 'A $300 cleaning lead and a $25K Invisalign-or-veneers case need different funnels. We segment campaigns and creative by case value.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "dentist near me," "[procedure] [city]," "emergency dentist," and the long-tail terms that convert into booked new-patient appointments.' },
+  { title: 'Google Ads + LSA for Dentists', body: 'Local Service Ads (where eligible) plus paid search managed for booked-new-patient CPA — not lead-CPA.' },
+  { title: 'Cosmetic + High-Value Case Funnels', body: 'Dedicated campaigns and landing pages for Invisalign, veneers, implants, full-mouth — different intent, different sales cycle, different funnel.' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot handles new-patient calls, pre-collects insurance, and books consults — even Sunday at 11 PM.' },
+  { title: 'Hygiene Recall + Reactivation', body: 'SMS + email sequences that bring patients back every 6 months for cleanings and reactivate lapsed patients with personalized offers.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request Google reviews after every visit. Compound 4.9-star ratings into local search dominance.' },
+];
+
+const faqs = [
+  { q: 'Do you understand HIPAA and dental advertising rules?', a: 'Yes. We work within HIPAA, FTC Endorsement Guides for testimonials, and state dental board rules. We\'ll ask for your state\'s rules on the discovery call.' },
+  { q: 'Can you handle multi-location DSOs?', a: 'Yes. Location-specific landing pages, location-specific Google Business Profiles, per-location attribution. Common for 2–100+ location DSOs.' },
+  { q: 'Do you do hygiene recall and reactivation?', a: 'Yes — usually higher-leverage than acquisition. Email + SMS sequences for 6-month hygiene recall, treatment plan completion, and lapsed-patient reactivation are standard in our dental engagements.' },
+  { q: 'Can you market specific procedures (Invisalign, implants, veneers)?', a: 'Yes. Each high-value procedure gets its own funnel — landing page, ad creative, intake script, and follow-up sequence. Cosmetic cases close longer than cleanings; we tune for that.' },
+  { q: 'How do you measure success?', a: 'New-patient bookings and patient LTV. We benchmark against dental industry averages and report acquisition cost by case type — cleanings vs. cosmetic vs. ortho vs. implant.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/healthcare/dental#webpage', url: 'https://killerspots.com/industries/healthcare/dental', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Healthcare', item: 'https://killerspots.com/industries/healthcare' }, { '@type': 'ListItem', position: 3, name: 'Dental', item: 'https://killerspots.com/industries/healthcare/dental' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Healthcare Reel">
+    <nav aria-label="Breadcrumb" class="text-xs text-white/70 uppercase tracking-[0.2em]"><a href="/industries/healthcare" class="hover:text-white">Healthcare</a><span class="mx-2">/</span><span class="text-white">Dental</span></nav>
+    <div class="max-w-5xl mt-6">
+      <span class="eyebrow">Dental Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">New patients on the schedule — <span class="text-brand-500">and back every six months.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">SEO, paid search, AI intake, and hygiene-recall automation for general, cosmetic, ortho, and pediatric dental. Built for new-patient CPA and lifetime retention.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Dental Marketing Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div>
+    </div>
+  </HeroVideo>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing for businesses that take compliance seriously. We know HIPAA, FTC, and state dental board rules cold.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Where most dental marketing leaves money on the table.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A dental channel mix that compounds.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Dental marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Fill the Schedule</span><h2 class="section-headline mt-5">Tell us your practice. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your new-patient CPA, your case mix, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>

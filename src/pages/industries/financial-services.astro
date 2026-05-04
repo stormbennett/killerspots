@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroVideo from '../../components/HeroVideo.astro';
+import { businessInfo } from '../../data/navigation';
+
+const heroVideoUrl =
+  'https://player.vimeo.com/video/1103463799?h=27f35b5f14&background=1&autopause=0&app_id=58479';
+
+const meta = {
+  title: 'Financial Services Marketing | Advisors, Banks, Insurance | Killerspots',
+  description: 'Marketing for financial advisors, RIAs, community banks, and insurance agencies. SEO, paid search, content authority, and AI intake — built for compliance and trust.',
+  ogTitle: 'Financial Services Marketing — Built For Trust & Compliance | Killerspots',
+  ogDescription: 'SEO, paid search, content authority, and AI intake for advisors, banks, and insurance. FINRA/SEC-aware. Lead-to-AUM reporting.',
+};
+
+const trustPills = ['Compliance-Aware', 'Trust-Based Funnels', 'Lead-to-AUM Reporting'];
+
+const painPoints = [
+  { title: 'Trust Is the Whole Game', body: 'Nobody hands over their money to a brand they don\'t recognize. We build trust assets — long-form content, video testimonials, original research — that make the inquiry feel safe before the first call.' },
+  { title: 'Compliance Limits Most Agencies', body: 'FINRA, SEC, state insurance commissioners, FTC. Most marketing agencies don\'t know any of it. We do, and we run trust-and-acquisition campaigns within those constraints — including disclaimers and approved-language frameworks.' },
+  { title: 'Lead Volume vs. Lifetime Value', body: 'A $50 lead that becomes a $2M AUM client is the only metric that matters. We optimize for closed-AUM and policy-volume — not vanity lead counts.' },
+  { title: 'Long Sales Cycles Need Nurture', body: 'Wealth and insurance prospects don\'t convert in a single visit. We build month-long nurture sequences — long-form content, video, retargeting — that stay present until the prospect is ready.' },
+];
+
+const services = [
+  { title: 'Local SEO + AI Search', body: 'Rank for "financial advisor near me," "[city] wealth management," "insurance broker [city]," and the long-tail terms that drive qualified inquiries.' },
+  { title: 'Paid Search + LinkedIn Ads', body: 'Google Ads for high-intent search plus LinkedIn for executive and high-net-worth audiences. Compliance-reviewed creative.' },
+  { title: 'Content Authority + Thought Leadership', body: 'Long-form blog, original research, and video content that signals expertise to Google + AI search engines and earns prospect trust before the first call.' },
+  { title: 'CTV + YouTube Brand Building', body: 'Premium video establishing trust before the prospect needs you. Brand recall when life events happen — retirement, inheritance, business sale.' },
+  { title: 'AI Intake (LeadConnector)', body: '24/7 AI bot that handles initial inquiries, qualifies AUM/policy size, and books consults. Compliance-reviewed scripting.' },
+  { title: 'Reviews + Reputation', body: 'Auto-request reviews within compliance guidelines (e.g., SEC marketing rule for advisors). Compound 4.9-star ratings into trust + organic discovery.' },
+];
+
+const faqs = [
+  { q: 'Do you understand financial services advertising rules?', a: 'Yes. FINRA Rule 2210, SEC Marketing Rule (advisors), state insurance commissioner rules, and FTC Endorsement Guides. We work with your compliance team to pre-approve creative and frameworks before campaigns launch.' },
+  { q: 'Can you handle RIAs vs. broker-dealers vs. insurance agencies?', a: 'Yes — each has different rules. RIAs operate under SEC Marketing Rule. Broker-dealers under FINRA. Insurance under state commissioners. We tune the campaign and approval process to your channel.' },
+  { q: 'How do you measure success?', a: 'Closed-AUM (advisors), policy-volume (insurance), or deposit growth (banks) — never just lead volume. We work with your CRM to attribute inquiries through to closed business.' },
+  { q: 'Can you handle multi-advisor / multi-location practices?', a: 'Yes. Advisor-specific landing pages, location-specific Google Business Profiles, per-advisor or per-location attribution. Common for wealth groups and bank branch networks.' },
+  { q: 'Do you do testimonials and case studies?', a: 'Yes — within compliance frameworks. Advisor testimonials must comply with the SEC Marketing Rule (or your jurisdiction\'s rule). We work with your compliance team to capture and publish testimonials properly.' },
+];
+
+const speakable = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': 'https://killerspots.com/industries/financial-services#webpage', url: 'https://killerspots.com/industries/financial-services', name: meta.title, description: meta.description, speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#hero-headline', '#hero-subhead'] }, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
+const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://killerspots.com/' }, { '@type': 'ListItem', position: 2, name: 'Financial Services', item: 'https://killerspots.com/industries/financial-services' }] };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+
+<BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs, faqSchema]}>
+  <HeroVideo videoUrl={heroVideoUrl} videoTitle="Killerspots — Financial Services Reel">
+    <div class="max-w-5xl">
+      <span class="eyebrow">Financial Services Marketing</span>
+      <h1 id="hero-headline" class="hero-headline mt-5">Trust at scale. <span class="text-brand-500">Compliance built in.</span></h1>
+      <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-white/90 max-w-4xl leading-snug">SEO, paid search, content authority, and AI intake for financial advisors, RIAs, community banks, and insurance agencies. FINRA/SEC-aware. Lead-to-AUM reported.</p>
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div>
+    </div>
+  </HeroVideo>
+
+  <section class="bg-deep"><div class="container-page py-12 md:py-16"><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div class="flex flex-wrap items-center gap-2.5">{trustPills.map((p) => <span class="trust-pill">{p}</span>)}</div><p class="text-base md:text-lg text-muted leading-relaxed">25+ years marketing within tightly regulated industries. We don't fly close to the sun — and we don't slow your compliance review to a crawl.</p></div></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">The Real Problems</span><h2 class="section-headline mt-5">Where most financial services marketing breaks.</h2></div><ul class="grid md:grid-cols-2 gap-5 md:gap-6">{painPoints.map((p) => (<li data-reveal class="rounded-2xl border border-white/10 bg-surface p-7 md:p-8"><h3 class="text-lg md:text-xl font-semibold text-white">{p.title}</h3><p class="mt-3 text-sm md:text-base text-muted leading-relaxed">{p.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-deep"><div class="container-page py-24 md:py-32"><div class="mb-14 md:mb-20 max-w-3xl" data-reveal><span class="eyebrow">What We Run</span><h2 class="section-headline mt-5">A financial services channel mix tuned to AUM.</h2></div><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">{services.map((s) => (<li data-reveal class="rounded-2xl border border-white/5 bg-canvas/60 p-7"><h3 class="text-lg font-semibold text-white">{s.title}</h3><p class="mt-3 text-sm text-muted leading-relaxed">{s.body}</p></li>))}</ul></div></section>
+
+  <section class="bg-canvas"><div class="container-page py-24 md:py-32"><div class="mb-14 max-w-3xl" data-reveal><span class="eyebrow">FAQ</span><h2 class="section-headline mt-5">Financial services marketing questions.</h2></div><div class="max-w-3xl space-y-3" data-reveal>{faqs.map((f) => (<details class="group rounded-2xl border border-white/10 bg-surface px-6 py-5"><summary class="cursor-pointer list-none text-base md:text-lg font-semibold text-white flex items-start justify-between gap-4"><span>{f.q}</span><svg class="h-5 w-5 shrink-0 mt-1 text-brand-500 transition-transform group-open:rotate-45" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" /></svg></summary><p class="mt-4 text-sm md:text-base text-muted leading-relaxed">{f.a}</p></details>))}</div></div></section>
+
+  <section class="relative overflow-hidden bg-deep"><div aria-hidden="true" class="absolute inset-0 -z-10"><div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div></div><div class="container-page py-24 md:py-32"><div class="max-w-3xl" data-reveal><span class="eyebrow">Build the Trust Engine</span><h2 class="section-headline mt-5">Tell us your firm. We'll build the plan.</h2><p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your AUM/book targets, your jurisdiction's rules, and your current marketing.</p><div class="mt-10 flex flex-wrap gap-3"><a href="/contact" class="btn btn-primary magnetic">Get a Quote</a><a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a></div></div></div></section>
+</BaseLayout>
