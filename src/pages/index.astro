@@ -533,8 +533,14 @@ const breadcrumbs = {
     }
     /* Logos whose marks include a lot of whitespace or small wordmark text need a bump. */
     .logos-item--large {
-      height: 68px;
-      max-height: 68px;
+      height: 96px;
+      max-height: 96px;
+    }
+    @media (max-width: 768px) {
+      .logos-item--large {
+        height: 76px;
+        max-height: 76px;
+      }
     }
     .logos-item:hover {
       filter: none;
