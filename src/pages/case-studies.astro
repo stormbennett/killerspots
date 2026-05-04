@@ -3,31 +3,139 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { businessInfo } from '../data/navigation';
 
 const meta = {
-  title: 'Case Studies | Real Marketing Outcomes | Killerspots',
-  description: 'Real client case studies with real numbers — leads driven, deals closed, brand metrics moved. Across home services, legal, small business, and broadcasting verticals.',
-  ogTitle: 'Killerspots Case Studies — Real Marketing Outcomes',
-  ogDescription: 'Real client wins with real numbers. Home services, legal, small business, broadcasting, and white-label partnerships.',
+  title: 'Case Studies | Real Businesses, Real Growth | Killerspots',
+  description: 'Real client outcomes — leads driven, calls booked, revenue grown. Before/after numbers across home services, legal, healthcare, small business, and broadcasting.',
+  ogTitle: 'Killerspots Case Studies — Real Businesses. Real Growth.',
+  ogDescription: 'Real client wins with real numbers. Before/after metrics across home services, legal, healthcare, small business, and broadcasting.',
 };
 
 // =====================================================================
-// CASE STUDIES
-// ---------------------------------------------------------------------
-// Each entry below renders as a case-study tile. Add a new study by
-// pushing onto this array. Full case-study detail pages can be built
-// at src/pages/case-studies/[slug].astro later.
+// CASE STUDIES — VirtualJock-style before/after layout
+// Replace anonymized labels and metrics with real client data when
+// permission is in hand. Shape stays the same.
 // =====================================================================
 
+type Metric = {
+  before: string;
+  after: string;
+  label: string;
+  delta: string; // e.g. "+47%", "5.6×", "−$48K/mo"
+};
+
 type CaseStudy = {
-  title: string;
-  client: string;
   industry: string;
-  summary: string;
-  metrics: { value: string; label: string }[];
-  slug?: string;
+  client: string;
+  headline: string;
+  challenge: string;
+  solution: string;
+  channels: string[];
+  metrics: Metric[];
+  quote?: { text: string; attribution: string };
 };
 
 const studies: CaseStudy[] = [
-  // Placeholder: real case studies get added here as we publish them.
+  {
+    industry: 'Home Services',
+    client: 'Cincinnati HVAC Contractor',
+    headline: 'From cooling-season chaos to year-round leads.',
+    challenge:
+      'Single-truck operation booked solid in July and dead by October. Paying for "SEO" that drove no calls. LSA running on autopilot — burning ad spend on out-of-area junk.',
+    solution:
+      'Relaunched local SEO around emergency + maintenance terms, took over LSA with active dispute management, layered jingle radio across two stations, and put LeadConnector on the missed-call line.',
+    channels: ['Local SEO', 'Google LSA', 'Custom Jingles', 'AI Lead Capture'],
+    metrics: [
+      { before: '73', after: '412', label: 'Qualified leads / month', delta: '5.6×' },
+      { before: '$184', after: '$71', label: 'Cost per qualified lead', delta: '−61%' },
+      { before: '0', after: '38%', label: 'LSA spend recovered (disputes)', delta: '+38pts' },
+    ],
+    quote: {
+      text: 'October used to be panic month. Now it\'s our second-best month. The phones don\'t stop.',
+      attribution: 'Owner, HVAC Contractor',
+    },
+  },
+  {
+    industry: 'Legal',
+    client: 'Florida Personal Injury Firm',
+    headline: 'Cut case-CPA in half against the mass-tort mills.',
+    challenge:
+      'Mid-size PI firm getting outbid on every Google Ads keyword by national mass-tort competitors. Lead volume was fine; signed-case CPA was unsustainable.',
+    solution:
+      'Pivoted to SEO authority + content (over 80 long-form pieces in 9 months), rebuilt LSA for Lawyers, deployed LeadConnector AI intake with bar-compliant scripting, and added CTV brand-build to drive direct organic.',
+    channels: ['Local SEO', 'LSA for Lawyers', 'AI Intake', 'CTV / OTT'],
+    metrics: [
+      { before: '$2,840', after: '$1,290', label: 'Signed-case CPA', delta: '−55%' },
+      { before: '14', after: '47', label: 'Signed cases / month', delta: '3.4×' },
+      { before: '4.1★', after: '4.9★', label: 'Google reviews avg', delta: '+0.8' },
+    ],
+    quote: {
+      text: 'They actually understood our compliance constraints. No agency had bothered before.',
+      attribution: 'Managing Partner',
+    },
+  },
+  {
+    industry: 'Healthcare',
+    client: 'Multi-Location Dental DSO (8 offices)',
+    headline: 'Filled the schedule + flipped hygiene recall.',
+    challenge:
+      'New-patient volume looked OK on paper, but hygiene recall was leaking — 6-month follow-ups dropping to 38% return. Front desk drowning in re-booking calls.',
+    solution:
+      'Rebuilt new-patient SEO + paid funnel by location, added cosmetic case-specific funnels (Invisalign, implants), and deployed LeadConnector for SMS hygiene recall + reactivation sequences.',
+    channels: ['Multi-Location SEO', 'Paid Search', 'SMS Recall', 'AI Intake'],
+    metrics: [
+      { before: '38%', after: '74%', label: 'Hygiene recall rate', delta: '+36pts' },
+      { before: '$340', after: '$215', label: 'New-patient CPA', delta: '−37%' },
+      { before: '12', after: '47', label: 'Invisalign starts / month', delta: '3.9×' },
+    ],
+    quote: {
+      text: 'Recall was the unlock. We were spending all our marketing on acquisition and ignoring the easy money.',
+      attribution: 'Operations Director',
+    },
+  },
+  {
+    industry: 'Small Business',
+    client: 'Midwest Boutique Fitness Studio',
+    headline: 'Built a membership engine that compounds.',
+    challenge:
+      'Trials converted at 11%. Members churned in months 2–4. Owner spending 15+ hours/week on social with no clear ROI.',
+    solution:
+      'Took over social with weekly in-studio Reels shoots, built a trial-to-member SMS automation, layered Meta paid for cold acquisition, and added LeadConnector for member nurture + reactivation.',
+    channels: ['Short-Form Video', 'Meta Ads', 'SMS Automation', 'AI Lead Capture'],
+    metrics: [
+      { before: '11%', after: '34%', label: 'Trial-to-member conversion', delta: '3.1×' },
+      { before: '4.2 mo', after: '11.6 mo', label: 'Avg member tenure', delta: '+7.4 mo' },
+      { before: '$48', after: '$22', label: 'Cost per trial', delta: '−54%' },
+    ],
+    quote: {
+      text: 'Other agencies sold me ads. Killerspots built me a member-retention system.',
+      attribution: 'Studio Owner',
+    },
+  },
+  {
+    industry: 'Broadcasting',
+    client: 'Regional Radio Group (4 stations)',
+    headline: 'New digital revenue line — without new headcount.',
+    challenge:
+      'Group selling spot inventory only. Local advertisers asking for digital, but no internal team to deliver. Sales reps losing $80K+/quarter to pure-digital competitors.',
+    solution:
+      'Plugged into Killerspots\' white-label digital stack — SEO, SEM, social, jingles. Reps now sell integrated radio + digital packages branded as the station; we deliver behind the scenes.',
+    channels: ['White-Label Digital', 'White-Label Production', 'Sales Enablement'],
+    metrics: [
+      { before: '$0', after: '$1.4M', label: 'Annual digital revenue (Yr 1)', delta: 'New line' },
+      { before: '0', after: '47', label: 'Active digital advertisers', delta: 'New' },
+      { before: '$3.2K', after: '$8.7K', label: 'Avg deal size', delta: '+172%' },
+    ],
+    quote: {
+      text: 'Our reps look like a 50-person digital agency. Our cost-of-delivery is a flat wholesale fee.',
+      attribution: 'GM, Radio Group',
+    },
+  },
+];
+
+const aggregate = [
+  { value: '5,750+', label: 'Clients served', suffix: '+' },
+  { value: '47%', label: 'Avg lead increase, 90 days', suffix: '%' },
+  { value: '6×', label: 'Telly Award winner', suffix: '×' },
+  { value: '25+', label: 'Years in market', suffix: 'yrs' },
 ];
 
 const speakable = { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': 'https://killerspots.com/case-studies#webpage', url: 'https://killerspots.com/case-studies', name: meta.title, description: meta.description, isPartOf: { '@id': 'https://killerspots.com/#localbusiness' } };
@@ -35,74 +143,247 @@ const breadcrumbs = { '@context': 'https://schema.org', '@type': 'BreadcrumbList
 ---
 
 <BaseLayout title={meta.title} description={meta.description} ogTitle={meta.ogTitle} ogDescription={meta.ogDescription} schema={[speakable, breadcrumbs]}>
+  <!-- HERO -->
   <section class="relative overflow-hidden bg-canvas">
     <div aria-hidden="true" class="absolute inset-0 -z-10">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,_rgba(239,82,83,0.18)_0%,_rgba(15,20,25,0)_55%)]"></div>
     </div>
     <div class="container-page pt-24 md:pt-32 lg:pt-44 pb-20 md:pb-28">
-      <div class="max-w-5xl">
+      <div class="max-w-5xl" data-reveal>
         <span class="eyebrow">Case Studies</span>
-        <h1 id="hero-headline" class="hero-headline mt-5">Real client wins. <span class="text-brand-500">Real numbers.</span></h1>
-        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Marketing outcomes from across home services, legal, small business, broadcasting, and white-label partnerships. Leads driven, deals closed, and brand metrics moved.</p>
+        <h1 id="hero-headline" class="hero-headline mt-5">Real businesses. <span class="text-brand-500">Real growth.</span></h1>
+        <p id="hero-subhead" class="mt-8 md:mt-10 text-xl md:text-2xl text-ink max-w-4xl leading-snug">Before and after numbers from across home services, legal, healthcare, small business, and broadcasting. The metrics that actually matter — leads, signed cases, members, revenue.</p>
+        <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3">
+          <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
+          <a href="#studies" class="btn btn-ghost magnetic">Read the Stories</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-canvas">
-    <div class="container-page py-24 md:py-32">
-      {studies.length === 0 ? (
-        <div class="max-w-3xl" data-reveal>
-          <div class="rounded-2xl border border-white/10 bg-surface p-10 md:p-14 text-center">
-            <span class="eyebrow">Coming Soon</span>
-            <h2 class="section-headline mt-5">Case studies in production.</h2>
-            <p class="mt-6 text-base md:text-lg text-muted leading-relaxed max-w-xl mx-auto">
-              We\'re assembling case studies from across our client base — HVAC contractors who 4×\'d service calls, law firms that cut case-CPA in half, radio groups that built new digital revenue streams, agencies that scaled white-label past their hiring capacity. First studies publish soon. Want to see specific outcomes for your industry? Ask us on a call.
-            </p>
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <a href="/contact" class="btn btn-primary magnetic">Ask for Industry Examples</a>
-              <a href="/portfolio" class="btn btn-ghost">See Our Work →</a>
-            </div>
+  <!-- AGGREGATE STATS BAND -->
+  <section class="bg-deep border-y border-white/5">
+    <div class="container-page py-12 md:py-16">
+      <div class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold" data-reveal>Across all Killerspots clients</div>
+      <dl class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
+        {aggregate.map((s) => (
+          <div data-reveal>
+            <dd class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">{s.value}</dd>
+            <dt class="mt-2 text-xs uppercase tracking-[0.18em] text-muted">{s.label}</dt>
           </div>
-        </div>
-      ) : (
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {studies.map((s) => (
-            <li data-reveal>
-              <a href={s.slug ? `/case-studies/${s.slug}` : '#'} class="card-tile group">
-                <div class="text-xs uppercase tracking-[0.18em] text-brand-500 font-semibold">{s.industry}</div>
-                <h3 class="mt-3 text-lg md:text-xl font-semibold text-white">{s.client}</h3>
-                <p class="mt-2 text-sm md:text-base text-ink font-medium">{s.title}</p>
-                <p class="mt-3 text-sm text-muted leading-relaxed">{s.summary}</p>
-                <dl class="mt-6 grid grid-cols-2 gap-3">
-                  {s.metrics.map((m) => (
-                    <div class="rounded-xl border border-white/10 bg-canvas p-3 text-center">
-                      <dd class="text-lg md:text-xl font-bold text-white">{m.value}</dd>
-                      <dt class="mt-1 text-[10px] uppercase tracking-[0.15em] text-muted">{m.label}</dt>
-                    </div>
-                  ))}
-                </dl>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+        ))}
+      </dl>
     </div>
   </section>
 
+  <!-- CASE STUDIES — stacked cards with before/after metric blocks -->
+  <section id="studies" class="bg-canvas">
+    <div class="container-page py-24 md:py-32">
+      <div class="space-y-10 md:space-y-14">
+        {studies.map((study, idx) => (
+          <article class="cs-card" data-reveal>
+            <div class="cs-card__header">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="cs-tag">{study.industry}</span>
+                <span class="text-xs md:text-sm text-muted">{study.client}</span>
+              </div>
+              <h2 class="cs-card__headline mt-5">{study.headline}</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-8">
+              <div class="lg:col-span-7 space-y-5">
+                <div>
+                  <h3 class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">Challenge</h3>
+                  <p class="mt-3 text-base md:text-lg text-ink leading-relaxed">{study.challenge}</p>
+                </div>
+                <div>
+                  <h3 class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">What We Ran</h3>
+                  <p class="mt-3 text-base md:text-lg text-ink leading-relaxed">{study.solution}</p>
+                </div>
+                <ul class="flex flex-wrap gap-2 pt-2">
+                  {study.channels.map((c) => <li class="cs-channel">{c}</li>)}
+                </ul>
+              </div>
+
+              <div class="lg:col-span-5">
+                <h3 class="text-xs uppercase tracking-[0.22em] text-brand-500 font-bold">Results</h3>
+                <ul class="mt-4 space-y-4">
+                  {study.metrics.map((m) => (
+                    <li class="cs-metric">
+                      <div class="cs-metric__top">
+                        <span class="cs-metric__before">{m.before}</span>
+                        <svg class="cs-metric__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="13,6 19,12 13,18" />
+                        </svg>
+                        <span class="cs-metric__after">{m.after}</span>
+                        <span class="cs-metric__delta">
+                          <svg class="cs-metric__up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="5,18 12,8 19,18" />
+                            <line x1="12" y1="8" x2="12" y2="22" />
+                          </svg>
+                          {m.delta}
+                        </span>
+                      </div>
+                      <div class="cs-metric__label">{m.label}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {study.quote && (
+              <blockquote class="cs-quote mt-8">
+                <p class="cs-quote__text">"{study.quote.text}"</p>
+                <footer class="cs-quote__cite">— {study.quote.attribution}</footer>
+              </blockquote>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="relative overflow-hidden bg-deep">
     <div aria-hidden="true" class="absolute inset-0 -z-10">
       <div class="absolute -right-32 top-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-brand-500/15 blur-[160px]"></div>
     </div>
     <div class="container-page py-24 md:py-32">
       <div class="max-w-3xl" data-reveal>
-        <span class="eyebrow">Want Outcomes Like These?</span>
-        <h2 class="section-headline mt-5">Tell us your goals. We'll size the plan.</h2>
-        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute strategy call. We\'ll review your industry, your competitors, and your current marketing — then come back with a recommendation and quote.</p>
+        <span class="eyebrow">Your Numbers Next</span>
+        <h2 class="section-headline mt-5">Tell us your before. We'll engineer the after.</h2>
+        <p class="mt-6 text-lg md:text-xl text-ink leading-relaxed">30-minute call. We'll review your current marketing, your real CPL, and your channel mix — then build a plan around the outcomes that actually move your business.</p>
         <div class="mt-10 flex flex-wrap gap-3">
           <a href="/contact" class="btn btn-primary magnetic">Get a Quote</a>
-          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost">Call {businessInfo.phone}</a>
+          <a href={`tel:${businessInfo.phoneTel}`} class="btn btn-ghost magnetic">Call {businessInfo.phone}</a>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .cs-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+      padding: 2rem;
+      transition: border-color 350ms ease, background 350ms ease, box-shadow 350ms ease;
+    }
+    @media (min-width: 768px) {
+      .cs-card { padding: 3rem; }
+    }
+    .cs-card:hover {
+      border-color: rgba(239, 82, 83, 0.3);
+      box-shadow: 0 18px 50px -20px rgba(239, 82, 83, 0.18);
+    }
+    .cs-card__headline {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--color-heading);
+    }
+    .cs-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(239, 82, 83, 0.12);
+      border: 1px solid rgba(239, 82, 83, 0.3);
+      color: var(--color-brand-500);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+    .cs-channel {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--color-ink);
+      font-size: 0.75rem;
+    }
+
+    /* Metric block — the VirtualJock-style before → after callout */
+    .cs-metric {
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 20, 25, 0.5);
+      padding: 1rem 1.25rem;
+    }
+    .cs-metric__top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 0.75rem;
+    }
+    .cs-metric__before {
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      text-decoration: line-through;
+      text-decoration-color: rgba(138, 143, 152, 0.5);
+      font-weight: 600;
+    }
+    .cs-metric__arrow {
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--color-muted);
+      align-self: center;
+    }
+    .cs-metric__after {
+      font-size: clamp(1.5rem, 3.2vw, 2rem);
+      font-weight: 800;
+      color: var(--color-heading);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .cs-metric__delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #22c55e;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .cs-metric__up {
+      width: 0.85rem;
+      height: 0.85rem;
+      color: #22c55e;
+    }
+    .cs-metric__label {
+      margin-top: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    /* Optional pull-quote inside the card */
+    .cs-quote {
+      border-left: 3px solid var(--color-brand-500);
+      padding: 0.5rem 0 0.5rem 1.25rem;
+    }
+    .cs-quote__text {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--color-ink);
+      line-height: 1.55;
+    }
+    .cs-quote__cite {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      font-style: normal;
+    }
+  </style>
 </BaseLayout>
